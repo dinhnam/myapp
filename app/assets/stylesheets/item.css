@@ -1,0 +1,124 @@
+.item-move{
+    position: relative;
+    border: 1px solid #79777a;
+    margin: 2px;
+    float: left;
+    width: 24%;
+}
+.item-move::before {
+    content: "";
+    display: block;
+    padding-top: 160%;
+}
+.cover{
+    position: absolute;
+    top: 0;
+	left: 0;
+    width: 100%;
+    height: 80%;
+    overflow: hidden;
+    color: #fff;
+}
+.cover img{
+    width: 100%;
+    margin: auto;
+}
+.title{
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    bottom: 0px;
+    left: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 2px;
+    background-color: black;
+    opacity: 0.7;
+}
+.title a{
+    padding: 5px 2px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 100;
+}
+
+.intro{
+    width: 100%;
+    height: 85%;
+    overflow: auto;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    font-size: 13px;
+    border-radius: 10px;
+    padding: 2px;
+    position: absolute;
+    top: 25px;
+    display: none;
+    opacity: 0.6;
+}
+.item-move:hover .intro{
+    display: block;
+}
+.viewed{
+    padding: 1px;
+    width: 70px;
+    bottom:5px;
+    right: 2px;
+    background-color: rgb(233, 179, 179);
+    position: absolute;
+    border-radius: 10px;
+    font-size: 12px;
+}
+.viewed img{
+    width: 15px;
+    height: 15px;
+    
+}
+.img-play{
+    padding: 0;
+    position: absolute;
+    bottom:0px;
+    left: 2px;
+    height: 40px;
+    width: 50px;
+    background-image: url("play-icon.png");
+    background-repeat:no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+.duration{
+    padding: 1px;
+    top: 1px;
+    right: 1px;
+    width: 70px;
+    font-size: 12px;
+    position: absolute;
+    background-color: rgb(63, 43, 43);
+    border-radius: 10px;
+}
+.episode{
+    top: 0px;
+    left: 0px;
+    background-color: rgb(78, 10, 10);
+    position: absolute;
+    opacity: 0.7;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 620px) {
+    .item-move{
+        width: 32%;
+    }
+}
+@media screen and (max-width: 480px) {
+    .item-move{
+        width: 48%;
+    }
+}
+@media screen and (min-width: 1000px) {
+    .item-move{
+        width: 19.2%;
+    }
+}

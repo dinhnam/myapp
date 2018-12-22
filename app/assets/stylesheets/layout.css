@@ -1,0 +1,63 @@
+html{
+    font-size: 16px;
+}
+body{
+    background-image:url("repeat-icon.png");
+    background-repeat: repeat;
+}
+header{
+    border: 1px solid #79777A;
+    width: 100%;
+    float: left;
+}
+.contain{
+    width: 100%;
+}
+main{
+    width: 100%;
+}
+.content{
+    padding: 5px;
+    float: left;
+}
+.sidebar{
+    padding: 5px;
+    float: left;
+    background-color: rgb(26, 24, 24);
+    color: aliceblue;
+}
+footer{
+    float: right;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid rgb(31, 8, 43);
+    background-color: rgb(190, 45, 45);
+}
+
+/*responsive*/
+@media screen and (max-width: 800px) {
+    
+    .sidebar{
+        width: 100%;
+    }
+    .main{
+        width: 100%;
+    }
+    .content{
+        width: 100%;
+    }
+}
+/*desktop*/
+@media screen and (min-width: 800px) {
+    .content{
+        width: 80%;
+    }
+    .sidebar{
+        width: 19%;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .contain{
+        max-width: 1280px;
+    }
+}

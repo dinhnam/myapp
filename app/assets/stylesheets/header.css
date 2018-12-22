@@ -1,0 +1,154 @@
+/* header menu*/
+header .bar{
+    background-color: #000;
+}
+.bar{
+    width: 100%;
+    position: relative;
+    float: left;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.bar .hide{
+    display: none;
+}
+.bar .show{
+    display: block;
+}
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.bar li , .bar a {
+    color: #fff;
+    font-size: 18px;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
+.bar li{
+    padding: 13px 8px;
+    list-style-type: none;
+}
+.bar .logo{
+    padding: 2px 8px;
+}
+.bar .logo.left{
+    font-weight: bold;
+}
+.logo img{
+    width: 50px;
+    height: 50px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+.drop .menu{
+    display: none;
+    position: absolute;
+    background-color: #000;
+    opacity: 0.8;
+    border: 1px solid #79777A;
+    z-index: 100;
+    border-radius: 5px;
+    padding: 5px;
+}
+.drop .menu a{
+    font-size: 14px;
+    width: 100px;
+}
+.drop .menu li{
+    width: 110px;
+}
+.drop .menu li{
+    padding: 6px 5px;
+    float: left;
+    border-radius: 5px;
+}
+.drop.left .menu.tab{
+    max-width: 680px;
+    top: 40px;
+    left: 5px;
+}
+.drop:hover .menu{
+    display: block;
+}
+.bar li:hover {
+    background-color: rgb(68, 44, 44);
+}
+
+.menu.col{
+    width: 120px;
+    right: 2px;
+}
+.bar .search{
+    margin: 0px;
+    padding: 8px;
+}
+.bar .search input[type=text]{
+    padding: 2px;
+    border-radius: 5px;
+    margin: auto;
+}
+.bar .search .btn{
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-image:url("search-icon.png");
+    background-repeat:no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+.bar .btn:hover{
+    background-color: rgb(192, 143, 238);
+}
+.note img{
+    width: 30px;
+    height: 30px;
+}
+.drop.right .menu.tab{
+    right: 5px;
+    width: 300px;
+    max-height: 400px;
+    overflow: auto;
+    padding: 5px;
+    opacity: 0.9;
+}
+.drop.right .menu.tab li{
+    width: 100%;
+    padding: 2px;
+}
+.drop.right .menu.tab a{
+    width: 100%;
+    text-align: left;
+}
+/*responsive*/
+@media screen and (max-width: 900px) {
+    .bar .show{
+        display: none;
+    }
+    .bar .hide{
+        display: block;
+    }
+}
+@media screen and (max-width: 680px) {
+    .bar .search{
+        width: 100%;
+    }
+    .bar .search input[type=text]{
+        width: 85%;
+    }
+}
+@media screen and (max-width: 400px) {
+    .bar .logo.left img{
+        display: none;
+    }
+    .bar .logo.left{
+        padding: 13px 8px;
+    }
+} 

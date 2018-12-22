@@ -1,0 +1,57 @@
+<header>
+    <ul class="menu bar">
+      <div class="group left">
+          <div class="logo">
+            <%= link_to image_tag("logo.gif"), root_path %>
+          </div>
+          <div class="item">
+            <%= link_to "AniPhim", root_path %>
+          </div>
+          <div class="item drop">
+            <div class="item">Categories</div>
+            <div class="drop-menu" id="drop-menu-1">
+              <% @categories.each do |category| %>
+                  <div class="item"> <%= link_to category.name, category %> </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+  
+        <div class="group right">
+          <div class="item drop bar">
+            <div class ="avatar-item"></div>
+            <div class="drop-menu" id="drop-menu-2">
+              <div class="item hide">
+                <%= link_to "My Film", "#" %>
+              </div>
+              <div class= "item hide">
+                <%= link_to "Profile", "#" %>
+              </div>
+              <div class= "item">
+                <%= link_to "Setting", "#" %>
+              </div>
+              <div class= "item">
+                <%= link_to "Logout", "#", method: :delete %>
+              </div>
+            </div>
+          </div>
+  
+          <div class= "item show">
+            <%= link_to "Profile", "#" %>
+          </div>
+  
+          <div class= "item show">
+            <%= link_to "My Film", "#" %>
+          </div>
+        
+          <div class= "item drop">
+            <%= link_to "notice", "#" %>
+          </div>
+        </div>
+  
+        <div class="item search">
+            <%= render "layouts/search" %>
+        </div>
+        
+    </div>
+  </header>

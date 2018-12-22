@@ -1,0 +1,27 @@
+<ul class="bar">
+    <%= form_tag method: :get do %>
+      <li class="drop left">
+          <%= select_tag "category", options_for_select([]), prompt: "Categories" %>
+          <ul class="menu tab">
+            <% @categories.each do |category| %>
+                <li>
+                    <%= check_box_tag 'type[]', category.id %>
+                    <%= category.name %>
+                </li>
+            <% end %>
+          </ul>
+      </li>
+      <li class="left">
+        <%= select_tag "other", options_for_select([ "Time update", "Top view", "Top rating"], "Time update") %>
+      </li>
+      <li class="left">
+        <%= select_tag "process", options_for_select([ "ALl", "Processing", "Finish" ], "All") %>
+      </li>
+      <li class="left">
+        <%= select_tag "year", options_for_select([ "All","2018", "2017", "2016" ], "All") %>
+      </li>
+      <li class="left">
+        <%= submit_tag "Filter"%>
+      </li>
+    <% end %>
+</ul>

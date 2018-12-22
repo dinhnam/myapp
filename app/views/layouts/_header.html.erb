@@ -1,0 +1,85 @@
+<header>
+  <ul class="bar">
+      <li class="logo left">
+        <%= link_to image_tag("logo.gif"), root_path %>
+        <%= link_to "AniPhim", root_path %>
+      </li>
+      <li class="drop left">
+        Categories
+        <ul class="menu tab">
+            <% @categories.each do |category| %>
+                <li> <%= link_to category.name, category %> </li>
+            <% end %>
+        </ul>
+      </li>
+
+      <li class="drop logo right">
+          <%= image_tag("user-default-male.png") %>
+          <ul class="menu col">
+            <li class="hide">
+              <%= link_to "Bookmark", "#" %>
+            </li>
+            <li class= "hide">
+              <%= link_to "Profile", "#" %>
+            </li>
+            <li class= "hide">
+              <%= link_to "Setting", "#" %>
+            </li>
+            <li>
+              <%= link_to "Logout", "#", method: :delete %>
+            </li>
+          </ul>
+      </li>
+
+      <li class= "drop note right">
+        <%= image_tag("notice-icon.png") %>
+        <ul class="menu tab">
+            <% @notices.each do |notice| %>
+                <li> <%= link_to notice.title, notice.link %> </li>
+            <% end %>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+        </ul>
+      </li>
+
+      <li class= "show right">
+        <%= link_to "Setting", "#" %>
+      </li>
+
+      <li class= "show right">
+        <%= link_to "Profile", "#" %>
+      </li>
+
+      <li class= "show right">
+        <%= link_to "Bookmark", "#" %>
+      </li>
+
+      <li class="search left">
+        <%= form_tag method: :get do %>
+          <%= text_field_tag :input_search, nil, placeholder: "Search.." %>
+          <%= submit_tag "" , class: "btn"%>
+        <% end %>
+      </li>
+
+  </ul>
+</header>

@@ -1,0 +1,15 @@
+/*filter menu*/
+.content .bar{
+    width: 98%;
+    background-color: rgb(59, 43, 43);
+    border-radius: 10px;
+}
+.content .bar li{
+    padding: 5px 5px;
+}
+.content .bar .menu.tab{
+    top: 20px;
+}
+.content .bar li:hover{
+    background-color: rgb(105, 90, 90);
+}

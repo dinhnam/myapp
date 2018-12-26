@@ -1,27 +1,33 @@
+<div class= "filters"> 
 <ul class="bar">
     <%= form_tag method: :get do %>
-      <li class="drop left">
-          <%= select_tag "category", options_for_select([]), prompt: "Categories" %>
+      <li class="drop">
+          <%= content_tag :button, type: :button do %>Categories<b></b><% end %>
           <ul class="menu tab">
             <% @categories.each do |category| %>
                 <li>
-                    <%= check_box_tag 'type[]', category.id %>
-                    <%= category.name %>
+                    <%= check_box_tag "genres[]", category.id, false,
+                          id: category.id %>
+                    <span><%= category.name %></span>
                 </li>
             <% end %>
           </ul>
       </li>
-      <li class="left">
-        <%= select_tag "other", options_for_select([ "Time update", "Top view", "Top rating"], "Time update") %>
+      <li>
+        <%= select_tag "sort", options_for_select(Settings.filter.sort_movies, 
+              Settings.filter.sort_movies.first) %>
       </li>
-      <li class="left">
-        <%= select_tag "process", options_for_select([ "ALl", "Processing", "Finish" ], "All") %>
+      <li class="process">
+        <%= select_tag "progress", options_for_select(Settings.filter.progress,
+              Settings.filter.progress.first) %>
       </li>
-      <li class="left">
-        <%= select_tag "year", options_for_select([ "All","2018", "2017", "2016" ], "All") %>
+      <li class="year">
+        <%= select_tag "years", options_for_select( Settings.filter.years,
+             Settings.filter.years.first) %>
       </li>
-      <li class="left">
+      <li>
         <%= submit_tag "Filter"%>
       </li>
     <% end %>
 </ul>
+</div>

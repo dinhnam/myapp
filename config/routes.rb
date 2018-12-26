@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  get 'films/index'
   scope "(:locale)", locale: /en|vi/ do
     root "static_pages#home"
+    resources :films
+    resources :categories
+    resources :directors
+    resources :artists
+    resources :studios
   end
-  resources :films
-  resources :categories
-  resources :directors
-  resources :actors
-  resources :studios
+  
 end

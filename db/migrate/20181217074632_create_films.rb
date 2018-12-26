@@ -11,7 +11,8 @@ class CreateFilms < ActiveRecord::Migration[5.2]
       t.integer :duration
       t.integer :view
       t.datetime :release
-
+      t.string :country
+      
       t.timestamps
     end
   end

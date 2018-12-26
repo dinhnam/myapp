@@ -6,6 +6,7 @@ header .bar{
     width: 100%;
     position: relative;
     float: left;
+    padding: 0px;
 }
 .left{
     float: left;
@@ -33,13 +34,13 @@ ul{
     cursor: pointer;
 }
 .bar li{
-    padding: 13px 8px;
+    padding: 18px 8px;
     list-style-type: none;
 }
 .bar .logo{
-    padding: 2px 8px;
+    padding: 3px 5px 0px 2px;
 }
-.bar .logo.left{
+.bar .home{
     font-weight: bold;
 }
 .logo img{
@@ -75,7 +76,7 @@ ul{
     top: 40px;
     left: 5px;
 }
-.drop:hover .menu{
+header .drop:hover .menu{
     display: block;
 }
 .bar li:hover {
@@ -88,28 +89,42 @@ ul{
 }
 .bar .search{
     margin: 0px;
-    padding: 8px;
+    padding: 12px;
+    width: 30%;
 }
 .bar .search input[type=text]{
-    padding: 2px;
-    border-radius: 5px;
+    padding: 6px;
+    border: 1px solid rgb(216, 129, 129);
     margin: auto;
+    font-size: 16px;
+    width: 85%;
+    box-sizing: border-box;
+    float: left;
+    border-radius: 5px 0 0 5px;
 }
-.bar .search .btn{
-    width: 35px;
-    height: 35px;
+.bar .search input[type=submit]{
+    box-sizing: border-box;
+    width: 10%;
+    height: 32px;
+    float: left;
     cursor: pointer;
     background-image:url("search-icon.png");
     background-repeat:no-repeat;
     background-size: contain;
     background-position: center center;
+    background-color: rgb(47, 219, 47);
+    border: 1px solid rgb(216, 129, 129);
+    border-radius: 0px 5px 5px 0px;
 }
-.bar .btn:hover{
-    background-color: rgb(192, 143, 238);
+.bar input[type=submit]:hover{
+    background-color: rgb(236, 193, 112);
 }
-.note img{
-    width: 30px;
-    height: 30px;
+.bar .note{
+    padding: 10px;
+}
+.bar .note img{
+    width: 32px;
+    height: 32px;
 }
 .drop.right .menu.tab{
     right: 5px;
@@ -135,13 +150,13 @@ ul{
     .bar .hide{
         display: block;
     }
+    .bar .search{
+        width: 40%;
+    }
 }
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 630px) {
     .bar .search{
         width: 100%;
-    }
-    .bar .search input[type=text]{
-        width: 85%;
     }
 }
 @media screen and (max-width: 400px) {

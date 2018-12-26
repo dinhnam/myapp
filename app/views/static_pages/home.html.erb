@@ -1,14 +1,4 @@
 <% provide :title, t("home.title") %>
-<div class="content">
-  <%= render "layouts/filter" %>
-  <%= render "layouts/film" %>
-  <%= render "layouts/film" %>
-  <%= render "layouts/film" %>
-  <%= render "layouts/film" %>
-  <%= render "layouts/film" %>
-  <%= render "layouts/film" %>
-  <%= render "layouts/film" %>
-  <%= render "layouts/film" %>
-  <%= render "layouts/film" %>
-</div>
-<%= render "layouts/sidebar" %>
+<%= paginate @films %>
+<%= render @films %>
+<%= paginate @films %>

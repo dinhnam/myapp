@@ -12,15 +12,13 @@
   </head>
 
   <body>
-    <div class= "contain">
       <%= render "layouts/header" %>
-      <div class="flash">
-        
-      </div>
-      <main>
+      <div class="notify"></div>
+      <div class="content">
+        <%= render "layouts/filter" %>
         <%= yield %>
-      </main>
+      </div>
+      <%= render "layouts/sidebar" %>
       <%= render "layouts/footer" %>
-    </div>
   </body>
 </html>

@@ -26,3 +26,61 @@ categories_text.each_line do |line|
     data = line.split(":")
     Category.create!(name: data[0], intro: data[1])
 end
+
+50.times do
+    Artist.create!(
+        name: Faker::Artist.name
+    )
+end
+20.times do
+    Studio.create(
+        name: Faker::Company.name
+    )
+end
+20.times do
+    Director.create(
+        name: Faker::Artist.name
+    )
+end
+country = Country.create!(
+    name: "Japan"
+)
+artists = Artist.all
+studios = Studio.all
+genres = Category.all
+directors = Director.all
+100.times do
+    film = Film.create!(
+        name: Faker::Movie.quote,
+        imdb: rand(0..10),
+        rating: rand(0..10),
+        cover: 'test.jpg',
+        view: rand(10000..100000),
+        release:  Faker::Date.between(15.years.ago, Date.today),
+        intro: "Bối cảnh câu chuyện diễn ra tại thành phố Nagasaki, nơi mà một
+         lượng ma thuật nhỏ vẫn còn tồn tại trong cuộc sống hàng ngày. Hitomi 
+         Tsukishiro là một hậu duệ 17 tuổi của một gia đình phù thủy. Cô lớn
+          lên với những cảm xúc hoài niệm, khi cô mất đi cảm giác về màu sắc
+          từ khi còn rất nhỏ. Cảm thấy nuối tiếc cho tương lai của cháu gái
+            mình, Kohaku, một phù thủy vĩ đại, đã gửi Hitomi về quá khứ vào
+            năm 2018. Qua cuộc trao đổi với bà ngoại lúc 17 tuổi của mình
+            và các thành viên câu lạc bộ, Hitomi đã dần trưởng thành hơn."
+    )
+    film.add_studio studios[rand(0...20)]
+    film.add_director directors[rand(0...20)]
+    film.add_country country 
+    rand(10..40).times do
+      artist = artists[rand(0...50)]
+      unless film.artist_exist? artist
+        film.add_artist artist
+      end
+    end
+    rand(3..7).times do
+        genre = genres[rand(0...24)]
+        unless film.category_exist? genre
+            film.add_category genre
+        end
+    end
+end
+
+

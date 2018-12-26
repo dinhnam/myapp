@@ -1,124 +1,135 @@
-.item-move{
+.item-container{
     position: relative;
-    border: 1px solid #79777a;
-    margin: 2px;
     float: left;
-    width: 24%;
+    width: 31%;
+    margin: 1%;
+    border: 1px solid rgb(36, 34, 34);
+    border-bottom: 3px solid rgb(36, 34, 34);
+    box-sizing: border-box;
+    color: white;
 }
-.item-move::before {
+.item-container::before {
     content: "";
     display: block;
-    padding-top: 160%;
-}
-.cover{
-    position: absolute;
-    top: 0;
-	left: 0;
-    width: 100%;
-    height: 80%;
-    overflow: hidden;
-    color: #fff;
-}
-.cover img{
-    width: 100%;
-    margin: auto;
-}
-.title{
-    position: absolute;
-    width: 100%;
-    height: 20%;
-    bottom: 0px;
-    left: 0px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 2px;
-    background-color: black;
-    opacity: 0.7;
-}
-.title a{
-    padding: 5px 2px;
-    color: #fff;
-    font-size: 15px;
-    font-weight: 100;
-}
-
-.intro{
-    width: 100%;
-    height: 85%;
-    overflow: auto;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    font-size: 13px;
-    border-radius: 10px;
-    padding: 2px;
-    position: absolute;
-    top: 25px;
-    display: none;
-    opacity: 0.6;
-}
-.item-move:hover .intro{
-    display: block;
-}
-.viewed{
-    padding: 1px;
-    width: 70px;
-    bottom:5px;
-    right: 2px;
-    background-color: rgb(233, 179, 179);
-    position: absolute;
-    border-radius: 10px;
-    font-size: 12px;
-}
-.viewed img{
-    width: 15px;
-    height: 15px;
-    
-}
-.img-play{
-    padding: 0;
-    position: absolute;
-    bottom:0px;
-    left: 2px;
-    height: 40px;
-    width: 50px;
-    background-image: url("play-icon.png");
-    background-repeat:no-repeat;
-    background-size: contain;
-    background-position: center center;
-}
-.duration{
-    padding: 1px;
-    top: 1px;
-    right: 1px;
-    width: 70px;
-    font-size: 12px;
-    position: absolute;
-    background-color: rgb(63, 43, 43);
-    border-radius: 10px;
+    padding-top: 162%;
 }
 .episode{
-    top: 0px;
-    left: 0px;
+    top: 2px;
+    left: 2px;
     background-color: rgb(78, 10, 10);
     position: absolute;
     opacity: 0.7;
     font-size: 14px;
+    border-radius: 5px;
+    padding: 2px;
+    font-weight: bold;
+    z-index: 3;
 }
-
-@media screen and (max-width: 620px) {
-    .item-move{
-        width: 32%;
-    }
+.viewed{
+    padding: auto;
+    width: 60px;
+    top:2px;
+    right: 2px;
+    background-color: white;
+    position: absolute;
+    border-radius: 5px 0px 5px 5px;
+    font-size: 13px;
+    font-weight: bold;
+    z-index: 3;
+    color: black;
+    opacity: 0.7;
 }
-@media screen and (max-width: 480px) {
-    .item-move{
+.viewed img{
+    width: 14px;
+    height: 12px;
+}
+.item-container .cover{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    height: 87%;
+    width: 100%;
+    z-index: 1;
+}
+.item-container .cover img{
+    width: 100%;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.item-container .cover img:hover{
+    width: 110%;
+}
+.item-container .title{
+    position: absolute;
+    width: 100%;
+    height: 13%;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgb(16, 15, 24);
+    z-index: 2;
+}
+.item-container .title{
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    padding: 2px;
+}
+.item-container .title a{
+    color: white;
+    font-size: 14px;
+    font-weight: bold;  
+    text-decoration: none;
+}
+.item-container .intro{
+    position: absolute;
+    height: 85%;
+    width: 100%;
+    z-index: 8;
+    top: 0px;
+    right: 0px;
+    padding: 4px;
+    background-color: black;
+    opacity: 0.8;
+    display: none;
+    overflow: auto;
+    font-style: italic;
+}
+.item-container .read-me{
+    position: absolute;
+    top: 20px;
+    right: 2px;
+    width: 36px;
+    height: 36px;
+    background-image: url('readme-icon.png');
+    background-repeat:no-repeat;
+    background-size: contain;
+    background-position: center center;
+    opacity: 0.5;
+    z-index: 9;
+}
+.item-container .read-me:hover{
+    opacity: 0.6;
+}
+@media screen and (max-width: 900px) {
+    .item-container{
         width: 48%;
     }
 }
+@media screen and (max-width: 800px) {
+    .item-container{
+        width: 30%;
+    }
+}
 @media screen and (min-width: 1000px) {
-    .item-move{
-        width: 19.2%;
+    .item-container{
+        width: 31%;
+    }
+}
+@media screen and (max-width: 630px) {
+    .item-container{
+        width: 48%;
     }
 }

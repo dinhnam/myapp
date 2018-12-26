@@ -1,0 +1,52 @@
+.movie-info{
+    width: 100%;
+}
+
+.movie-cover{
+    width: 45%;
+    float: left;
+    padding: 2px;
+}
+.movie-cover img{
+    width: 100%;
+}
+.movie-detail{
+    padding: 2px;
+    width: 50%;
+    float: left;
+    color: white;
+    font-size: 14px;
+}
+.movie-detail a{
+    color: bisque;
+    text-decoration: none;
+}
+.movie-detail a:hover{
+    color: rgb(157, 170, 207);
+}
+th, td {
+    padding: 2px;
+    text-align: left;
+}
+.movie-detail .name{
+    text-align: center;
+    font-size: 18px;
+    color: aliceblue;
+    font-weight: bold;
+}
+.movie-intro{
+    float: left;
+    width: 100%;
+    overflow: auto;
+    font-style: italic;
+    color: aliceblue; 
+    font-size: 14px;
+}
+@media screen and (max-width: 400px) {
+    .movie-cover{
+        width: 100%;
+    }
+    .movie-detail{
+        width: 100%; 
+    }
+} 

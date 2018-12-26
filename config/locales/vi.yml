@@ -2,3 +2,14 @@ vi:
   hello: "xin chào"
   home:
     title: "Trang chủ"
+  will_paginate:
+    previous_label: 
+    next_label: 
+    page_gap: 
+  views:
+    pagination:
+      truncate: "<b>...</b>"
+      first: "<b><<</b>"
+      next: "<b>></b>"
+      last: "<b>>></b>"
+      previous: "<b><</b>"

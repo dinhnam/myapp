@@ -1,13 +1,15 @@
 class Film < ApplicationRecord
     has_many :lists
-    has_many :actors, through: :lists, source: :listable,
-        source_type: "Actor"
+    has_many :artists, through: :lists, source: :listable,
+        source_type: "Artist"
     has_many :directors, through: :lists, source: :listable,
         source_type: "Director"
     has_many :categories, through: :lists, source: :listable,
         source_type: "Category"
     has_many :studios, through: :lists, source: :listable,
         source_type: "Studio"
+    has_many :countries, through: :lists, source: :listable,
+        source_type: "Country"
 
     def add_category category
         categories << category
@@ -21,16 +23,16 @@ class Film < ApplicationRecord
         categories.include? category
     end
 
-    def add_actor actor
-        actors << actor
+    def add_artist artist
+        artists << artist
     end
 
-    def remove_actor actor
-        actors.delete actor
+    def remove_artist artist
+        artists.delete artist
     end
 
-    def actor_exist? actor
-        actors.include? actor
+    def artist_exist? artist
+        artists.include? artist
     end
 
     def add_studio studio
@@ -55,5 +57,17 @@ class Film < ApplicationRecord
 
     def director_exist? director
         directors.include? director
+    end
+
+    def add_country country
+        countries << country
+    end
+
+    def remove_country country
+        countries.delete country
+    end
+
+    def country_exist? country
+        countries.include? director
     end
 end

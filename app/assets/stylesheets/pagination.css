@@ -1,0 +1,22 @@
+.pagination{
+    float: left;
+    width: 100% !important;
+    display: block;
+}
+.pagination span{
+    float: left !important;
+    color: white;
+    padding: 5px;
+    float: left;
+    text-align:center;
+    opacity: 0.7;
+    font-weight: bold;
+    font-size: 16px;
+}
+.pagination a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+.pagination .page.current{
+    color: rgb(182, 170, 236);
+}

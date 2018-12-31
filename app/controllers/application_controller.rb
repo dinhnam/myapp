@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :set_categories
   before_action :set_notices
+  before_action :set_countries
   private
 
   def set_locale
@@ -18,5 +19,9 @@ class ApplicationController < ActionController::Base
 
   def set_notices
     @notices = Notice.all
+  end
+
+  def set_countries
+    @countries = Country.all
   end
 end

@@ -1,11 +1,31 @@
 /* header menu*/
+/*header .wallpager{
+    width: 100%;
+    position: relative;
+    float: left;
+    background-image: url('header.jpeg');
+    background-repeat:no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+header .wallpager::before {
+    content: "";
+    display: block;
+    padding-top: 30%;
+}*/
+header .nav{
+    width: 100%;
+    float: left;
+}
 header .bar{
     background-color: #000;
+    opacity: 0.9;
+    float: left;
+    z-index: 50;
 }
 .bar{
     width: 100%;
     position: relative;
-    float: left;
     padding: 0px;
 }
 .left{
@@ -34,22 +54,23 @@ ul{
     cursor: pointer;
 }
 .bar li{
-    padding: 18px 8px;
+    padding: 12px 6px;
     list-style-type: none;
-}
-.bar .logo{
-    padding: 3px 5px 0px 2px;
 }
 .bar .home{
     font-weight: bold;
 }
-.logo img{
-    width: 50px;
-    height: 50px;
-    border: 1px solid grey;
-    border-radius: 5px;
+.bar .avatar{
+    padding: 0;
+    margin: 0;
 }
-.drop .menu{
+.bar .avatar img{
+    width: 40px;
+    height: 40px;
+    padding: 2px;
+    border: 1px solid grey;
+}
+.bar .menu{
     display: none;
     position: absolute;
     background-color: #000;
@@ -57,39 +78,38 @@ ul{
     border: 1px solid #79777A;
     z-index: 100;
     border-radius: 5px;
-    padding: 5px;
+    padding: 4px;
 }
-.drop .menu a{
+.bar .menu a{
     font-size: 14px;
     width: 100px;
 }
-.drop .menu li{
+.bar .menu li{
     width: 110px;
-}
-.drop .menu li{
-    padding: 6px 5px;
+    padding: 5px 5px;
     float: left;
     border-radius: 5px;
 }
-.drop.left .menu.tab{
-    max-width: 680px;
-    top: 40px;
+.bar  .menu.tab{
+    max-width: 620px;
+    top: 50px;
+}
+.left .menu.tab{
     left: 5px;
 }
-header .drop:hover .menu{
-    display: block;
+.right .menu.tab{
+    right: 5px;
 }
 .bar li:hover {
-    background-color: rgb(68, 44, 44);
+    background-color: rgb(43, 31, 31);
 }
-
 .menu.col{
     width: 120px;
     right: 2px;
 }
 .bar .search{
     margin: 0px;
-    padding: 12px;
+    padding: 6px;
     width: 30%;
 }
 .bar .search input[type=text]{
@@ -97,14 +117,14 @@ header .drop:hover .menu{
     border: 1px solid rgb(216, 129, 129);
     margin: auto;
     font-size: 16px;
-    width: 85%;
+    width: 90%;
     box-sizing: border-box;
     float: left;
     border-radius: 5px 0 0 5px;
 }
 .bar .search input[type=submit]{
     box-sizing: border-box;
-    width: 10%;
+    width: 9%;
     height: 32px;
     float: left;
     cursor: pointer;
@@ -119,31 +139,30 @@ header .drop:hover .menu{
 .bar input[type=submit]:hover{
     background-color: rgb(236, 193, 112);
 }
-.bar .note{
-    padding: 10px;
+.bar .notices{
+    padding: 6px;
 }
-.bar .note img{
-    width: 32px;
-    height: 32px;
+.bar .notices img{
+    width: 30px;
+    height: 30px;
 }
-.drop.right .menu.tab{
-    right: 5px;
-    width: 300px;
+.bar .notices .menu.tab{
+    width: 320px;
     max-height: 400px;
     overflow: auto;
     padding: 5px;
     opacity: 0.9;
 }
-.drop.right .menu.tab li{
+.bar .notices .menu.tab li{
     width: 100%;
     padding: 2px;
 }
-.drop.right .menu.tab a{
+.bar .notices .menu.tab a{
     width: 100%;
     text-align: left;
 }
 /*responsive*/
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 720px) {
     .bar .show{
         display: none;
     }
@@ -154,16 +173,8 @@ header .drop:hover .menu{
         width: 40%;
     }
 }
-@media screen and (max-width: 630px) {
+@media screen and (max-width: 600px) {
     .bar .search{
         width: 100%;
     }
 }
-@media screen and (max-width: 400px) {
-    .bar .logo.left img{
-        display: none;
-    }
-    .bar .logo.left{
-        padding: 13px 8px;
-    }
-} 

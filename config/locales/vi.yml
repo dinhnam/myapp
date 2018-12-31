@@ -9,7 +9,7 @@ vi:
   views:
     pagination:
       truncate: "<b>...</b>"
-      first: "<b><<</b>"
-      next: "<b>></b>"
-      last: "<b>>></b>"
-      previous: "<b><</b>"
+      first: "<b>&#10094;&#10094;</b>"
+      next: "<b>&#10095;</b>"
+      last: "<b>&#10095;&#10095;</b>"
+      previous: "<b>&#10094;</b>"

@@ -1,0 +1,8 @@
+<video width="100%" controls>
+  <source src="<%= @episode.link %>" type="video/mp4">
+</video>
+<p>
+<% @film.episodes.each do |ep| %>
+  <%= link_to ep.name, film_path(ep: ep.number) %> 
+<% end %>
+</p>

@@ -1,2 +1,13 @@
-<h1>Films#index</h1>
-<p>Find me in app/views/films/index.html.erb</p>
+<%= render "layouts/filter" %>
+<% if @note %>
+  <div class="alert alert-info">
+    <i><%= @note %></i>
+  </div>
+<% end %>
+<% if @films %>
+    <%= paginate @films %>
+    <%= render @films %>
+    <%= paginate @films %>
+<% elsif %>
+    <h2> film not found </h2>
+<% end %>

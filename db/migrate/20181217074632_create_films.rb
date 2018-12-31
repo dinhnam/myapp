@@ -3,15 +3,14 @@ class CreateFilms < ActiveRecord::Migration[5.2]
     create_table :films do |t|
       t.string :name
       t.string :intro
-      t.integer :imdb
-      t.integer :rating
+      t.integer :rate
+      t.integer :all_views
+      t.integer :month_views
+      t.integer :week_views
+      t.integer :day_views
       t.string :cover
-      t.string :trailer
-      t.string :link
       t.integer :duration
-      t.integer :view
       t.datetime :release
-      t.string :country
       
       t.timestamps
     end

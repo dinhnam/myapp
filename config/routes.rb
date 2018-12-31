@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :directors
     resources :artists
     resources :studios
+    resources :countries
   end
   
 end

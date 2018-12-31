@@ -1,0 +1,119 @@
+.slide-container{
+    width: 100%;
+    float: left;
+    box-sizing: border-box;
+    color: bisque;
+    position: relative;
+    overflow: hidden;
+    margin: 2px;
+}
+.slide-container::before {
+    content: "";
+    display: block;
+    padding-top: 47%;
+}
+.prev-slide, .next-slide {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    z-index: 7;
+}
+.next-slide {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+.prev-slide:hover, .next-slide:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+#slides{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 1000%;
+    height: 100%;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.slide-item{
+    width: 10%;
+    height: 100%;
+    overflow: hidden;
+    float: left;
+    position: relative;
+    text-align: center;
+}
+.slide-item img{
+    vertical-align: middle;
+    width: 100%;
+}
+.dots{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    z-index: 7;
+}
+.dot{
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    opacity: 0.8;
+}
+.active, .dot:hover {
+    background-color: #201d1d;
+}
+.description{
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    font-weight: bold;
+    background-color: black;
+    opacity: 0.6;
+    padding: 10px;
+    display: none;
+    color: white;
+    left: 0;
+}
+.slide-item .name{
+    font-size: 1.5em;
+    height: 30%;
+    top: 0;
+}
+.description .intro{
+    font-size: 1em;
+    height: 70%;
+    bottom: 0;
+    overflow: auto;
+}
+.slide-container:hover  .description{
+    display: block;
+}
+@media screen and (max-width: 620px) {
+    .slide-container::before {
+        content: "";
+        display: block;
+        padding-top: 80%;
+    }
+    .slide-item img{
+        vertical-align: middle;
+        height: 100%;
+        width: auto;
+    }
+    .slide-item .description{
+        width: 80%;
+    }
+}

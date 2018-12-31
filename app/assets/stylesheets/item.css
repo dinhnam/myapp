@@ -4,14 +4,16 @@
     width: 31%;
     margin: 1%;
     border: 1px solid rgb(36, 34, 34);
-    border-bottom: 3px solid rgb(36, 34, 34);
     box-sizing: border-box;
     color: white;
+    box-shadow: 5px 5px 5px rgb(24, 23, 23);
+    -moz-box-shadow: 5px 5px 5px rgb(20, 19, 19);
+    -webkit-box-shadow: 5px 5px 5px rgb(20, 19, 19);
 }
 .item-container::before {
     content: "";
     display: block;
-    padding-top: 162%;
+    padding-top: 161.8%;
 }
 .episode{
     top: 2px;
@@ -48,7 +50,7 @@
     top: 0px;
     left: 0px;
     overflow: hidden;
-    height: 87%;
+    height: 87.4%;
     width: 100%;
     z-index: 1;
 }

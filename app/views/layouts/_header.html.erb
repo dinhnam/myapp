@@ -1,22 +1,31 @@
 <header>
-  <ul class="bar">
-      <li class="logo left">
-        <%= link_to image_tag("logo.gif"), root_path %>
-      </li>
+  <div class="wallpager">
+   
+  </div>
+  <div class = "nav">
+    <ul class="bar">
       <li class="home left">
-        <%= link_to "AniPhim", root_path %>
+        <%= link_to "Home", root_path %>
       </li>
-      <li class="drop left">
-        Genres
+      <li class="left">
+        <div class = "click" >Genres</div>
         <ul class="menu tab">
-            <% @categories.each do |category| %>
-                <li> <%= link_to category.name, category %> </li>
+          <% @categories.each do |category| %>
+              <li> <%= link_to category.name, films_path(genre: category.name) %> </li>
+          <% end %>
+        </ul>
+      </li>
+      <li class="left">
+        <div class = "click">Nations</div>
+        <ul class="menu tab">
+            <% @countries.each do |nation| %>
+                <li> <%= link_to nation.name, films_path(country: nation.name) %> </li>
             <% end %>
         </ul>
       </li>
 
-      <li class="drop logo right">
-          <%= image_tag("user-default-male.png") %>
+      <li class="avatar right">
+          <div class = "click" ><%= image_tag("user-default-male.png") %></div>
           <ul class="menu col">
             <li class="hide">
               <%= link_to "Bookmark", "#" %>
@@ -24,7 +33,7 @@
             <li class= "hide">
               <%= link_to "Profile", "#" %>
             </li>
-            <li class= "hide">
+            <li>
               <%= link_to "Setting", "#" %>
             </li>
             <li>
@@ -33,39 +42,14 @@
           </ul>
       </li>
 
-      <li class= "drop note right">
-        <%= image_tag("notice-icon.png") %>
+      <li class= "notices right">
+        <div class = "click" ><%= image_tag("notice-icon.png") %></div>
         <ul class="menu tab">
             <% @notices.each do |notice| %>
                 <li> <%= link_to notice.title, notice.link %> </li>
             <% end %>
             <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
         </ul>
-      </li>
-
-      <li class= "show right">
-        <%= link_to "Setting", "#" %>
       </li>
 
       <li class= "show right">
@@ -83,5 +67,6 @@
         <% end %>
       </li>
 
-  </ul>
+    </ul>
+    </div>
 </header>

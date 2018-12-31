@@ -1,5 +1,6 @@
 class Film < ApplicationRecord
     has_many :lists
+    has_many :episodes, dependent: :destroy
     has_many :artists, through: :lists, source: :listable,
         source_type: "Artist"
     has_many :directors, through: :lists, source: :listable,
@@ -10,6 +11,18 @@ class Film < ApplicationRecord
         source_type: "Studio"
     has_many :countries, through: :lists, source: :listable,
         source_type: "Country"
+
+    def add_episode episode
+        episodes << episode
+    end
+
+    def remove_episode episode
+        episodes.delete episode
+    end
+
+    def episode_exist? episode
+        episodes.include? episode
+    end
 
     def add_category category
         categories << category

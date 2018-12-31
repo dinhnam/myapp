@@ -10,25 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_20_062434) do
+ActiveRecord::Schema.define(version: 2018_12_30_180325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "feature_films", force: :cascade do |t|
-    t.integer "film_id"
-    t.string "feature_type"
-    t.integer "feature_id"
+  create_table "episodes", force: :cascade do |t|
+    t.string "name"
+    t.integer "number"
+    t.string "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["feature_id", "feature_type", "film_id"], name: "index_feature_films_on_feature_id_and_feature_type_and_film_id"
+    t.bigint "film_id"
+    t.index ["film_id"], name: "index_episodes_on_film_id"
   end
 
   create_table "features", force: :cascade do |t|
     t.string "type", null: false
     t.string "name"
-    t.string "intro"
-    t.string "avatar"
+    t.string "description"
+    t.string "cover"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -36,13 +37,13 @@ ActiveRecord::Schema.define(version: 2018_12_20_062434) do
   create_table "films", force: :cascade do |t|
     t.string "name"
     t.string "intro"
-    t.integer "imdb"
-    t.integer "rating"
+    t.integer "rate"
+    t.integer "all_views"
+    t.integer "month_views"
+    t.integer "week_views"
+    t.integer "day_views"
     t.string "cover"
-    t.string "trailer"
-    t.string "link"
     t.integer "duration"
-    t.integer "view"
     t.datetime "release"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -78,4 +79,5 @@ ActiveRecord::Schema.define(version: 2018_12_20_062434) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "episodes", "films"
 end

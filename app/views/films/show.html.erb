@@ -1,4 +1,5 @@
 <% provide :title, "Film" %>
+<%= render "layouts/bar_address" %>
 <div class="movie-container">
   <div class="movie-cover">
     <%= image_tag @film.cover %>
@@ -6,9 +7,9 @@
     <%= link_to "Theo dõi", @film , class: "follow" %>
   </div>
   <div class="movie-detail">
-    <h3 class="name">
-       <%= @film.name %>
-    </h3>
+    <div class="name-movie">
+      <%= @film.name %>
+    </div>
     <table class="describe">
         <tr>
             <th>Thể loại</th>
@@ -51,7 +52,7 @@
         </tr>
         <tr>
             <th>Thời lượng</th>
-            <td>25 bhút/tậb</td> 
+            <td>25 phút/tậb</td> 
         </tr>
         <tr>
             <th>Chất lượng</th>
@@ -59,7 +60,7 @@
         </tr>
          <tr>
             <th>Ngôn ngữ</th>
-            <td>bhụ đề tiếng việt</td> 
+            <td>phụ đề tiếng việt</td> 
         </tr>
         <tr>
             <th>Lượt xem</th>
@@ -67,25 +68,32 @@
         </tr>
         <tr>
             <th>Đánh giá</th>
-            <td><%= @film.rate %></td> 
+            <td><%= @film.average_rate %></td> 
         </tr>
         <tr>
             <th>Tập mới</th>
             <td>
-              <% @episodes_last.each do |ep| %>
-                <%= link_to ep.name, film_path(ep: ep.number) %> 
-              <% end %>
+              <div class="episodes">
+                <ul>
+                <% @episodes_last.each do |ep| %>
+                    <li>
+                    <%= link_to ep.number, film_path(ep: ep.number) %> 
+                    </li>
+                <% end %>
+                </ul>
+              </div>
             </td> 
         </tr>
     </table>
   </div>
+  <%= render 'films/rating' %>
   <div class="movie-intro">
     <p><b>Nội dung:</b></p>
     <div class="intro"><%= @film.intro %></div>
-    <p><b>trailer:</b></p>
+    <p>Trailer</p>
     <div class="trailer">
     <iframe width="100%" height="100%" src="https://www.youtube.com/embed/vRVEZq8plc0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
   </div>
-  </div>
-  
+  <%= render 'layouts/comment' %>
 </div>

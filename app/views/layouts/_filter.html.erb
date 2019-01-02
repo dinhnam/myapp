@@ -1,7 +1,7 @@
 <div class= "filters"> 
 <ul class="bar">
     <%= form_tag method: :get do %>
-      <li class="drop">
+      <li class="drop left">
           <div class = "click">
           <%= content_tag :button, type: :button do %>
           Categories<b></b>
@@ -12,24 +12,24 @@
                 <li>
                     <%= check_box_tag "genres[]", category.id, false,
                           id: category.id %>
-                    <span><%= category.name %></span>
+                    <i><%= category.name %></i>
                 </li>
             <% end %>
           </ul>
       </li>
-      <li>
+      <li class="left">
         <%= select_tag "sort", options_for_select(Settings.filter.sort_movies, 
               Settings.filter.sort_movies.first) %>
       </li>
-      <li class="process">
+      <li class="left">
         <%= select_tag "progress", options_for_select(Settings.filter.progress,
               Settings.filter.progress.first) %>
       </li>
-      <li class="year">
+      <li class="left">
         <%= select_tag "years", options_for_select( Settings.filter.years,
              Settings.filter.years.first) %>
       </li>
-      <li>
+      <li class="left">
         <%= submit_tag "Filter"%>
       </li>
     <% end %>

@@ -8,6 +8,8 @@ $(document).ready(function(){
       }
       if(check == true){
         $(this).next().show(200);
+      }else{
+        $(this).next().hide();
       }
     });
     //filter
@@ -16,12 +18,8 @@ $(document).ready(function(){
       $.each($("input[name='genres[]']:checked"), function() {
         var genre = $(this).next().text();
         $('.content .drop').after(
-          "<li class='genres_checked'"+
-          "style='"+
-          "color: #bbb; font-size:14px; margin: 7px 2px; cursor: default;"+
-          "background-color: rgb(41, 33, 48);"+
-          "border-radius: 8px 0px 8px 0px;"+
-          "'>"+genre+"</li>"
+          "<li class='genres_checked left' style='font-size: 14px; padding: 5px;"+
+          "margin: 4px 2px; border-radius: 5px;'>"+genre+"</li>"
           );
         });
     });
@@ -53,6 +51,8 @@ $(document).ready(function(){
       slideIndex = parseInt(this.id);
       showSlides(slideIndex);
     });
-    showSlides(slideIndex);
+    if(slides.length >0){
+      showSlides(slideIndex);
+    }
     //
 });

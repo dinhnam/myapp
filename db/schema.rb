@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_30_180325) do
+ActiveRecord::Schema.define(version: 2019_01_02_082125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.bigint "film_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["film_id"], name: "index_comments_on_film_id"
+  end
 
   create_table "episodes", force: :cascade do |t|
     t.string "name"
@@ -37,7 +46,8 @@ ActiveRecord::Schema.define(version: 2018_12_30_180325) do
   create_table "films", force: :cascade do |t|
     t.string "name"
     t.string "intro"
-    t.integer "rate"
+    t.decimal "average_rate"
+    t.string "rate"
     t.integer "all_views"
     t.integer "month_views"
     t.integer "week_views"
@@ -45,6 +55,7 @@ ActiveRecord::Schema.define(version: 2018_12_30_180325) do
     t.string "cover"
     t.integer "duration"
     t.datetime "release"
+    t.string "quality"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,6 +80,15 @@ ActiveRecord::Schema.define(version: 2018_12_30_180325) do
     t.index ["user_id"], name: "index_notices_on_user_id"
   end
 
+  create_table "replies", force: :cascade do |t|
+    t.string "content"
+    t.bigint "comment_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_replies_on_comment_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "type"
@@ -79,5 +99,7 @@ ActiveRecord::Schema.define(version: 2018_12_30_180325) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "comments", "films"
   add_foreign_key "episodes", "films"
+  add_foreign_key "replies", "comments"
 end

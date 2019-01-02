@@ -1,8 +1,21 @@
+<% int_rate = film.average_rate.floor %>
+<% dec_rate = film.average_rate - int_rate %>
 <div class="item-container">
-  <div class="episode"></span>11/12</span></div>
-  <div class="viewed">
-    <%= image_tag "view-icon.png"%><span><%= film.all_views %></span>
-  </div>
+  <div class="process">11/12</div>
+  <ul class="number-viewed">
+    <li>
+      <%= image_tag "view-icon.png"%>
+    </li>
+    <li>
+      <%= film.all_views %>
+    </li>
+    <li>
+      <%= image_tag "comment-icon.png"%>
+    </li>
+    <li>
+      <%= film.comments.count %>
+    </li>
+  </ul>
   <div class = "cover">
     <%= link_to image_tag(film.cover), film %>
   </div>
@@ -14,5 +27,19 @@
   </div>
   <div class="title">
     <%= link_to film.name, film %>
+  </div>
+  <div class="rate">
+      <% int_rate.times do %>
+          <%= image_tag 'star.png' %>
+      <% end %>
+      <% if dec_rate != 0 %>
+          <% if dec_rate < 0.4 %>
+              <%= image_tag 'one_quarter_star.png' %>
+          <% elsif dec_rate < 0.7 %>
+              <%= image_tag 'half_star.png' %>
+          <% else %>
+              <%= image_tag 'three_quarter_star.png' %>
+          <% end %>
+      <% end %>
   </div>
 </div>

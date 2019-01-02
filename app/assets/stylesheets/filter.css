@@ -2,21 +2,17 @@
 .filters{
     width: 100%;
 }
-.filters .bar{
-    width: 100%;
-}
 .filters .bar li{
-    padding: 5px 5px;
-    float: left;
+    padding: 2px 2px;
 }
 .filters .bar .menu.tab{
-    top: 35px;
+    top: 32px;
     border: 1px solid rgb(200, 155, 243);
     border-radius: 0px;
     max-width: 540px;
 }
 .filters .bar .menu.tab li{
-    font-size: 14px;
+    font-size: 0.8em;
     width: 120px;
     text-align: left;
 }
@@ -28,7 +24,7 @@
     background-color: rgb(17, 17, 19);
     padding: 5px;
     color: white;
-    font-size: 14px;
+    font-size: 0.8em;
     border: 1px solid white;
 }
 .filters .bar button{
@@ -42,7 +38,6 @@
     background-color: rgb(26, 26, 56);
     padding: 6px 8px;
     color: white;
-    font-size: 14px;
     border: 1px solid white;
     font-weight: bold;
 }

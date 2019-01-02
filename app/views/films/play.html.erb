@@ -1,8 +1,15 @@
+<% provide :title, "Play" %>
+<%= render "layouts/bar_address" %>
 <video width="100%" controls>
-  <source src="<%= @episode.link %>" type="video/mp4">
+  <source src="<%= @episode_play.link %>" type="video/mp4">
 </video>
-<p>
-<% @film.episodes.each do |ep| %>
-  <%= link_to ep.name, film_path(ep: ep.number) %> 
-<% end %>
-</p>
+<div class="episodes block">
+  <ul>
+    <li><span>Episode</span></li>
+    <% @episodes.reverse_each do |ep| %>
+      <li>
+        <%= link_to ep.number, film_path(ep: ep.number) %>
+      </li>
+    <% end %>
+  </ul>
+</div>

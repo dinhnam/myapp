@@ -1,0 +1,36 @@
+.comment-container{
+    width: 100%;
+    background: #fff;
+    padding: 5px;
+}
+.comment{
+    width: 100%;
+    background-color: aqua;
+}
+.user-avatar{
+    width: 10%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+.user-avatar img{
+    width: 100%;
+}
+.info-comment{
+    width: 90%;
+}
+
+.comment-content{
+    width: 90%;
+}
+.para{
+    width: 100%;
+}
+.reply{
+    width: 90%;
+    background-color: aqua;
+}
+.date{
+    margin-left: 10px;
+    color: blueviolet;
+}

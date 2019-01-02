@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'films/index'
   scope "(:locale)", locale: /en|vi/ do
     root "static_pages#home"
     resources :films
@@ -8,6 +7,6 @@ Rails.application.routes.draw do
     resources :artists
     resources :studios
     resources :countries
+    resources :users
   end
-  
 end

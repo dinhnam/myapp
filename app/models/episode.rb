@@ -1,3 +1,3 @@
 class Episode < ApplicationRecord
-    belongs_to :film
+  belongs_to :film
 end

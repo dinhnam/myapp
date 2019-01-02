@@ -4,7 +4,7 @@
   </div>
   <div class = "nav">
     <ul class="bar">
-      <li class="home left">
+      <li class="left bold">
         <%= link_to "Home", root_path %>
       </li>
       <li class="left">
@@ -25,7 +25,7 @@
       </li>
 
       <li class="avatar right">
-          <div class = "click" ><%= image_tag("user-default-male.png") %></div>
+          <div class = "click" ><%= image_tag("avatar-default.png") %></div>
           <ul class="menu col">
             <li class="hide">
               <%= link_to "Bookmark", "#" %>
@@ -66,7 +66,6 @@
           <%= submit_tag ""%>
         <% end %>
       </li>
-
     </ul>
     </div>
 </header>

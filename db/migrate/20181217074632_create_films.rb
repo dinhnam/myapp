@@ -3,7 +3,8 @@ class CreateFilms < ActiveRecord::Migration[5.2]
     create_table :films do |t|
       t.string :name
       t.string :intro
-      t.integer :rate
+      t.decimal :average_rate
+      t.string :rate
       t.integer :all_views
       t.integer :month_views
       t.integer :week_views
@@ -11,6 +12,7 @@ class CreateFilms < ActiveRecord::Migration[5.2]
       t.string :cover
       t.integer :duration
       t.datetime :release
+      t.string :quality
       
       t.timestamps
     end

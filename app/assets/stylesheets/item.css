@@ -15,7 +15,7 @@
     display: block;
     padding-top: 161.8%;
 }
-.episode{
+.item-container .process{
     top: 2px;
     left: 2px;
     background-color: rgb(78, 10, 10);
@@ -25,25 +25,24 @@
     border-radius: 5px;
     padding: 2px;
     font-weight: bold;
-    z-index: 3;
+    z-index: 2;
 }
-.viewed{
-    padding: auto;
-    width: 60px;
-    top:2px;
-    right: 2px;
-    background-color: white;
+.item-container .number-viewed {
     position: absolute;
-    border-radius: 5px 0px 5px 5px;
-    font-size: 13px;
-    font-weight: bold;
-    z-index: 3;
-    color: black;
-    opacity: 0.7;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    padding: 0;
+    margin: 0;
 }
-.viewed img{
-    width: 14px;
-    height: 12px;
+.item-container .number-viewed li{
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+.item-container .number-viewed li img{
+  width: 16px;
+  height: 16px;
 }
 .item-container .cover{
     position: absolute;
@@ -52,7 +51,6 @@
     overflow: hidden;
     height: 87.4%;
     width: 100%;
-    z-index: 1;
 }
 .item-container .cover img{
     width: 100%;
@@ -71,7 +69,6 @@
     bottom: 0px;
     left: 0px;
     background-color: rgb(16, 15, 24);
-    z-index: 2;
 }
 .item-container .title{
     white-space: nowrap; 
@@ -81,14 +78,14 @@
 }
 .item-container .title a{
     color: white;
-    font-size: 14px;
+    font-size: 1em;
     font-weight: bold;  
     text-decoration: none;
 }
 .item-container .intro{
     position: absolute;
-    height: 85%;
-    width: 100%;
+    height: 84%;
+    width: 96%;
     z-index: 8;
     top: 0px;
     right: 0px;
@@ -101,7 +98,7 @@
 }
 .item-container .read-me{
     position: absolute;
-    top: 20px;
+    top: 2px;
     right: 2px;
     width: 36px;
     height: 36px;
@@ -115,12 +112,32 @@
 .item-container .read-me:hover{
     opacity: 0.6;
 }
+.item-container .ribbon{
+  background-color: rgb(190, 233, 229);
+  height: 20px;
+  width: 100px;
+  position: absolute;
+  bottom: 15%;
+  left: 0;
+  z-index: 2;
+  border-radius: 0 10px 10px 0;
+}
+.item-container .rate{
+    position: absolute;
+    bottom: 15%;
+    left: 2px;
+    z-index: 3;
+}
+.item-container .rate img{
+    width: 18px;
+    height: 18px;
+}
 @media screen and (max-width: 900px) {
     .item-container{
         width: 48%;
     }
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 799px) {
     .item-container{
         width: 30%;
     }
@@ -130,7 +147,7 @@
         width: 31%;
     }
 }
-@media screen and (max-width: 630px) {
+@media screen and (max-width: 540px) {
     .item-container{
         width: 48%;
     }

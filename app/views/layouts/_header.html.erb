@@ -23,41 +23,63 @@
             <% end %>
         </ul>
       </li>
-
-      <li class="avatar right">
-          <div class = "click" ><%= image_tag("avatar-default.png") %></div>
+      <% if logged_in? %>
+        <li class="navbar right">
+          <div class = "click" >
+            <%= image_tag(current_user.avatar||"avatar-default.png") %>
+          </div>
           <ul class="menu col">
-            <li class="hide">
-              <%= link_to "Bookmark", "#" %>
+            <li class= "hide right">
+              <%= link_to "My film", current_user %>
             </li>
-            <li class= "hide">
-              <%= link_to "Profile", "#" %>
-            </li>
-            <li>
-              <%= link_to "Setting", "#" %>
+            <li class= "hide right">
+              <%= link_to "Profile", current_user %>
             </li>
             <li>
-              <%= link_to "Logout", "#", method: :delete %>
+              <%= link_to "Setting", edit_user_path(current_user) %>
+            </li>
+            <li>
+              <%= link_to "Logout", logout_path, method: :delete %>
             </li>
           </ul>
-      </li>
-
+        </li>
+        
+        <li class= "show right">
+          <%= link_to "Profile", current_user %>
+        </li>
+        <li class= "show right">
+          <%= link_to "My film", current_user %>
+        </li>
+      <% elsif %>
+        <li class="navbar right hide">
+          <div class = "click" >
+            <%= image_tag "navbar.png" %>
+          </div>
+          <ul class="menu col">
+            <li>
+              <%= link_to "Login", signin_path %>
+            </li>
+            <li>
+              <%= link_to "Sign Up", signup_path %>
+            </li>
+          </ul>
+        </li>
+        <li class= "show right">
+          <%= link_to "Sign Up", signup_path %>
+        </li>
+        <li class= "show right">
+          <%= link_to "Login", signin_path %>
+        </li>
+      <% end %> 
+      
       <li class= "notices right">
         <div class = "click" ><%= image_tag("notice-icon.png") %></div>
         <ul class="menu tab">
             <% @notices.each do |notice| %>
                 <li> <%= link_to notice.title, notice.link %> </li>
             <% end %>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao moi nao", "#" %> </li>
+            <li> <%= link_to "Ban hien khong co bat ki thong bao nao", "#" %> </li>
         </ul>
-      </li>
-
-      <li class= "show right">
-        <%= link_to "Profile", "#" %>
-      </li>
-
-      <li class= "show right">
-        <%= link_to "Bookmark", "#" %>
       </li>
 
       <li class="search left">

@@ -3,8 +3,8 @@
 <div class="movie-container">
   <div class="movie-cover">
     <%= image_tag @film.cover %>
-    <%= link_to "Xem Phim", film_path(id: @film.id, ep: 1), class: "play" %>
-    <%= link_to "Theo dõi", @film , class: "follow" %>
+    <%= link_to "Xem Phim", film_episode_path(@film, @episode_first), class: "play" %>
+    <%= link_to "Theo dõi", "", class: "follow" %>
   </div>
   <div class="movie-detail">
     <div class="name-movie">
@@ -75,9 +75,9 @@
             <td>
               <div class="episodes">
                 <ul>
-                <% @episodes_last.each do |ep| %>
+                <% @episodes_last.each do |episode| %>
                     <li>
-                    <%= link_to ep.number, film_path(ep: ep.number) %> 
+                    <%= link_to episode.number, film_episode_path(@film, episode) %> 
                     </li>
                 <% end %>
                 </ul>
@@ -95,5 +95,5 @@
     <iframe width="100%" height="100%" src="https://www.youtube.com/embed/vRVEZq8plc0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
   </div>
-  <%= render 'layouts/comment' %>
+  <%= render @comments %>
 </div>

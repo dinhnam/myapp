@@ -1,0 +1,63 @@
+<div class = "comments-container left" id="<%= comment.id %>">
+    <div class="comment left">
+      <div class="user-avatar left">
+        <%= image_tag comment.user.avatar %>
+      </div>
+      <div class="comment-content left">
+        <div class="user-name left">
+          <b><%= comment.user.name %></b>
+        </div>
+        <div class="comment-text right">
+          <%= comment.content %>
+        </div>
+        <div class="comment-bar right">
+          <ul>
+            <li class="reply-click" id="<%= comment.id %>">
+              Reply
+            </li>
+            <li class="reply-count">
+              <%= comment.replies.count %>
+            </li>
+            <li class="report">
+              Report
+            </li>
+            <li>
+              <%=  ((Time.now - comment.created_at.localtime)/60).round(0) %>
+              minute ago
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="reply-container right none" id="reply-<%= comment.id %>" >
+    <% comment.replies.all.each do |reply| %>
+      <div class="reply right" id="<%= reply.id %>">
+        <div class="user-avatar left">
+          <%= image_tag reply.user.avatar %>
+        </div>
+        <div class="comment-content left">
+          <div class="user-name left">
+            <b><%= reply.user.name %></b>
+          </div>
+          <div class="comment-text right">
+            <%= reply.content %>
+          </div>
+          <div class="comment-bar right">
+            <ul>
+              <li class="reply-reply-click">
+                Reply
+              </li>
+              <li class="report">
+                Report
+              </li>
+              <li>
+                <%=  ((Time.now - reply.created_at.localtime)/60).round(0) %>
+                minute ago
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </div>
+</div>

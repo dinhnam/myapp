@@ -1,6 +1,6 @@
 <% int_rate = film.average_rate.floor %>
 <% dec_rate = film.average_rate - int_rate %>
-<div class="item-container">
+<div class="item-container shade">
   <div class="process">11/12</div>
   <ul class="number-viewed">
     <li>
@@ -28,6 +28,7 @@
   <div class="title">
     <%= link_to film.name, film %>
   </div>
+  <div class = "ribbon"></div>
   <div class="rate">
       <% int_rate.times do %>
           <%= image_tag 'star.png' %>

@@ -3,15 +3,5 @@
     <li>
       <%= link_to "Home", root_path %>
     </li>
-    <% if @genre %>
-      /<li>
-        <%= link_to @genre.name, films_path(genre: @genre.name) %>
-      </li>
-    <% end %>
-    <% if @film %>
-      /<li>
-        <%= link_to @film.name, @film %>
-      </li>
-    <% end %>
     </ol>
 </div>

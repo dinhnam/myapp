@@ -1,0 +1,11 @@
+<div class="user-form">
+  <%= form_with class: "shade", local: true do |f| %>
+    <h2 > SIGN IN </h2>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+    <%= f.label :password %>
+    <%= f.text_field :password %>
+    <%= f.submit "Đăng Nhập" %>
+    <p>New user? <%= link_to "Sign Up", signup_path %> </p>
+  <% end %>
+</div>

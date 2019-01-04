@@ -3,9 +3,11 @@
     float: left;
     width: 31%;
     margin: 1%;
-    border: 1px solid rgb(36, 34, 34);
+    border: 1px solid #200B06;
     box-sizing: border-box;
     color: white;
+}
+.shade{
     box-shadow: 5px 5px 5px rgb(24, 23, 23);
     -moz-box-shadow: 5px 5px 5px rgb(20, 19, 19);
     -webkit-box-shadow: 5px 5px 5px rgb(20, 19, 19);
@@ -18,9 +20,8 @@
 .item-container .process{
     top: 2px;
     left: 2px;
-    background-color: rgb(78, 10, 10);
+    background-color: rgba(17, 16, 16, 0.6);
     position: absolute;
-    opacity: 0.7;
     font-size: 14px;
     border-radius: 5px;
     padding: 2px;
@@ -60,7 +61,7 @@
     transition: all 1s ease;
 }
 .item-container .cover img:hover{
-    width: 110%;
+    width: 115%;
 }
 .item-container .title{
     position: absolute;
@@ -68,9 +69,7 @@
     height: 13%;
     bottom: 0px;
     left: 0px;
-    background-color: rgb(16, 15, 24);
-}
-.item-container .title{
+    background-color: #061b20;
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis; 
@@ -79,7 +78,7 @@
 .item-container .title a{
     color: white;
     font-size: 1em;
-    font-weight: bold;  
+    font-weight: bold;
     text-decoration: none;
 }
 .item-container .intro{
@@ -90,8 +89,7 @@
     top: 0px;
     right: 0px;
     padding: 4px;
-    background-color: black;
-    opacity: 0.8;
+    background-color: rgba(17, 16, 16, 0.8);
     display: none;
     overflow: auto;
     font-style: italic;
@@ -106,26 +104,26 @@
     background-repeat:no-repeat;
     background-size: contain;
     background-position: center center;
-    opacity: 0.5;
+    opacity: 0.6;
     z-index: 9;
 }
 .item-container .read-me:hover{
-    opacity: 0.6;
+    width: 40px;
+    height: 40px;
 }
 .item-container .ribbon{
-  background-color: rgb(190, 233, 229);
-  height: 20px;
-  width: 100px;
   position: absolute;
-  bottom: 15%;
+  bottom: 16%;
   left: 0;
   z-index: 2;
-  border-radius: 0 10px 10px 0;
+  width: 100px;
+  border-top: 12px solid #a1f100;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid #8be014;
 }
 .item-container .rate{
     position: absolute;
-    bottom: 15%;
-    left: 2px;
+    bottom: 16%;
     z-index: 3;
 }
 .item-container .rate img{

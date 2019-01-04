@@ -1,4 +1,9 @@
 $(document).ready(function(){
+    //hide alert
+    function hide_alert(){
+        $(".alert").delay(4000).hide(200);
+    };
+    window.onload = hide_alert();
     //drop menu
     $('.click').click(function(){
       var check = $(this).next().css("display") == "none";
@@ -19,7 +24,8 @@ $(document).ready(function(){
         var genre = $(this).next().text();
         $('.content .drop').after(
           "<li class='genres_checked left' style='font-size: 14px; padding: 5px;"+
-          "margin: 4px 2px; border-radius: 5px;'>"+genre+"</li>"
+          "margin: 4px 2px; border-radius: 5px; background-color: #19414d;'>"+
+          genre+"</li>"
           );
         });
     });
@@ -54,5 +60,16 @@ $(document).ready(function(){
     if(slides.length >0){
       showSlides(slideIndex);
     }
-    //
+    //comment
+    $('.reply-click').click(function(){
+      var replys_id = "reply-"+this.id;
+      var replys = document.getElementById(replys_id);
+      if($(replys).css('display') == "none"){
+         $(this).text("Hide..");
+      }else{
+         $(this).text("Reply");
+      }
+      $(replys).toggle();
+     
+    });
 });

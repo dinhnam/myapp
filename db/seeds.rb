@@ -92,16 +92,19 @@ directors = Director.all
   User.create!(
       name: Faker::Name.name,
       email: Faker::Internet.email,
-      avatar: 'avatar-default.png',
+      avatar: Faker::Avatar.image,
       password: "123456",
       password_confirmation: "123456"
   )
 end
 users = User.all
-30.times do
+15.times do |n|
+  name = Faker::Movie.quote
+  release = Faker::Date.between(15.years.ago, Date.today)
+  year = release.year.to_s
   rate_json = JSON.generate({star_5: rand(0..1000), star_4: rand(0..1000), star_3: rand(0..100), star_2: rand(0..1000), star_1: rand(0..1000)})
   film = Film.create!(
-      name: Faker::Movie.quote,
+      name: name,
       rate: rate_json,
       average_rate: average_rate(rate_json),
       cover: 'cover.jpg',
@@ -109,45 +112,54 @@ users = User.all
       month_views: rand(5000..50000),
       week_views: rand(1000..10000),
       day_views: rand(100..5000),
-      release:  Faker::Date.between(15.years.ago, Date.today),
-      intro: "Bối cảnh câu chuyện diễn ra tại thành phố Nagasaki, nơi mà một
-        lượng ma thuật nhỏ vẫn còn tồn tại trong cuộc sống hàng ngày. Hitomi 
-        Tsukishiro là một hậu duệ 17 tuổi của một gia đình phù thủy. Cô lớn
-        lên với những cảm xúc hoài niệm, khi cô mất đi cảm giác về màu sắc
-        từ khi còn rất nhỏ. Cảm thấy nuối tiếc cho tương lai của cháu gái
-          mình, Kohaku, một phù thủy vĩ đại, đã gửi Hitomi về quá khứ vào
-          năm 2018. Qua cuộc trao đổi với bà ngoại lúc 17 tuổi của mình
-          và các thành viên câu lạc bộ, Hitomi đã dần trưởng thành hơn."
+      release:  release,
+      intro: Faker::Lorem.paragraph(rand(50..200)),
+      pretty: name.gsub(/[, .]/,'-')+"-"+year
   )
-  episode1 = Episode.new name: "tap 1", number: 1, link: "http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4"
-  episode2 = Episode.new name: "tap 2", number: 2, link: "https://video.xx.fbcdn.net/v/t42.9040-2/10000000_1984388578313646_5797569159353073664_n.mp4?_nc_cat=1&efg=eyJybHIiOjE1MDAsInJsYSI6NDA5NiwidmVuY29kZV90YWciOiJzdmVfaGQifQ%3D%3D&rl=1500&vabr=543&_nc_ht=video.xx&oh=56cecf9b030453e8daec483d1f36ec0d&oe=5C2B0114"
-  episode3 = Episode.new name: "tap 3", number: 3, link: "http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4"
-  episode4 = Episode.new name: "tap 4", number: 4, link: "http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4"
-  film.add_studio studios[rand(0...20)]
-  film.add_director directors[rand(0...20)]
-  film.add_country country
-  film.add_episode  episode1
-  film.add_episode  episode2
-  film.add_episode  episode3
-  film.add_episode  episode4
+  rand(1..10).times do
+    comment =  film.comments.create!(
+      user_id: users[rand(1..30)].id, 
+      content: Faker::Lorem.paragraph(rand(5..30))
+    )
+    rand(0..7).times do
+      comment.replies.create(
+        user_id: users[rand(1..30)].id, 
+        content: Faker::Lorem.paragraph(rand(2..10))
+      )
+    end
+  end
+  5.times do |n|
+    episode = film.episodes.create!(
+    name: "tập #{n+1}",
+    number: n+1, 
+    link: "http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4"
+    )
+    rand(1..10).times do
+      comment =  episode.comments.create!(
+        user_id: users[rand(1..30)].id, 
+        content: Faker::Lorem.paragraph(rand(5..30))
+      )
+      rand(0..7).times do
+        comment.replies.create(
+          user_id: users[rand(1..30)].id, 
+          content: Faker::Lorem.paragraph(rand(2..10))
+        )
+      end
+    end
+  end
+  film.studios << studios[rand(0...20)]
+  film.directors << directors[rand(0...20)]
+  film.countries << country
   rand(10..20).times do
     artist = artists[rand(0...50)]
-    unless film.artist_exist? artist
-      film.add_artist artist
+    unless film.artists.include? artist
+      film.artists << artist
     end
   end
   rand(3..8).times do
       genre = genres[rand(0...24)]
-      unless film.category_exist? genre
-          film.add_category genre
-      end
-  end
-  rand(1..10).times do
-      comment =  Comment.new user_id: users[rand(1..30)].id, content: Faker::Lorem.paragraph(10)
-      film.add_comment comment
-      rand(1..5).times do
-          reply = Reply.new user_id: users[rand(1..30)].id, content: Faker::Lorem.paragraph(4)
-          comment.add_reply reply
+      unless film.categories.include? genre
+          film.categories << genre
       end
   end
 end

@@ -2,11 +2,10 @@
     width: 100%;
     float: left;
 }
-header .bar{
-    background-color: #000;
-    opacity: 0.9;
+.bar{
+    background-color: rgb(26, 3, 3);
     float: left;
-    z-index: 50;
+    box-sizing: border-box;
 }
 .bar{
     width: 100%;
@@ -38,7 +37,7 @@ header .bar{
 }
 .bar li{
     list-style-type: none;
-    padding: 14px 5px;
+    padding: 14px 7px;
     font-size: 18px;
     display: inline;
     text-align: center;
@@ -49,22 +48,18 @@ header .bar{
     text-decoration: none;
     color: rgb(252, 231, 231);
 }
-.bar .avatar{
+.bar .navbar{
     padding: 0;
     margin: 0;
 }
-.bar .avatar img{
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    border: 1px solid grey;
+.bar img{
+    width: 44px;
+    height: 44px;
 }
 .bar .menu{
     display: none;
     position: absolute;
-    background-color: #000;
-    opacity: 0.9;
-    border: 1px solid #79777A;
+    background-color: rgba(26, 3, 3, 0.8);
     z-index: 100;
     border-radius: 5px;
     padding: 4px;
@@ -82,7 +77,7 @@ header .bar{
 }
 .bar  .menu.tab{
     max-width: 620px;
-    top: 40px;
+    top: 50px;
 }
 .left .menu.tab{
     left: 5px;
@@ -91,7 +86,7 @@ header .bar{
     right: 5px;
 }
 .bar li:hover{
-    background-color: rgb(43, 31, 31);
+    background-color: rgba(31, 26, 26, 0.8);
 }
 .menu.col{
     width: 120px;
@@ -99,7 +94,7 @@ header .bar{
 }
 .bar .search{
     margin: 0px;
-    padding: 6px;
+    padding: 6px 2px;
     width: 30%;
 }
 .bar .search input[type=text]{
@@ -107,14 +102,14 @@ header .bar{
     border: 1px solid rgb(216, 129, 129);
     margin: auto;
     font-size: 16px;
-    width: 90%;
+    width: 87%;
     box-sizing: border-box;
     float: left;
     border-radius: 5px 0 0 5px;
 }
 .bar .search input[type=submit]{
     box-sizing: border-box;
-    width: 9%;
+    width: 12%;
     height: 32px;
     float: left;
     cursor: pointer;
@@ -122,19 +117,19 @@ header .bar{
     background-repeat:no-repeat;
     background-size: contain;
     background-position: center center;
-    background-color: rgb(47, 219, 47);
-    border: 1px solid rgb(216, 129, 129);
+    background-color: #50c244;
+    border: 1px solid #50c244;
     border-radius: 0px 5px 5px 0px;
 }
 .bar input[type=submit]:hover{
-    background-color: rgb(236, 193, 112);
+    background-color: #64d65e;
 }
 .bar .notices{
     padding: 6px;
 }
 .bar .notices img{
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
 }
 .bar .notices .menu.tab{
     width: 320px;
@@ -151,7 +146,7 @@ header .bar{
     text-align: left;
 }
 /*responsive*/
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 640px) {
     .bar .show{
         display: none;
     }
@@ -162,7 +157,7 @@ header .bar{
         width: 40%;
     }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 540px) {
     .bar .search{
         width: 100%;
     }

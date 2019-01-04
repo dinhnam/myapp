@@ -1,56 +1,64 @@
 /*filter menu*/
 .filters{
-    width: 100%;
+  width: 100%;
+}
+.filters .bar{
+  padding: 5px;
+  background-color: #200B06;
 }
 .filters .bar li{
-    padding: 2px 2px;
-}
-.filters .bar .menu.tab{
-    top: 32px;
-    border: 1px solid rgb(200, 155, 243);
-    border-radius: 0px;
-    max-width: 540px;
-}
-.filters .bar .menu.tab li{
-    font-size: 0.8em;
-    width: 120px;
-    text-align: left;
+  padding: 0;
+  margin: 2px;
 }
 .filters .bar li:hover{
-    background-color: rgb(48, 60, 92);
+  background-color: rgba(70, 19, 27, 0.5);
 }
-.filters .bar select, .filters .bar button
-{
-    background-color: rgb(17, 17, 19);
-    padding: 5px;
-    color: white;
-    font-size: 0.8em;
-    border: 1px solid white;
+.filters .bar .menu.tab{
+  top: 36px;
+  border-radius: 0px;
+  max-width: 540px;
+  background-color: rgba(70, 19, 27, 0.8);
+}
+.filters .bar .menu.tab li{
+  font-size: 0.8em;
+  width: 120px;
+  text-align: left;
+  padding: 5px;
+}
+.filters .bar select, .filters .bar button{
+  background-color: #4e0e26;
+  padding: 5px;
+  color: white;
+  font-size: 0.8em;
+  border: none;
 }
 .filters .bar button{
-    padding: 6px;
+  padding: 6px;
 }
 .filters .bar select option{
-    background-color: rgb(41, 33, 48);
-    padding: 5px;
+  background-color: #4e0e26;
+  padding: 5px;
 }
 .filters .bar input[type=submit]{
-    background-color: rgb(26, 26, 56);
-    padding: 6px 8px;
-    color: white;
-    border: 1px solid white;
-    font-weight: bold;
+  background-color: #4e0e26;
+  padding: 6px 8px;
+  color: white;
+  border: none;
+  font-weight: bold;
 }
 .filters .bar button b{
-    display: inline-block;
-    width: 0;
-    height: 0;
-    margin-left: 2px;
-    vertical-align: middle;
-    border-top: 6px solid white;
-    border-right: 3px solid transparent;
-    border-left: 3px solid transparent;
-    content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 6px solid white;
+  border-right: 3px solid transparent;
+  border-left: 3px solid transparent;
+  content: "";
 }
-
-
+.filters .bar input[type=submit]:hover,
+.filters .bar select:hover,
+.filters .bar button:hover{
+  background-color: #32333d;
+}

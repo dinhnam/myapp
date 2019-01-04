@@ -4,6 +4,7 @@ class CreateFilms < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :intro
       t.decimal :average_rate
+      t.integer :number_voter
       t.string :rate
       t.integer :all_views
       t.integer :month_views

@@ -1,36 +1,84 @@
-.comment-container{
-    width: 100%;
-    background: #fff;
-    padding: 5px;
+.comments-container{
+  width: 100%;
+  background-color: rgba(26, 25, 24, 0.7);
+  color: #fff;
+}
+.none{
+  display: none;
+}
+.comments-container div{
+  padding: 2px;
 }
 .comment{
     width: 100%;
-    background-color: aqua;
+    box-sizing: border-box;
 }
-.user-avatar{
-    width: 10%;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-}
-.user-avatar img{
-    width: 100%;
-}
-.info-comment{
-    width: 90%;
-}
-
-.comment-content{
-    width: 90%;
-}
-.para{
-    width: 100%;
+.reply-container{
+  width: 100%;
+  float: left;
 }
 .reply{
     width: 90%;
-    background-color: aqua;
+    box-sizing: border-box;
 }
-.date{
-    margin-left: 10px;
-    color: blueviolet;
+.comment-content{
+    width: 90%;
+    box-sizing: border-box;
+    background-color: rgb(46, 44, 40);
+    border-radius: 8px;
+}
+.user-avatar{
+    width: 9%;
+    float: left;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.user-avatar img{
+    width: 100%;
+    border-radius: 50%;
+    border: 1px solid rgb(90, 76, 76);
+}
+.user-name{
+  width: 100%;
+  box-sizing: border-box;
+}
+.comment-text{
+    width: 100%;
+    box-sizing: border-box;
+}
+.comment-bar{
+    box-sizing: border-box;
+    width: 100%;
+    color: aqua;
+    text-align: right;
+}
+.comment-bar ul{
+   list-style: none;
+   padding: 0;
+   margin: 0;
+}
+.comment-bar ul li{
+  display: inline;
+  list-style-type: none;
+  padding: 2px;
+}
+.reply-click, .reply-reply-click, .report{
+  cursor: pointer;
+}
+.reply-click:hover, .reply-reply-click:hover{
+  color: rgb(241, 222, 136);
+}
+.report:hover{
+  color: rgb(243, 98, 98);
+}
+.reply-count{
+  color: rgb(241, 202, 128);
+}
+@media screen and (max-width: 540px) {
+    .user-avatar{
+      width: 15%;
+    }
+    .comment-content{
+      width: 85%;
+    }
 }

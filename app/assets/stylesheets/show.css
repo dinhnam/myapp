@@ -3,13 +3,11 @@
 }
 .movie-cover{
     position: relative;
-    width: 40%;
+    width: 35%;
     float: left;
     overflow: hidden;
-    box-shadow: 5px 5px 5px rgb(24, 23, 23);
-    -moz-box-shadow: 5px 5px 5px rgb(20, 19, 19);
-    -webkit-box-shadow: 5px 5px 5px rgb(20, 19, 19);
-    margin: 5px;
+    box-sizing: border-box;
+    padding: 5px;
 }
 .movie-cover::before {
     content: "";
@@ -23,10 +21,12 @@
     left: 0px;
 }
 .movie-detail{
-    width: 55%;
+    width: 65%;
     float: left;
     color: white;
     font-size: 1em;
+    box-sizing: border-box;
+    padding: 5px;
 }
 .movie-detail a{
     color: bisque;
@@ -97,15 +97,21 @@ th, td {
 .play{
     bottom: 0px;
     left: 0px;
-    background-color: rgb(88, 73, 170);
+    background-color: #721f87;
 }
 .follow{
     bottom: 0px;
     right: 0px;
-    background-color: rgb(73, 58, 8);
+    background-color: #877d1f;
 }
 .follow:hover, .play:hover{
     background-color: rgb(21, 15, 48);
+}
+.play-container{
+  width: 100%;
+  float: left;
+  padding: 2px;
+  box-sizing: border-box;
 }
 .episodes{
     width: 100%;
@@ -117,10 +123,11 @@ th, td {
     list-style: none;
     padding: 0;
     margin: 0;
+    padding: 5px 0;
 }
 .episodes li{
     display: inline-block;
-    padding: 8px 0; 
+    padding: 7px 0; 
 }
 .episodes li a, .episodes li span{
     padding: 5px 8px;
@@ -131,14 +138,15 @@ th, td {
     border: 1px solid rgb(157, 170, 207);
 }
 .episodes a:hover{
-    background-color: rgb(117, 29, 211);
-}
-.block{
-    padding: 8px 0;
+    background-color: rgb(75, 67, 83);
 }
 .movie-intro .click{
     color: rgb(141, 252, 67);
     text-decoration: underline;
+}
+video{
+  padding: 0;
+  margin: 0;
 }
 @media screen and (max-width: 480px) {
     .movie-cover{

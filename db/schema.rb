@@ -10,18 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_02_082125) do
+ActiveRecord::Schema.define(version: 2019_01_04_190253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
-    t.bigint "film_id"
     t.integer "user_id"
+    t.integer "commentable_id"
+    t.string "commentable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["film_id"], name: "index_comments_on_film_id"
+    t.index ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
+    t.index ["user_id", "created_at"], name: "index_comments_on_user_id_and_created_at"
   end
 
   create_table "episodes", force: :cascade do |t|
@@ -47,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_01_02_082125) do
     t.string "name"
     t.string "intro"
     t.decimal "average_rate"
+    t.integer "number_voter"
     t.string "rate"
     t.integer "all_views"
     t.integer "month_views"
@@ -58,6 +61,8 @@ ActiveRecord::Schema.define(version: 2019_01_02_082125) do
     t.string "quality"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "pretty"
+    t.string "string"
   end
 
   create_table "lists", force: :cascade do |t|
@@ -87,6 +92,7 @@ ActiveRecord::Schema.define(version: 2019_01_02_082125) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["comment_id"], name: "index_replies_on_comment_id"
+    t.index ["user_id", "created_at"], name: "index_replies_on_user_id_and_created_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -99,7 +105,6 @@ ActiveRecord::Schema.define(version: 2019_01_02_082125) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "comments", "films"
   add_foreign_key "episodes", "films"
   add_foreign_key "replies", "comments"
 end

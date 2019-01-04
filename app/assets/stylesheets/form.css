@@ -1,0 +1,50 @@
+.user-form{
+  width: 100%;
+  color: #fff;
+  float: left;
+}
+.user-form a{
+  color: #3abbb7;
+}
+.user-form a:hover{
+  color: #48e4df;
+}
+.user-form form{
+  max-width: 400px;
+  display: block;
+  margin: 8px auto;
+  background-color: #4d2417;
+  padding: 16px;
+  border-radius: 8px;
+}
+.user-form h2{
+  text-align: center;
+  color: aqua;
+  margin: 10px;
+}
+.user-form label{
+  width: 100%;
+  font-size: 16px;
+  color: #FFF;
+  display: block;
+  padding: 5px;
+  box-sizing: border-box;
+}
+.user-form input{
+  width: 100%;
+  display: block;
+  padding: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+.user-form input[type=submit]{
+  color: #fff;
+  font-weight: bold;
+  background-color: #174d17;
+  margin-top: 8px;
+  padding: 8px;
+  border: none;
+}
+.user-form input[type=submit]:hover{
+  background-color: #28662e;
+}

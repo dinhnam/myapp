@@ -7,8 +7,8 @@ class UsersController < ApplicationController
     puts params
     user = User.new user_params
     if user.save
-      flash[:success] = "Successfully created"
-      generate_session_login user
+      UserMailer.account_activation(user).deliver_now
+      flash[:info] = "Please check your email to activate your account."
       redirect_to root_url
     elsif
       flash[:danger] = "Account creation failed"

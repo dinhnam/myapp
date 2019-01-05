@@ -1,0 +1,5 @@
+Hi <%= @user.name %>,
+
+Welcome to the AnimeViet! Click on the link below to activate your account:
+
+<%= activation_url(token: @user.activation_token, email: @user.email) %>

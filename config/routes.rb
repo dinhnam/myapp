@@ -3,9 +3,10 @@ Rails.application.routes.draw do
     root "static_pages#home"
     get "/signup", to: "users#new"
     post "/signup", to: "users#create"
-    get "/signin", to: "sessions#new"
+    get "/signin", to: "sessions#login"
     post "/signin", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
+    get "/activation", to: "sessions#activation"
     resources :films, param: :pretty do
       resources :episodes, param: :number
     end

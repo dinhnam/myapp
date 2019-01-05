@@ -7,7 +7,6 @@
     float: left;
     overflow: hidden;
     box-sizing: border-box;
-    padding: 5px;
 }
 .movie-cover::before {
     content: "";
@@ -17,8 +16,8 @@
 .movie-cover img{
     width: 100%;
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 2px;
+    left: 2px;
 }
 .movie-detail{
     width: 65%;

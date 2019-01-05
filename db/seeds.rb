@@ -88,14 +88,15 @@ artists = Artist.all
 studios = Studio.all
 genres = Category.all
 directors = Director.all
-31.times do
-  User.create!(
+30.times do
+  user = User.create!(
       name: Faker::Name.name,
       email: Faker::Internet.email,
       avatar: Faker::Avatar.image,
       password: "123456",
       password_confirmation: "123456"
   )
+  user.activate
 end
 users = User.all
 15.times do |n|
@@ -118,12 +119,12 @@ users = User.all
   )
   rand(1..10).times do
     comment =  film.comments.create!(
-      user_id: users[rand(1..30)].id, 
+      user_id: users[rand(0...30)].id, 
       content: Faker::Lorem.paragraph(rand(5..30))
     )
     rand(0..7).times do
       comment.replies.create(
-        user_id: users[rand(1..30)].id, 
+        user_id: users[rand(0...30)].id, 
         content: Faker::Lorem.paragraph(rand(2..10))
       )
     end
@@ -136,12 +137,12 @@ users = User.all
     )
     rand(1..10).times do
       comment =  episode.comments.create!(
-        user_id: users[rand(1..30)].id, 
+        user_id: users[rand(0...30)].id, 
         content: Faker::Lorem.paragraph(rand(5..30))
       )
       rand(0..7).times do
         comment.replies.create(
-          user_id: users[rand(1..30)].id, 
+          user_id: users[rand(0...30)].id, 
           content: Faker::Lorem.paragraph(rand(2..10))
         )
       end

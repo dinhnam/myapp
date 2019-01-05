@@ -3,5 +3,16 @@
     <li>
       <%= link_to "Home", root_path %>
     </li>
+    <% if @film %>
+      /<li>
+        <%= link_to @film.name, @film %>
+      </li>
+      <% if @episode %>
+        /<li>
+          <%= link_to @episode.name, film_episode_path(@film, @episode) %>
+        </li>
+      <% end %>
+    <% end %>
+    
     </ol>
 </div>

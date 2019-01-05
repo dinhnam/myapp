@@ -4,15 +4,12 @@ class FilmsController < ApplicationController
 
     if @genre
       @films = @genre.films.all.page(params[:page]).per(12)
-      @note = @genre.name + ": " + @genre.description
+      flash['info'] = @genre.name + ": " + @genre.description
     end
   end
 
   def show
     @film = Film.find_by_pretty params[:pretty]
-    puts "----------------------"
-    puts params
-    puts "----------------------"
     if @film
       @comments = @film.comments.all
       @episode_first = @film.episodes.first

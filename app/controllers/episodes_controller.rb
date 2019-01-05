@@ -5,4 +5,20 @@ class EpisodesController < ApplicationController
     @episode = @film.episodes.find_by_number params[:number]
     @comments = @episode.comments.all
   end
+  
+  def index
+    
+  end
+  
+  def new
+    
+  end
+
+  def create
+    
+  end
+
+  def update
+    
+  end
 end

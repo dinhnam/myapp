@@ -1,11 +1,5 @@
-<%= render "layouts/bar_address" %>
-<%= render "layouts/filter" %>
 <div class="films-container">
-  <% if @note %>
-    <div class="alert alert-info">
-      <i><%= @note %></i>
-    </div>
-  <% end %>
+  <%= render "layouts/filter" %>
   <% if @films %>
       <%= paginate @films %>
       <%= render @films %>
@@ -14,3 +8,4 @@
       <h2> film not found </h2>
   <% end %>
 </div>
+<%= render "layouts/sidebar" %>

@@ -37,7 +37,7 @@
     top: 0;
     left: 0;
     position: absolute;
-    width: 1000%;
+    width: 500%;
     height: 100%;
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
@@ -45,7 +45,7 @@
     transition: all 1s ease;
 }
 .slide-item{
-    width: 10%;
+    width: 20%;
     height: 100%;
     overflow: hidden;
     float: left;
@@ -97,7 +97,7 @@
     bottom: 0;
     overflow: auto;
 }
-.slide-container:hover  .description{
+.slide-container .slide-item:hover  .description{
     display: block;
 }
 @media screen and (max-width: 620px) {

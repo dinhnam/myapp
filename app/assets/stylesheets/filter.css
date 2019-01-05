@@ -4,14 +4,10 @@
 }
 .filters .bar{
   padding: 5px;
-  background-color: #200B06;
 }
 .filters .bar li{
   padding: 0;
   margin: 2px;
-}
-.filters .bar li:hover{
-  background-color: rgba(70, 19, 27, 0.5);
 }
 .filters .bar .menu.tab{
   top: 36px;
@@ -26,7 +22,7 @@
   padding: 5px;
 }
 .filters .bar select, .filters .bar button{
-  background-color: #4e0e26;
+  background-color: #56573f;
   padding: 5px;
   color: white;
   font-size: 0.8em;
@@ -36,11 +32,11 @@
   padding: 6px;
 }
 .filters .bar select option{
-  background-color: #4e0e26;
+  background-color: #56573f;
   padding: 5px;
 }
 .filters .bar input[type=submit]{
-  background-color: #4e0e26;
+  background-color: #959759;
   padding: 6px 8px;
   color: white;
   border: none;
@@ -60,5 +56,5 @@
 .filters .bar input[type=submit]:hover,
 .filters .bar select:hover,
 .filters .bar button:hover{
-  background-color: #32333d;
+  background-color: #8a8653;
 }

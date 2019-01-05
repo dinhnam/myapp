@@ -1,7 +1,7 @@
 $(document).ready(function(){
     //hide alert
     function hide_alert(){
-        $(".alert").delay(4000).hide(200);
+        $(".alert").delay(4000).hide(0);
     };
     window.onload = hide_alert();
     //drop menu
@@ -23,7 +23,7 @@ $(document).ready(function(){
       $.each($("input[name='genres[]']:checked"), function() {
         var genre = $(this).next().text();
         $('.content .drop').after(
-          "<li class='genres_checked left' style='font-size: 14px; padding: 5px;"+
+          "<li class='genres_checked left' style='font-size: 14px; padding: 4px;"+
           "margin: 4px 2px; border-radius: 5px; background-color: #19414d;'>"+
           genre+"</li>"
           );

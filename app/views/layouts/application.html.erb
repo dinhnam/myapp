@@ -18,15 +18,12 @@
         </div>
         <div class="container">
           <%= render "layouts/header" %>
-          <div class="content">
-            <% flash.each do |message_type, message| %>
-                <div class="alert alert-<%= message_type %>">
-                  <i><%= message %></i>
-                </div>
-            <% end %>
-            <%= yield %>
-          </div>
-          <%= render "layouts/sidebar" %>
+          <% flash.each do |message_type, message| %>
+              <div class="alert alert-<%= message_type %>">
+                <i><%= message %></i>
+              </div>
+          <% end %>
+          <%= yield %>
           <%= render "layouts/footer" %>
         </div>
         <div class="ads-1 right">

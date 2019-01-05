@@ -1,6 +1,6 @@
 <% provide :title, "Film" %>
-<%= render "layouts/bar_address" %>
-<div class="movie-container">
+<div class="films-container">
+  <%= render "layouts/bar_address" %>
   <div class="movie-cover">
     <%= image_tag @film.cover %>
     <%= link_to "Xem Phim", film_episode_path(@film, @episode_first), class: "play" %>
@@ -97,3 +97,4 @@
   </div>
   <%= render @comments %>
 </div>
+<%= render "layouts/sidebar" %>

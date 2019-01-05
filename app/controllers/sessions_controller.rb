@@ -5,10 +5,10 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by email: params[:email].downcase
-
     if user && user.authenticate(params[:password])
-      generate_session_user user
-      flash[:success] = 'Log in success'
+      generate_session_login user
+      generate_cookie_remember(user) if params[:remember] == '1'
+      flash[:success] = "Wellcome " + user.name
       redirect_to root_url
     elsif
       flash[:danger] = 'Invalid email/password combination'
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    logout
+    logout if logged_in?
     redirect_to root_url
   end
 end

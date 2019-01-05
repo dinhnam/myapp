@@ -9,7 +9,7 @@ def average_rate data
 end
 categories_text = "Adventure: Anime này sẽ là một hành trình phiêu lưu của nhân vật chính
 Fantasy: Những loại phim hoạt hình giả tưởng về những chủ đề thần thoại hoặc phép thuật
-Harem: Phim thường nói về nhân vật nam được nhiều nhân vật nữ xunh quanh hâm mộ
+Harem: Phim thường nói về nhân vật nam được nhiều nhân vật nữ xung quanh hâm mộ
 Yaoi: Anime nói về tình yêu của nam và nam
 Yuri: Anime sẽ có nội dung về tình yêu của nữ và nữ
 Scifi: Phim sẽ có nội dung về chủ đề tương lai, viễn tưởng

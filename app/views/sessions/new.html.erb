@@ -4,7 +4,8 @@
     <%= f.label :email %>
     <%= f.text_field :email %>
     <%= f.label :password %>
-    <%= f.text_field :password %>
+    <%= f.password_field :password %>
+    <div class="check"><%= f.check_box :remember %><i>Remember me</i></div>
     <%= f.submit "Đăng Nhập" %>
     <p>New user? <%= link_to "Sign Up", signup_path %> </p>
   <% end %>

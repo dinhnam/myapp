@@ -48,3 +48,10 @@
 .user-form input[type=submit]:hover{
   background-color: #28662e;
 }
+.user-form input[type=checkbox]{
+  width: 16px;
+}
+.user-form .check{
+  display: flex;
+  padding: 8px;
+}

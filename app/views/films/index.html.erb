@@ -1,11 +1,9 @@
-<div class="films-container">
-  <%= render "layouts/filter" %>
+<div class="index-content">
   <% if @films %>
-      <%= paginate @films %>
+      <% @type = 'fat' %>
       <%= render @films %>
       <%= paginate @films %>
   <% elsif %>
       <h2> film not found </h2>
   <% end %>
 </div>
-<%= render "layouts/sidebar" %>

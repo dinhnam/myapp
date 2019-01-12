@@ -1,7 +1,16 @@
 <div class="sidebar">
-  <!---<div class="ads-2">
-  </div>--->
-  <div class="menu-sidebar">
-     menu
-  </div>
+  <ul class="list-item">
+    <% @top_films.each do |film| %>
+    <li>
+       <div class="item">
+       <div class="thumb">
+         <%= image_tag film.thumb %>
+       </div>
+       <div class="title">
+         <%= film.name %>
+       </div>
+       </div>
+    </li>
+    <% end %>
+  </ul>
 </div>

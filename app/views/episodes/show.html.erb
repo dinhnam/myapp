@@ -5,17 +5,14 @@
   <video width="100%" controls>
     <source src="<%= @episode.link %>" type="video/mp4">
   </video>
-  <div class="episodes block">
-    <ul>
-      <li><span>Episode</span></li>
-      <% @episodes.each do |episode| %>
-        <li>
-          <%= link_to episode.number, film_episode_path(@film ,episode) %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+  <ul id="episodes">
+    <li>Ep:</li>
+    <% @episodes.each do |episode| %>
+      <li>
+        <%= link_to episode.number, film_episode_path(@film ,episode) %>
+      </li>
+    <% end %>
+  </ul>
 </div>
 <%= render @comments %>
 </div>
-<%= render "layouts/sidebar" %>

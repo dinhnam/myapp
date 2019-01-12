@@ -1,0 +1,19 @@
+.breadcrumb{
+  width: 100%;
+  box-sizing: border-box;
+}
+.breadcrumb ol{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ol li{
+  list-style-type: none;
+  display: inline;
+}
+ol li a{
+  font-style: italic;
+}
+ol li a:hover{
+  color: rgb(113, 247, 120);
+}

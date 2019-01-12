@@ -1,10 +1,8 @@
-def average_rate data
-  rate = JSON.parse(data)
-  sum = rate['star_5'] + rate['star_4'] + rate['star_3'] + rate['star_2']
-    + rate['star_1']
-  sum_value = 5*rate['star_5'] + 4*rate['star_4'] + 3*rate['star_3'] 
-    + 2*rate['star_2'] + rate['star_1']
-
+def average_rate rate
+  sum = rate.star_5 + rate.star_4 + rate.star_3 + rate.star_2
+        + rate.star_1
+  sum_value = 5*rate.star_5 + 4*rate.star_4 + 3*rate.star_3 + 2*rate.star_2
+              + rate.star_1
   return (1.0*sum_value/sum).round(1)
 end
 categories_text = "Adventure: Anime này sẽ là một hành trình phiêu lưu của nhân vật chính
@@ -38,17 +36,17 @@ end
 
 50.times do
   Artist.create!(
-      name: Faker::Artist.name
+    name: Faker::Artist.name
   )
 end
 20.times do
   Studio.create(
-      name: Faker::Company.name
+    name: Faker::Company.name
   )
 end
 20.times do
   Director.create(
-      name: Faker::Artist.name
+    name: Faker::Artist.name
   )
 end
 country = Country.create!(
@@ -99,30 +97,38 @@ directors = Director.all
   user.activate
 end
 users = User.all
-15.times do |n|
+30.times do |n|
   name = Faker::Movie.quote
   release = Faker::Date.between(15.years.ago, Date.today)
-  year = release.year.to_s
-  rate_json = JSON.generate({star_5: rand(0..1000), star_4: rand(0..1000), star_3: rand(0..100), star_2: rand(0..1000), star_1: rand(0..1000)})
   film = Film.create!(
       name: name,
-      rate: rate_json,
-      average_rate: average_rate(rate_json),
-      cover: 'cover.jpg',
-      all_views: rand(10000..1000000),
-      month_views: rand(5000..50000),
-      week_views: rand(1000..10000),
-      day_views: rand(100..5000),
+      cover: JSON.generate({thumb: "cover.jpg", wallpager: "cover-large.jpg"}),
+      total_episodes: 12,
+      trailer: 'https://www.youtube.com/embed/sSYoz0JmnZo',
       release:  release,
-      intro: Faker::Lorem.paragraph(rand(50..200)),
-      pretty: name.gsub(/[, .]/,'-')+"-"+year
+      description: Faker::Lorem.paragraph(rand(50..100)),
+      pretty_param: name.gsub(/[, .]/,'-') + release.year.to_s,
+      duration: 24
   )
-  rand(1..10).times do
+  film.rate = Rate.new(
+    star_5: rand(0..1000), 
+    star_4: rand(0..1000), 
+    star_3: rand(0..100), 
+    star_2: rand(0..200),
+    star_1: rand(0..1000)
+  )
+  film.view = View.new(
+    year_views: rand(20000..200000),
+    month_views: rand(10000..20000),
+    week_views: rand(5000..10000),
+    day_views: rand(100..5000),
+  )
+  rand(0..10).times do
     comment =  film.comments.create!(
       user_id: users[rand(0...30)].id, 
       content: Faker::Lorem.paragraph(rand(5..30))
     )
-    rand(0..7).times do
+    rand(0..5).times do
       comment.replies.create(
         user_id: users[rand(0...30)].id, 
         content: Faker::Lorem.paragraph(rand(2..10))
@@ -135,12 +141,12 @@ users = User.all
     number: n+1, 
     link: "http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4"
     )
-    rand(1..10).times do
+    rand(0..10).times do
       comment =  episode.comments.create!(
         user_id: users[rand(0...30)].id, 
         content: Faker::Lorem.paragraph(rand(5..30))
       )
-      rand(0..7).times do
+      rand(0..5).times do
         comment.replies.create(
           user_id: users[rand(0...30)].id, 
           content: Faker::Lorem.paragraph(rand(2..10))
@@ -165,8 +171,3 @@ users = User.all
   end
 end
 
-@top_views = Film.order(all_views: :desc).limit(5)
-@top_views.each_with_index do |film, index|
-film.cover = "#{index+1}.jpg"
-film.save
-end

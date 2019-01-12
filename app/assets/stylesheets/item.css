@@ -1,152 +1,88 @@
 .item-container{
-    position: relative;
-    float: left;
-    width: 31%;
-    margin: 1%;
-    border: 1px solid #200B06;
-    box-sizing: border-box;
-    color: white;
+  position: relative;
+  box-sizing: border-box;
+  width: 19%;
+  margin: 0.5%;
+  float: left;
+}
+.item-container::before{
+  content: '';
+  display: block;
+  padding-top: 161.8%;
 }
 .shade{
-    box-shadow: 5px 5px 5px rgb(24, 23, 23);
-    -moz-box-shadow: 5px 5px 5px rgb(20, 19, 19);
-    -webkit-box-shadow: 5px 5px 5px rgb(20, 19, 19);
+  box-shadow: 5px 5px 5px rgb(24, 23, 23);
+  -moz-box-shadow: 5px 5px 5px rgb(20, 19, 19);
+  -webkit-box-shadow: 5px 5px 5px rgb(20, 19, 19);
 }
-.item-container::before {
-    content: "";
-    display: block;
-    padding-top: 161.8%;
-}
-.item-container .process{
-    top: 2px;
-    left: 2px;
-    background-color: rgba(17, 16, 16, 0.6);
-    position: absolute;
-    font-size: 14px;
-    border-radius: 5px;
-    padding: 2px;
-    font-weight: bold;
-    z-index: 2;
-}
-.item-container .number-viewed {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: 2;
-    padding: 0;
-    margin: 0;
-}
-.item-container .number-viewed li{
-  display: inline;
-  padding: 0;
-  margin: 0;
-}
-.item-container .number-viewed li img{
-  width: 16px;
-  height: 16px;
+.item-container .item{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
 }
 .item-container .cover{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    overflow: hidden;
-    height: 87.4%;
-    width: 100%;
+  height: 87.5%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.item-container .title{
+  height: 12.5%;
+  width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 2px;
 }
 .item-container .cover img{
     width: 100%;
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
 }
-.item-container .cover img:hover{
-    width: 115%;
-}
-.item-container .title{
-    position: absolute;
-    width: 100%;
-    height: 13%;
-    bottom: 0px;
-    left: 0px;
-    background-color: #061b20;
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: ellipsis; 
-    padding: 2px;
-}
-.item-container .title a{
-    color: white;
-    font-size: 1em;
-    font-weight: bold;
-    text-decoration: none;
-}
-.item-container .intro{
-    position: absolute;
-    height: 84%;
-    width: 96%;
-    z-index: 8;
-    top: 0px;
-    right: 0px;
-    padding: 4px;
-    background-color: rgba(17, 16, 16, 0.8);
-    display: none;
-    overflow: auto;
-    font-style: italic;
-}
-.item-container .read-me{
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    width: 36px;
-    height: 36px;
-    background-image: url('readme-icon.png');
-    background-repeat:no-repeat;
-    background-size: contain;
-    background-position: center center;
-    opacity: 0.6;
-    z-index: 9;
-}
-.item-container .read-me:hover{
-    width: 40px;
-    height: 40px;
-}
-.item-container .ribbon{
+.item-container .vote{
   position: absolute;
-  bottom: 16%;
-  left: 0;
-  z-index: 2;
-  width: 100px;
-  border-top: 12px solid #a1f100;
-  border-right: 12px solid transparent;
-  border-bottom: 12px solid #8be014;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  text-align: right;
 }
-.item-container .rate{
-    position: absolute;
-    bottom: 16%;
-    z-index: 3;
+.item-container .vote img{
+  width: 6%;
 }
-.item-container .rate img{
-    width: 18px;
-    height: 18px;
+.item-container .process{
+  position: absolute;
+  background-color: rgba(17, 16, 16, 0.9);
+  border-radius: 4px;
+  top: 2px;
+  right: 2px;
+  padding: 2px;
 }
-@media screen and (max-width: 900px) {
+.item:hover{
+  left: -4%;
+  top: -4%;
+  width: 108%;
+  height: 108%;
+  z-index: 10;
+}
+@media screen and (min-width: 961px) {
     .item-container{
-        width: 48%;
+      width: 19%;
     }
 }
-@media screen and (max-width: 799px) {
+@media screen and (max-width: 960px) {
     .item-container{
-        width: 30%;
+      width: 24%;
     }
 }
-@media screen and (min-width: 1000px) {
+@media screen and (max-width: 720px) {
     .item-container{
-        width: 31%;
+      width: 32%;
     }
 }
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 480px) {
     .item-container{
-        width: 48%;
+      width: 49%;
     }
 }

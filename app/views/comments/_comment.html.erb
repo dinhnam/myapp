@@ -3,9 +3,10 @@
       <div class="user-avatar left">
         <%= image_tag comment.user.avatar %>
       </div>
+      <div class="space left"><b></b></div>
       <div class="comment-content left">
         <div class="user-name left">
-          <b><%= comment.user.name %></b>
+          <b><%= link_to comment.user.name, comment.user %></b>
         </div>
         <div class="comment-text right">
           <%= comment.content %>
@@ -35,9 +36,10 @@
         <div class="user-avatar left">
           <%= image_tag reply.user.avatar %>
         </div>
+        <div class="space left"><b></b></div>
         <div class="comment-content left">
           <div class="user-name left">
-            <b><%= reply.user.name %></b>
+            <b><%= link_to reply.user.name, reply.user %></b>
           </div>
           <div class="comment-text right">
             <%= reply.content %>

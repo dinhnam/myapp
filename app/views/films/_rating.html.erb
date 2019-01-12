@@ -1,36 +1,18 @@
-<% rate = JSON.parse(@film.rate) %>
-<% sum = rate['star_5'] + rate['star_4'] + rate['star_3'] + rate['star_2']
-      + rate['star_1'] %>
-<% n = 5 %>
-<% int_rate = @film.average_rate.floor %>
-<% dec_rate = @film.average_rate - int_rate %>
-
 <div class="rate-container">
-  <b>User Rating</b>
+  <p><b>User rating</b></p>
   <div class="star">
     <p>
-      <% int_rate.times do %>
-          <%= image_tag 'star.png' %>
-      <% end %>
-      <% if dec_rate != 0 %>
-          <% if dec_rate < 0.4 %>
-              <%= image_tag 'one_quarter_star.png' %>
-          <% elsif dec_rate < 0.7 %>
-              <%= image_tag 'half_star.png' %>
-          <% else %>
-              <%= image_tag 'three_quarter_star.png' %>
-          <% end %>
-      <% end %>
+      <%= render 'films/star' %>
     </p>
-    <p><%= @film.average_rate %> average based on <%= sum %> reviews.</p>
+    <p><%= @film.rates %> average based on <%= @rate.number_people %> reviews.</p>
   </div>
-  <% rate.each do |key,value| %>
+  <% 5.downto(1) do |n| %>
     <div class="bar-container">
-        <b class="left"><%= n %> star</b><i class="right"><%= value %></i>
+        <b class="left"><%= n %> star</b><i class="right"><%= @rate.send("star_#{n}") %></i>
         <div class= 'bar-hundred'>
-          <div class='bar-per bar-<%= n%>' style="width:<%= 100*value/sum %>%"></div>
+          <div class='bar-per bar-<%= n %>'
+           style="width: <%= 100*@rate.send("star_#{n}")/@rate.sum %>%"></div>
         </div>
     </div>
-  <% n-=1 %>
   <% end %>
 </div>

@@ -1,0 +1,21 @@
+<% provide :watch, "Xem thêm" %>
+<div class = "slider-container">
+  <div class="prev-slide">&#10094;</div>
+  <div class="next-slide">&#10095;</div>
+  <div id="list-slide" class="transit-slow">
+    <% @top_films.each_with_index do |film, index| %>
+      <%= content_tag :div, class: "slider-item", id: index do %>
+          <%= image_tag film.wallpager, title: film.name, 
+                class: "wallpager transit-slow pade", id: index %>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="list-thumb" class="transit-slow">
+    <% @top_films.each_with_index do |film, index| %>
+      <%= content_tag :div, class: "slider-item", id: index do %>
+          <%= image_tag film.wallpager, title: film.name, 
+                class: "thumb transit-short pade", id: index %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

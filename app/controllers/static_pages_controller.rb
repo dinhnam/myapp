@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    @top_film = Film.order(all_views: :desc).limit(5)
-    @films = Film.all.page(params[:page]).per(12)
+    @films = Film.all.page(params[:page]).per(15)
+    @top_films = Film.favorite(:year).limit(10);
   end
 end

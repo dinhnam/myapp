@@ -55,3 +55,22 @@
   display: flex;
   padding: 8px;
 }
+#form-search{
+  position: relative;
+  width: 100%;
+  float: left;
+}
+#result{
+  position: absolute;
+  max-height: 500px;
+  width: 320px;
+  top: 100%;
+  z-index: 100;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+#result .item-search{
+  width: 100%;
+  float: left;
+  display: flex;
+}

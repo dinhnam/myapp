@@ -1,3 +1,14 @@
+.nav ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+}
+.nav li{
+    list-style-type: none;
+    display: inline;
+    text-align: center;
+}
 .nav{
     width: 100%;
     float: left;
@@ -8,7 +19,6 @@ header .bar{
     box-sizing: border-box;
 }
 .bar{
-    width: 100%;
     position: relative;
     padding: 0px;
 }
@@ -23,6 +33,7 @@ header .bar{
 }
 .click{
     cursor: pointer;
+    user-select: none;
 }
 .bar .hide{
     display: none;
@@ -30,19 +41,11 @@ header .bar{
 .bar .show{
     display: block;
 }
-.bar{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
+
 .bar li{
-    list-style-type: none;
     padding: 14px 7px;
     font-size: 18px;
-    display: inline;
-    text-align: center;
     cursor: pointer;
-    color: rgb(252, 231, 231);
 }
 .bar li a{
     text-decoration: none;
@@ -95,14 +98,14 @@ header .bar{
 .bar .search{
     margin: 0px;
     padding: 6px 2px;
-    width: 30%;
+    width: 35%;
 }
 .bar .search input[type=text]{
     padding: 6px;
     border: 1px solid rgb(216, 129, 129);
     margin: auto;
     font-size: 16px;
-    width: 87%;
+    width: 75%;
     box-sizing: border-box;
     float: left;
     border-radius: 5px 0 0 5px;
@@ -121,8 +124,23 @@ header .bar{
     border: 1px solid #50c244;
     border-radius: 0px 5px 5px 0px;
 }
-.bar input[type=submit]:hover{
+.bar .search input[type=submit]:hover{
     background-color: #64d65e;
+}
+#filter-icon{
+  box-sizing: border-box;
+  width: 12%;
+  height: 36px;
+  float: right;
+  cursor: pointer;
+  padding: 2px;
+}
+#filter-icon img{
+  height: 100%;
+  width: 100%;
+}
+#filter-icon:hover{
+  border: 1px solid rgb(129, 103, 103);
 }
 .bar .notices{
     padding: 6px;

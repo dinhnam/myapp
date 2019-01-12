@@ -1,6 +1,8 @@
 /*filter menu*/
 .filters{
   width: 100%;
+  display: none;
+  background-color: rgb(26, 3, 3);
 }
 .filters .bar{
   padding: 5px;
@@ -13,7 +15,7 @@
   top: 36px;
   border-radius: 0px;
   max-width: 540px;
-  background-color: rgba(70, 19, 27, 0.8);
+  background-color: rgba(41, 30, 32, 0.8);
 }
 .filters .bar .menu.tab li{
   font-size: 0.8em;
@@ -22,7 +24,7 @@
   padding: 5px;
 }
 .filters .bar select, .filters .bar button{
-  background-color: #56573f;
+  background-color: #332e2a;
   padding: 5px;
   color: white;
   font-size: 0.8em;
@@ -32,11 +34,11 @@
   padding: 6px;
 }
 .filters .bar select option{
-  background-color: #56573f;
+  background-color: #332e2a;
   padding: 5px;
 }
 .filters .bar input[type=submit]{
-  background-color: #959759;
+  background-color: #332e2a;
   padding: 6px 8px;
   color: white;
   border: none;
@@ -56,5 +58,5 @@
 .filters .bar input[type=submit]:hover,
 .filters .bar select:hover,
 .filters .bar button:hover{
-  background-color: #8a8653;
+  background-color: #5e5249;
 }

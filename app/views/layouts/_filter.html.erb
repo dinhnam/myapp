@@ -1,6 +1,6 @@
 <div class= "filters"> 
 <ul class="bar">
-    <%= form_tag method: :get do %>
+    <%= form_tag filter_path, method: :get do %>
       <li class="drop left">
           <div class = "click">
           <%= content_tag :button, type: :button do %>
@@ -10,7 +10,7 @@
           <ul class="menu tab">
             <% @categories.each do |category| %>
                 <li>
-                    <%= check_box_tag "genres[]", category.id, false,
+                    <%= check_box_tag "genres[]", category.id, false ,
                           id: category.id %>
                     <i><%= category.name %></i>
                 </li>

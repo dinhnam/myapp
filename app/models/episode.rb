@@ -1,7 +1,7 @@
 class Episode < ApplicationRecord
   belongs_to :film
   has_many :comments, as: :commentable
-
+  scope :fresh, -> {order(number: :desc).first}
   def add_comment comment
     comments << comment
   end

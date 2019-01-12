@@ -1,14 +1,15 @@
 .rate-container{
   width: 100%;
   float: left;
-  padding: 5px;
+  padding: 8px;
   color: #fff;
+  box-sizing: border-box;
 }
 .bar-container{
   width: 100%;
   color: #fff;
   margin-top: 5px;
-  height: 18px;
+  height: 15px;
 }
 .bar-hundred{
   width: 80%;
@@ -44,12 +45,9 @@
   width: 100%;
   color: #fff; 
 }
-.star img{
-  width: 32px;
-  height: 32px;
-}
-.genres_checked{
-  background-color: #100f11;
+.rate-container .star img{
+  width: 28px;
+  height: 28px;
 }
 @media screen and (max-width: 400px) {
   .bar-hundred{

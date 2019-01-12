@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_05_170451) do
+ActiveRecord::Schema.define(version: 2019_01_06_104945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,28 +40,25 @@ ActiveRecord::Schema.define(version: 2019_01_05_170451) do
     t.string "type", null: false
     t.string "name"
     t.string "description"
-    t.string "cover"
+    t.string "thumb"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "films", force: :cascade do |t|
     t.string "name"
-    t.string "intro"
-    t.decimal "average_rate"
-    t.integer "number_voter"
-    t.string "rate"
-    t.integer "all_views"
-    t.integer "month_views"
-    t.integer "week_views"
-    t.integer "day_views"
+    t.string "description"
+    t.string "trailer"
     t.string "cover"
     t.integer "duration"
     t.datetime "release"
     t.string "quality"
+    t.integer "total_episodes"
+    t.decimal "rates", default: "0.0"
+    t.integer "views", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "pretty"
+    t.string "pretty_param"
     t.string "string"
   end
 
@@ -83,6 +80,18 @@ ActiveRecord::Schema.define(version: 2019_01_05_170451) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_notices_on_user_id"
+  end
+
+  create_table "rates", force: :cascade do |t|
+    t.integer "star_5", default: 0
+    t.integer "star_4", default: 0
+    t.integer "star_3", default: 0
+    t.integer "star_2", default: 0
+    t.integer "star_1", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "film_id"
+    t.index ["film_id"], name: "index_rates_on_film_id"
   end
 
   create_table "replies", force: :cascade do |t|
@@ -109,6 +118,19 @@ ActiveRecord::Schema.define(version: 2019_01_05_170451) do
     t.datetime "activated_at"
   end
 
+  create_table "views", force: :cascade do |t|
+    t.integer "year_views", default: 0
+    t.integer "month_views", default: 0
+    t.integer "week_views", default: 0
+    t.integer "day_views", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "film_id"
+    t.index ["film_id"], name: "index_views_on_film_id"
+  end
+
   add_foreign_key "episodes", "films"
+  add_foreign_key "rates", "films"
   add_foreign_key "replies", "comments"
+  add_foreign_key "views", "films"
 end

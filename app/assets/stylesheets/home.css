@@ -1,0 +1,15 @@
+.focus{
+  width: 38.1%;
+  position: relative;
+  box-sizing: border-box;
+}
+.focus::before{
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+@media screen and (max-width: 720px) {
+  .focus{
+    width: 100%;
+  }
+}

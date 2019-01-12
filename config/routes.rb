@@ -7,7 +7,10 @@ Rails.application.routes.draw do
     post "/signin", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
     get "/activation", to: "sessions#activation"
-    resources :films, param: :pretty do
+    get "/search", to: "search#index"
+    get "/suggest", to: "search#suggest"
+    get "/filter", to: "search#filter"
+    resources :films, param: :pretty_param do
       resources :episodes, param: :number
     end
     resources :categories

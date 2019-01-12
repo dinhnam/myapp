@@ -1,0 +1,75 @@
+<div class = "descriptions" >
+  <%= image_tag @film.wallpager %>
+  <%= link_to yield(:watch), @link_film, class: "click-play" %>
+  <table>
+    <tr>
+      <th>Tên phim</th>
+      <td colspan="3" id="name"><%= @film.name %></h3></td>
+    </tr>
+    <tr>
+      <th>Thể loại</th>
+      <td colspan="3">
+        <% @film.categories.all.each_with_index do |genre, index| %>
+            <%= link_to genre.name, films_path(genre: genre.name) %>
+            <% if index + 1 < @film.categories.all.length %>
+              <span>,</span>
+            <% end %>
+        <% end %>
+      </td> 
+    </tr>
+    <tr>
+      <th>Trạng thái</th>
+      <td>11/12</td>
+      <th>Dạng anime</th>
+      <td><%= link_to "TV Series", "#"%></td> 
+    </tr>
+    <tr>
+      
+    </tr>
+    <tr>
+      <th>Năm phát hành</th>
+      <td><%= link_to "2018", "#"%></td>
+      <th>Quốc gia</th>
+      <td>
+          <% @film.countries.all.each do |country| %>
+            <%= link_to country.name, "#" %>
+          <% end %>
+      </td> 
+    </tr>
+    <tr>
+      <th>Hãng phim</th>
+      <td>
+          <% @film.studios.all.each do |studio| %>
+          <%= link_to studio.name, "#"%>
+          <% end %>
+      </td>
+      <th>Thời lượng</th>
+      <td>25 phút/tậb</td> 
+    </tr>
+    <tr>
+      <th>Chất lượng</th>
+      <td>Full HD</td>
+      <th>Lượt xem</th>
+      <td><%= @film.views %></td> 
+    </tr>
+    <tr>
+      <th>Lượt bình luận</th>
+      <td><%= count_comments @film %> bình luận</td>
+      <th>Đánh giá</th>
+      <td><%= @film.rates %>/5</td> 
+    </tr>
+    <tr>
+      <th>Tập mới</th>
+      <td>
+        <ul id="episodes">
+          <% episode_last = @film.episodes.fresh %>
+          <li>
+            <%= link_to episode_last.number, film_episode_path(@film, episode_last) %> 
+          </li>
+        </ul>
+      </td>
+      <th>Thời lượng</th>
+      <td><%= @film.duration %>phút/tập</td> 
+    </tr>
+  </table>
+</div>

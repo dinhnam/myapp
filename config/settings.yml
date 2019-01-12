@@ -11,6 +11,6 @@
   end
 %>
 filter:
-  progress: [["All", 0], ["Finished", 1], ["Unfinished", 2]]
-  sort_movies: [["New update", 0], ["Viewed", 1], ["Commented", 2], ["Rating", 3]]
+  progress: [["All", 0], ["Finished", 1], ["In process", 2]]
+  sort_movies: [["Time update", 0], ["View", 1], ["Rating", 2]]
   years: <%= years %>

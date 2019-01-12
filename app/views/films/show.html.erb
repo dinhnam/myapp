@@ -1,100 +1,22 @@
-<% provide :title, "Film" %>
-<div class="films-container">
+<% film = @film %>
+<% @link_film = film_episode_path(@film, @film.episodes.first) %>
+<% provide :watch, "Xem phim" %>
+<div class="main-content">
   <%= render "layouts/bar_address" %>
-  <div class="movie-cover shade">
-    <%= image_tag @film.cover %>
-    <%= link_to "Xem Phim", film_episode_path(@film, @episode_first), class: "play" %>
-    <%= link_to "Theo dõi", "", class: "follow" %>
+  <div class="description-container">
+  <%= render "films/description" %>
+  <div id="rating" >
+    <%= render 'films/rating' %>
   </div>
-  <div class="movie-detail">
-    <div class="name-movie">
-      <%= @film.name %>
-    </div>
-    <table class="describe">
-        <tr>
-            <th>Thể loại</th>
-            <td>
-                <% @film.categories.all.each_with_index do |genre, index| %>
-                    <%= link_to genre.name, films_path(genre: genre.name) %>
-                    <% if index + 1 < @film.categories.all.length %>
-                      <span>,</span>
-                    <% end %>
-                <% end %>
-            </td> 
-        </tr>
-        <tr>
-            <th>Trạng thái</th>
-            <td>11/12</td> 
-        </tr>
-        <tr>
-            <th>Dạng anime</th>
-            <td><%= link_to "TV Series", "#"%></td> 
-        </tr>
-        <tr>
-            <th>Season</th>
-            <td><%= link_to "Mùa Thu Năm 2018", "#"%></td>
-        </tr>
-        <tr>
-            <th>Quốc gia</th>
-            <td>
-                <% @film.countries.all.each do |country| %>
-                  <%= link_to country.name, "#" %>
-                <% end %>
-            </td> 
-        </tr>
-        <tr>
-            <th>Hãng phim</th>
-            <td>
-                <% @film.studios.all.each do |studio| %>
-                <%= link_to studio.name, "#"%>
-                <% end %>
-            </td> 
-        </tr>
-        <tr>
-            <th>Thời lượng</th>
-            <td>25 phút/tậb</td> 
-        </tr>
-        <tr>
-            <th>Chất lượng</th>
-            <td>Full HD</td> 
-        </tr>
-         <tr>
-            <th>Ngôn ngữ</th>
-            <td>phụ đề tiếng việt</td> 
-        </tr>
-        <tr>
-            <th>Lượt xem</th>
-            <td><%= @film.all_views %></td> 
-        </tr>
-        <tr>
-            <th>Đánh giá</th>
-            <td><%= @film.average_rate %></td> 
-        </tr>
-        <tr>
-            <th>Tập mới</th>
-            <td>
-              <div class="episodes">
-                <ul>
-                <% @episodes_last.each do |episode| %>
-                    <li>
-                    <%= link_to episode.number, film_episode_path(@film, episode) %> 
-                    </li>
-                <% end %>
-                </ul>
-              </div>
-            </td> 
-        </tr>
-    </table>
+  <div id="intro">
+  <p><b>Introduction</b></p>
+  <%= film.description %>
   </div>
-  <%= render 'films/rating' %>
-  <div class="movie-intro">
-    <p><b>Nội dung:</b></p>
-    <div class="intro"><%= @film.intro %></div>
-    <p>Trailer</p>
-    <div class="trailer">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/sSYoz0JmnZo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
+  <div id="trailer">
+    <iframe width="560" height="315" src= <%= film.trailer.to_s %> frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
   </div>
   <%= render @comments %>
 </div>
-<%= render "layouts/sidebar" %>
+<div class="sidebar">
+</div>

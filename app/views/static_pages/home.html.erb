@@ -1,31 +1,9 @@
 <% provide :title, t("home.title") %>
-<div class="films-container">
-  <div class = "slide-container">
-    <div class="prev-slide">&#10094;</div>
-    <div class="next-slide">&#10095;</div>
-    <div class="dots">
-      <% @top_film.length.times do |index|%>
-        <%= content_tag :div, "", class: "dot", id: index %>
-      <% end %>
-    </div>
-    <div id="slides" %>
-      <% @top_film.each do |top| %>
-        <div class= "slide-item">
-          <div class="description">
-            <div class="name">
-              <%= top.name %>
-            </div>
-            <div class="intro">
-              <%= top.intro %>
-            </div>
-          </div>
-          <%= image_tag top.cover %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-  <%= render "layouts/filter" %>
-  <%= render @films %>
-  <%= paginate @films %>
+<div class="introduction">
+  <%= render "static_pages/slider" %>
 </div>
-<%= render "layouts/sidebar" %>
+<div class= "main-content">
+  <%= render @films %>
+</div>
+<%= paginate @films %>
+

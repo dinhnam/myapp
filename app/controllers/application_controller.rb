@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
   include CommentsHelper
+  include FilmsHelper
   before_action :set_locale
   before_action :set_categories
   before_action :set_notices
@@ -26,5 +27,4 @@ class ApplicationController < ActionController::Base
   def set_countries
     @countries = Country.all
   end
-
 end

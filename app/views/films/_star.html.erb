@@ -1,7 +1,7 @@
-<% @film.rates.to_i.times do %>
+<% rate.average.to_i.times do %>
     <%= image_tag 'star.png' %>
 <% end %>
-<% dec_rate = @film.rates - @film.rates.to_i %>
+<% dec_rate = rate.average - rate.average.to_i %>
 <% if dec_rate > 0 %>
   <% if dec_rate < 0.4 %>
     <%= image_tag 'one_quarter_star.png' %>

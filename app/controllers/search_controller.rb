@@ -14,7 +14,10 @@ class SearchController < ApplicationController
   end
 
   def index
-    @films = Film.search(name_cont: params[:search]).result.page(params[:page]).per(15)
+    @category = Category.find_by(name: params[:genre])
+    if @category
+    @films = @category.films.all.page(params[:page]).per(20)
+    end
     render 'films/index'
   end
 

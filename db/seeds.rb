@@ -97,12 +97,14 @@ directors = Director.all
   user.activate
 end
 users = User.all
+@images = Dir.glob("app/assets/images/test/*{.jpg,.png,.gif}")
 30.times do |n|
   name = Faker::Movie.quote
   release = Faker::Date.between(15.years.ago, Date.today)
+  image = "test/"+File.basename(@images[rand(0...12)]).to_s
   film = Film.create!(
       name: name,
-      cover: JSON.generate({thumb: "cover.jpg", wallpager: "cover-large.jpg"}),
+      pictures: JSON.generate({cover: "cover.jpg", wallpager: image, thumb: image}),
       total_episodes: 12,
       trailer: 'https://www.youtube.com/embed/sSYoz0JmnZo',
       release:  release,
@@ -113,7 +115,7 @@ users = User.all
   film.rate = Rate.new(
     star_5: rand(0..1000), 
     star_4: rand(0..1000), 
-    star_3: rand(0..100), 
+    star_3: rand(0..1000), 
     star_2: rand(0..200),
     star_1: rand(0..1000)
   )
@@ -121,7 +123,7 @@ users = User.all
     year_views: rand(20000..200000),
     month_views: rand(10000..20000),
     week_views: rand(5000..10000),
-    day_views: rand(100..5000),
+    day_views: rand(100..5000)
   )
   rand(0..10).times do
     comment =  film.comments.create!(
@@ -170,4 +172,3 @@ users = User.all
       end
   end
 end
-

@@ -1,6 +1,7 @@
 class CreateRates < ActiveRecord::Migration[5.2]
   def change
     create_table :rates do |t|
+      t.decimal :star, default: 0
       t.integer :star_5, default: 0
       t.integer :star_4, default: 0
       t.integer :star_3, default: 0

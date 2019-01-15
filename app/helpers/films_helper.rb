@@ -1,9 +1,8 @@
 module FilmsHelper
-  def top_films date, per
-    views = View.order("#{date}_views" => :desc).limit(per)
-    films = []
-    views.each do |view|
-     films << view.film
+  def filter genre_params
+    films = Film.joins(:categories)
+    genre_params.each do |genre_id|
+      films = films.where(features: {id: genre_id})
     end
     return films
   end

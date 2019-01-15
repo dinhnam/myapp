@@ -15,21 +15,43 @@ class Film < ApplicationRecord
   has_one :view
   has_one :rate
   
-  scope :favorite, -> (kind){joins(:view).merge(View.order("#{kind}_views" => :desc))}
-  scope :top_rates, ->{order(rates: :desc)}
-  scope :top_views, ->{order(rates: :desc)}
+  scope :order_rate, ->{joins(:rate).merge(Rate.order(star: :desc))}
+  scope :order_view_type, ->(type){joins(:view).merge(View.order("#{type}_views" => :desc))}
+  scope :order_date, ->{joins(:episodes).merge(Episode.order(updated_at: :desc)).uniq}
 
   def to_param
     pretty_param
   end
+
+  def image
+    JSON.parse(self.pictures)
+  end
   
+  def cover
+    image = JSON.parse(self.pictures)
+    return image["cover"]
+  end
+
   def thumb
-    cover_hash = JSON.parse(self.cover)
-    return cover_hash["thumb"]
+    image = JSON.parse(self.pictures)
+    return image["thumb"]
   end
 
   def wallpager
-    cover_hash = JSON.parse(self.cover)
-    return cover_hash["wallpager"]
+    image = JSON.parse(self.pictures)
+    return image["wallpager"]
   end
+   
+  def set_thumb thumb
+    image = JSON.parse(self.pictures)
+    image["thumb"] = thumb
+    self.update_column :cover, JSON.generate(image)
+  end
+
+  def set_wallpager wallpager
+    image = JSON.parse(self.pictures)
+    image["wallpager"] = wallpager
+    self.update_column :cover, JSON.generate(image)
+  end
+
 end

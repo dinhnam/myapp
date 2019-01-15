@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
-    @films = Film.all.page(params[:page]).per(15)
-    @top_films = Film.favorite(:year).limit(10);
+    @new_films = Kaminari.paginate_array(Film.order_date).page(params[:page])
+                                                                       .per(20)
+    @top_films = Film.order_view_type(:month).limit(10);
   end
 end

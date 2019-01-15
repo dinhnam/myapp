@@ -49,13 +49,11 @@ ActiveRecord::Schema.define(version: 2019_01_06_104945) do
     t.string "name"
     t.string "description"
     t.string "trailer"
-    t.string "cover"
+    t.string "pictures"
     t.integer "duration"
     t.datetime "release"
     t.string "quality"
     t.integer "total_episodes"
-    t.decimal "rates", default: "0.0"
-    t.integer "views", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "pretty_param"
@@ -83,6 +81,7 @@ ActiveRecord::Schema.define(version: 2019_01_06_104945) do
   end
 
   create_table "rates", force: :cascade do |t|
+    t.decimal "star", default: "0.0"
     t.integer "star_5", default: 0
     t.integer "star_4", default: 0
     t.integer "star_3", default: 0

@@ -1,0 +1,16 @@
+<%= content_tag :div, class: "item #{type} transit-short" do %>
+  <div class="cover">
+    <%= image_tag film.image[type], title: film.name %>
+  </div>
+  <em>
+    <div class="stars">
+      <%= render 'films/star', rate: film.rate %>
+      <div>
+        <%= image_tag "eye.png" %>
+        <%= film.view.year_views %>
+      </div>
+    </div>
+    <%= film.name %>
+  </em>
+  <%= link_to image_tag("button-play.png"), film_path(film), class: "button-play fade hidden" %>
+<% end %>

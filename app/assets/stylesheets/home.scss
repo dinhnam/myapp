@@ -1,0 +1,21 @@
+.main-content{
+  .item{
+    width: 24%;
+    margin: 0.5%;
+    border: 1px solid rgba(255,255,255,0);
+  }
+  .item:hover{
+    transform: scale(1.05,1.05);
+    border: 1px solid rgba(255,255,255,0.5);
+  }
+}
+@media screen and (max-width: 860px) {
+  .main-content .item{
+      width: 32%;
+    }  
+}
+@media screen and (max-width: 600px) {
+  .main-content .item{
+      width: 49%;
+    }  
+}

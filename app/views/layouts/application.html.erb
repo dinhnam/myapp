@@ -12,9 +12,7 @@
   </head>
 
   <body>
-    <div class="ads tie-left">
-        <%= image_tag 'column-left.jpg' %>
-    </div>
+    
     <div class="container">
       <%= render "layouts/header" %>
       <% flash.each do |message_type, message| %>
@@ -28,8 +26,6 @@
       </main> 
       <%= render "layouts/footer" %>
     </div>
-    <div class="ads tie-right">
-      <%= image_tag 'column-right.jpg' %>
-    </div>
+    
   </body>
 </html>

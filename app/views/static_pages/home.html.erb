@@ -2,8 +2,12 @@
 <div class="introduction">
   <%= render "static_pages/slider" %>
 </div>
-<div class= "main-content">
-  <%= render @films %>
+<nav>
+  <em>Phim mới cập nhật</em>
+  <%= link_to "xem thêm..", '#', class: "float-r" %>
+</nav>
+<div class="main-content">
+  <% @new_films.each do |film| %>
+    <%= render 'layouts/item',film: film, type: "thumb" %> 
+  <% end %>
 </div>
-<%= paginate @films %>
-

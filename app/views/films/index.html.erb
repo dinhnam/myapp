@@ -1,9 +1,6 @@
-<div class="index-content">
-  <% if @films %>
-      <% @type = 'fat' %>
-      <%= render @films %>
-      <%= paginate @films %>
-  <% elsif %>
-      <h2> film not found </h2>
+<div class="main-content">
+  <% @films.each do |film| %>
+    <%= render 'layouts/item',film: film, type: "thumb" %> 
   <% end %>
 </div>
+<%= paginate @films %>

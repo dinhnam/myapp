@@ -1,11 +1,10 @@
 <style>
   .item-seach{
     display: flex;
-    background-color: rgba(27, 20, 20, 0.7); 
+    background-color: rgba(27, 20, 20, 0.9); 
     margin: 2px;
-    }
+  } 
   .name{
-    width: 80%;
     height: 50px; 
     box-sizing: border-box; 
     white-space: nowrap; 
@@ -16,20 +15,20 @@
   .name i{
     color: rgb(190, 231, 170);
   }
-  .thumb{
+  .picture{
     width: 20%; 
     height: 50px; 
     box-sizing: border-box;}
-  .thum img{
+  .picture img{
     height: 100%;
    }
   .item-seach:hover{
-    background-color: rgba(80, 58, 58, 0.7);
+    background-color: rgba(80, 58, 58, 0.9);
    }
 </style>
 <% @results.each do |result| %>
   <div class="item-seach" style="">
-      <div class = "thumb">
+      <div class = "picture">
         <% if result.thumb %>
           <%= link_to image_tag(result.thumb), result %>
         <% else %>

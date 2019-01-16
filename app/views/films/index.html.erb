@@ -2,5 +2,5 @@
   <% @films.each do |film| %>
     <%= render 'layouts/item',film: film, type: "thumb" %> 
   <% end %>
+  <%= paginate @films %>
 </div>
-<%= paginate @films %>

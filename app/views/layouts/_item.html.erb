@@ -4,6 +4,7 @@
   </div>
   <em>
     <div class="stars">
+      <var class="float-r"><%= film.episodes.count %> / <%= film.total_episodes %></var>
       <%= render 'films/star', rate: film.rate %>
       <div>
         <%= image_tag "eye.png" %>

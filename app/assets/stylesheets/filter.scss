@@ -1,62 +1,52 @@
-/*filter menu*/
 .filters{
-  width: 100%;
-  display: none;
-  background-color: rgb(26, 3, 3);
-}
-.filters .bar{
-  padding: 5px;
-}
-.filters .bar li{
-  padding: 0;
-  margin: 2px;
-}
-.filters .bar .menu.tab{
-  top: 36px;
-  border-radius: 0px;
-  max-width: 540px;
-  background-color: rgba(41, 30, 32, 0.8);
-}
-.filters .bar .menu.tab li{
-  font-size: 0.8em;
-  width: 120px;
-  text-align: left;
-  padding: 5px;
-}
-.filters .bar select, .filters .bar button{
-  background-color: #332e2a;
-  padding: 5px;
-  color: white;
-  font-size: 0.8em;
-  border: none;
-}
-.filters .bar button{
-  padding: 6px;
-}
-.filters .bar select option{
-  background-color: #332e2a;
-  padding: 5px;
-}
-.filters .bar input[type=submit]{
-  background-color: #332e2a;
-  padding: 6px 8px;
-  color: white;
-  border: none;
-  font-weight: bold;
-}
-.filters .bar button b{
-  display: inline-block;
-  width: 0;
-  height: 0;
-  margin-left: 2px;
-  vertical-align: middle;
-  border-top: 6px solid white;
-  border-right: 3px solid transparent;
-  border-left: 3px solid transparent;
-  content: "";
-}
-.filters .bar input[type=submit]:hover,
-.filters .bar select:hover,
-.filters .bar button:hover{
-  background-color: #5e5249;
+  position: absolute;
+  width: 320px;
+  top: 100%;
+  left: 0;
+  z-index: 90;
+  user-select: none;
+  button, select{
+    background-color: transparent;
+    color: #fff;
+    option{
+      color: black;
+    }
+  }
+  
+  ul{
+    li{
+      padding: 5px 0;
+      box-sizing: border-box;
+      display: inline-block;
+    }
+    .menu{
+      li{
+        width: 150px;
+        box-sizing: border-box;
+        text-align: left;
+        float: left;
+        font-size: 13px;
+        padding: 5px;
+      }
+    }
+    .click{
+      button{
+        border: 1px solid rgba(255,255,255,0.6);
+        b{
+          display: inline-block;
+          border-left: 3px solid transparent;
+          border-right: 3px solid transparent;
+          border-top: 7px solid #fff;
+          margin-left: 2px;
+        }
+      }
+    }
+    #default-filte{
+      font-size: 12px;
+      cursor: pointer;
+    }
+    #default-filte:hover{
+      color: rgb(240, 240, 159);
+    }
+  }
 }

@@ -13,11 +13,11 @@ Rails.application.routes.draw do
     resources :films, param: :pretty_param do
       resources :episodes, param: :number
     end
-    resources :categories
-    resources :directors
-    resources :artists
-    resources :studios
-    resources :countries
-    resources :users
+    resources :categories, param: :name
+    resources :directors, param: :name
+    resources :artists, param: :name
+    resources :studios, param: :name
+    resources :countries, param: :name
+    resources :users, param: :name
   end
 end

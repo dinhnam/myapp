@@ -19,18 +19,11 @@ $(document).ready(function(){
     });
     //filter
     $("#filter-icon").click(function(){
-      $(".filters").toggle(0);
+      $(".filters").toggle(20);
     });
-    $(".bar input[type=checkbox]").click(function(){
-      $('.genres_checked').remove();
-      $.each($("input[name='genres[]']:checked"), function() {
-        var genre = $(this).next().text();
-        $('.filters .drop').after(
-          "<li class='genres_checked left' style='font-size: 14px; padding: 4px;"+
-          "margin: 4px 2px; border-radius: 5px; background-color: #19414d;'>"+
-          genre+"</li>"
-          );
-        });
+    $("#default-filte").click(function(){
+      $("input[type=checkbox]").prop('checked', false);
+      $("select").prop('selectedIndex', 0);
     });
     //slider
     var slideIndex = 0;
@@ -39,20 +32,34 @@ $(document).ready(function(){
     var thumbs;
     var listSlide = document.getElementById("list-slide");
     var listThumb = document.getElementById("list-thumb");
+    var sliderContainer = document.getElementById("slider-container");
     var x_origin;
     var left_origin;
+    var widthContainer=0;
+    var witdhThumb=0;
+    var widthSlide=0;
     function mouseMove(){
-      if(event.which==1){
-        leftThumb = left_origin - 150*(x_origin - event.clientX)/widthContainer;
-        if(leftThumb>10){leftThumb=10}
-        if(leftThumb<(-slides.length*19)){leftThumb=(-slides.length*19)}
-        listThumb.style.left = leftThumb.toString()+"%";
+      if(event.which == 1 || ('ontouchstart' in document.documentElement)){
+        if(event.which == 1){
+          leftThumb = left_origin - (x_origin - event.clientX);
+        }else{
+          leftThumb = left_origin - 1.2*(x_origin - event.touches[0].clientX);
+        }
+        if(leftThumb>50){leftThumb=50}
+        if(leftThumb<widthContainer/2-$(listThumb).width())
+        {
+          leftThumb=widthContainer/2-$(listThumb).width();
+        }
+        $(listThumb).css('left',leftThumb);
       }
     }
     function mouseDown(){
-      x_origin = event.clientX;
-      left_origin = parseFloat(listThumb.style.left);
-      widthContainer = $("#slider-container").width();
+      if(event.which == 1){
+        x_origin = event.clientX;
+      }else if('ontouchstart' in document.documentElement){
+        x_origin = event.touches[0].clientX;
+      }
+      left_origin = $(listThumb).position().left;
     }
     function mouseEnter(){
       window.onwheel = function() {return false;};
@@ -62,14 +69,16 @@ $(document).ready(function(){
     }
     function mouseWheel(){
       if(event.deltaY>0){
-        leftThumb-=10;
+        leftThumb-=100;
       }else{
-        leftThumb+=10;
+        leftThumb+=100;
       }
-      if(leftThumb>10){leftThumb=10}
-      if(leftThumb<(-slides.length*19)){leftThumb=-slides.length*19}
-      listThumb.style.left = leftThumb.toString()+"%";
-      console.log(slides.length);
+      if(leftThumb>50){leftThumb=50}
+      if(leftThumb<widthContainer/2-$(listThumb).width())
+      {
+        leftThumb=widthContainer/2-$(listThumb).width();
+      }
+      $(listThumb).css('left',leftThumb);
     }
     if(listThumb != null){
       listThumb.addEventListener("mousemove", function(event) {
@@ -78,6 +87,14 @@ $(document).ready(function(){
       listThumb.addEventListener("mousedown", function(event) {
         mouseDown(event);
       });
+      //working in mobie
+      listThumb.addEventListener("touchmove", function(event) {
+        mouseMove(event);
+      });
+      listThumb.addEventListener("touchstart", function(event) {
+        mouseDown(event);
+      });
+      //
       listThumb.addEventListener("mouseenter", function(event) {
         mouseEnter(event);
       });
@@ -90,10 +107,12 @@ $(document).ready(function(){
     }
     function init(){
       slides = document.getElementsByClassName("slide-item");
+      slidesItem = document.querySelectorAll(".slide-item .item");
       thumbs = document.getElementsByClassName("thumb-item");
+      widthContainer = $(sliderContainer).width();
       if(slides.length>0){
-        listThumb.style.width = (slides.length*25).toString() +"%";
-        listSlide.style.width = (slides.length*50).toString() +"%";
+        widthThumb = $(listThumb).width()/slides.length;
+        widthSlide = $(listSlide).width()/slides.length;
         showSlides(slideIndex);
       }
     }
@@ -102,19 +121,24 @@ $(document).ready(function(){
       if (n >= slides.length-1) {slideIndex = slides.length-1}    
       if (n < 0) {slideIndex = 0}
       for (i = 0; i < slides.length; i++) {
-          slides[i].className = slides[i].className.replace(" active", "");
-          thumbs[i].className = thumbs[i].className.replace(" active", "");
+        slides[i].className = slides[i].className.replace(" active", "");
+        thumbs[i].className = thumbs[i].className.replace(" active", "");
       }
       slides[slideIndex].className += " active";
       thumbs[slideIndex].className += " active";
-      listSlide.style.left = (25-slideIndex*50).toString()+"%";
-      if(slideIndex>2){
-        leftThumb = -(slideIndex-1.5)*25;
+      var left = widthContainer/2 - widthSlide/2 - slideIndex*widthSlide
+      $(listSlide).css('left',left);
+      if(slideIndex>0){
+        leftThumb = widthContainer/2 - widthThumb/2 - slideIndex*widthThumb
       }else{
         leftThumb = 0;
       }
-      listThumb.style.left = leftThumb.toString()+"%";
+      $(listThumb).css('left',leftThumb);
     }
+    init();
+    $(window).resize(function(){
+       init();
+    });
     $('.prev-slide').click(function(){
       showSlides(slideIndex-=1);
     });
@@ -130,10 +154,9 @@ $(document).ready(function(){
       showSlides(slideIndex);
     });
     $('#focus').click(function(){
-      $('.focus').toggle(0);
+      $('.focus').toggle(50);
       $(this).toggleClass("white");
     });
-    init();
     //comment
     $('.reply-click').click(function(){
       var replys_id = "reply-"+this.id;

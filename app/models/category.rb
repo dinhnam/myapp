@@ -4,4 +4,8 @@ class Category < Feature
     foreign_key: "listable_id", dependent: :destroy
   has_many :films, through: :lists
   scope :search_name,->(name){where name: "#{name}"}
+
+  def to_param
+    name
+  end
 end

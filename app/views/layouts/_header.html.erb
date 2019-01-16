@@ -1,35 +1,28 @@
 <header>
-  <div class = "nav">
-    <ul class="bar">
-      <li class="left bold">
+  <nav>
+    <ul>
+      <li class="float-l">
         <%= link_to "Home", root_path %>
       </li>
-      <li class="left">
+      <li class="genres float-l">
         <div class = "click" >Genres</div>
-        <ul class="menu tab">
+        <ul class="menu none">
           <% @categories.each do |category| %>
-              <li> <%= link_to category.name, search_path(genre: category.name) %> </li>
+              <li> <%= link_to category.name, category %> </li>
           <% end %>
         </ul>
       </li>
-      <li class="left">
-        <div class = "click">Nations</div>
-        <ul class="menu tab">
-            <% @countries.each do |nation| %>
-                <li> <%= link_to nation.name, search_path(country: nation.name) %> </li>
-            <% end %>
-        </ul>
-      </li>
+
       <% if logged_in? %>
-        <li class="navbar right">
+        <li class="navbar float-r">
           <div class = "click" >
             <%= image_tag(current_user.avatar||"avatar-default.png") %>
           </div>
-          <ul class="menu col">
-            <li class= "hide right">
+          <ul class="menu none">
+            <li class= "hide">
               <%= link_to "My film", current_user %>
             </li>
-            <li class= "hide right">
+            <li class= "hide">
               <%= link_to "Profile", current_user %>
             </li>
             <li>
@@ -41,18 +34,18 @@
           </ul>
         </li>
         
-        <li class= "show right">
+        <li class= "show float-r">
           <%= link_to "Profile", current_user %>
         </li>
-        <li class= "show right">
+        <li class= "show float-r">
           <%= link_to "My film", current_user %>
         </li>
       <% elsif %>
-        <li class="navbar right hide">
+        <li class="navbar float-r hide">
           <div class = "click" >
             <%= image_tag "navbar.png" %>
           </div>
-          <ul class="menu col">
+          <ul class="menu none">
             <li>
               <%= link_to "Login", signin_path %>
             </li>
@@ -61,37 +54,38 @@
             </li>
           </ul>
         </li>
-        <li class= "show right">
+        <li class= "show float-r">
           <%= link_to "Sign Up", signup_path %>
         </li>
-        <li class= "show right">
+        <li class= "show float-r">
           <%= link_to "Login", signin_path %>
         </li>
       <% end %> 
       
-      <li class= "notices right">
-        <div class = "click" ><%= image_tag("notice-icon.png") %></div>
-        <ul class="menu tab">
+      <li class= "notices float-r">
+        <div class = "click" >Notices</div>
+        <ul class="menu none">
             <% @notices.each do |notice| %>
                 <li> <%= link_to notice.title, notice.link %> </li>
             <% end %>
-            <li> <%= link_to "Ban hien khong co bat ki thong bao nao", "#" %> </li>
+            <li>
+              <%= link_to "Ban hien khong co bat ki thong bao nao", "#" %>
+            </li>
         </ul>
       </li>
-
-      <li class="search left">
-        <div id="form-search">
-          <%= form_tag search_path, method: :get, id: "search" do%>
+      
+      <li id = "magnify" class= "click float-l">
+      </li>
+      <li class="search-container float-l none">
+          <%= form_tag search_path, method: :get, id: "search",
+               class: "toggle" do%>
             <%= text_field_tag :search %>
-            <%= submit_tag ""%>
+            <div id="filter-icon" class="float-l"></div>
+            <%= render 'layouts/filter' %>
+            <%= submit_tag "Search" %>
           <% end %>
-          <div id="result">
-          </div>
-          <div id="filter-icon" >
-            <%= image_tag "filter-icon.png" %>
-          </div>
-        <div>
+          <div id="result"></div>
       </li>
     </ul>
-    </div>
+  </nav>
 </header>

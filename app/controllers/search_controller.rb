@@ -7,7 +7,7 @@ class SearchController < ApplicationController
     @results += features.to_a
 
     if @results.empty?
-      render 'no_found', layout: false
+      render 'none', layout: false
     else
       render 'suggest', layout: false
     end

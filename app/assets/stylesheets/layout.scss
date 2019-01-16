@@ -14,7 +14,7 @@ body{
     position: relative;
     margin: 0 auto;
     padding: 0;
-    background-color: rgba(36, 3, 11, 0.7);
+    background-color: rgba(36, 3, 11, 0.5);
     display: flex;
     flex-direction: column;
 }
@@ -35,6 +35,7 @@ header{
   box-sizing: border-box;
   display: block;
   width: 100%;
+  min-height: 100vh; 
 }
 .sidebar{
   box-sizing: border-box;
@@ -75,12 +76,13 @@ footer{
 nav{
   background-color: rgba(36, 3, 11, 0.7);
   padding: 8px;
+  box-sizing: border-box;
   em{
     font-weight: bold;
     font-size: 16px;
   }
 }
-a:hover{
+.a-active:hover{
   color: rgb(159, 255, 130);
   text-decoration: underline;
 }
@@ -119,8 +121,28 @@ ul{
   from {opacity: 0.2} 
   to {opacity: .5}
 }
+.toggle {
+  -webkit-animation-name: toggle;
+  -webkit-animation-duration: 0.5s;
+  animation-name: toggle;
+  animation-duration: 0.5s;
+}
+@-webkit-keyframes toggle {
+  from {width: 0%}
+  to {width: 100%}
+}
+@keyframes toggle {
+  from {width: 0%}
+  to {width: 100%}
+}
 .hidden{
   visibility: hidden;
+}
+.none{
+  display: none;
+}
+.show{
+  display: block;
 }
 .shade{
   box-shadow: 5px 5px 5px rgb(24, 23, 23);
@@ -132,6 +154,10 @@ ul{
 }
 .float-r{
   float: right;
+}
+.click{
+  cursor: pointer;
+  user-select: none;
 }
 
 @media screen and (max-width: 1080px) {

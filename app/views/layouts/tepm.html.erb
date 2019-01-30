@@ -1,0 +1,28 @@
+<cite><%= @film.name %></cite>
+  <div class="cover-container">
+    <%= link_to image_tag(@film.cover), film_episode_path(@film,
+        @film.episodes.first) %>
+    <%= link_to "Xem Phim",  film_episode_path(@film, @film.episodes.first),
+          class: "button-watch"%>
+  </div>
+  <strong>Tập mới: </strong>
+  <% @episodes.each_with_index do |episode, index| %>
+    <%= link_to episode.name, film_episode_path(@film, episode), class: "a-active" %>
+    <%= "," if index + 1< @episodes.count  %>
+  <% end %>
+  <strong>tổng số tập: </strong><%= @film.total_episodes||"??" %><br/>
+  <strong>Thể loại: </strong>
+  <%= render 'films/feature', features: @film.categories %>
+  <strong>Năm phát hành: </strong>
+  <%= link_to @film.release.year, search_path(year: @film.release.year) %><br/>
+  <strong>Hãng phim: </strong>
+  <%= render 'films/feature', features: @film.studios %>
+  <strong>Đạo diễn: </strong>
+  <%= render 'films/feature', features: @film.directors%>
+  <strong>Diễn viên: </strong>
+  <%= render 'films/feature', features: @film.artists %>
+  <strong>Lượt xem: </strong><%= @film.view.year_views %><br/>
+  
+  <strong>Đánh giá: </strong>
+  <%= @film.rate.average %> trên <%= @film.rate.number_voter %> lượt bình chọn
+  <%= render 'layouts/rating' %>

@@ -1,0 +1,46 @@
+<div class="form-film-upload">
+  <%= form_with model: @film, local: true do |form| %>
+    <p>Tên phim</p>
+    <p><%= form.text_field :name %></p>
+    <p>thời lượng/tập</p>
+    <p><%= form.number_field :duration, placeholder: "minute" %></p>
+    <p>Năm phát hành</p>
+    <p><%= form.number_field :release , value: Time.now.year, in: 1900...2099  %></p>
+    <p>Số tập</p>
+    <p><%= form.number_field :total_episodes %></p>
+    <p>Chất lượng</p>
+    <p><%= form.select :quality, Settings.filter.quality %></p>
+    <p>Tình trạng</p>
+    <p><%= form.select :status, [["finish", "finish"], ["unfinish", "unfinish"]] %></p>
+    <p>cover</p>
+    <p><%= form.file_field :pictures, id: "cover-upload", 
+              accept: 'image/jpeg,image/gif,image/png' %></p>
+    <div id="cover-preview"></div>
+    <p>wallpaper</p>
+    <p><%= form.file_field :wallpaper, id: "wallpaper-upload", 
+              accept: 'image/jpeg,image/gif,image/png' %></p>
+    <div id="wallpaper-preview"></div>
+    <p>Mô tả</p>
+    <p><%= form.text_area :description, cols: 80, rows: 8 %></p>
+    <p>Tập phim</p>
+    <table id="film-episodes">
+      <tr>
+        <th>Tập số</th>
+        <th>Tên</th>
+        <th>link</th>
+        <th></th>
+      </tr>
+      <%= form.fields_for :episodes do |e| %>
+      <tr class="episodes-input">
+        <td class="col-1"> <%= e.number_field :number, in: 0...10000 %> </td>
+        <td class="col-2"> <%= e.text_field :name %> </td>
+        <td class="col-3"> <%= e.text_field :link, class: "link" %> </td>
+        <td class="delete-episode">X</td>
+      </tr>
+      <% end %>
+        
+    </table>
+    <b class="add-episode">Add+</b>
+    <p><%= form.submit "create film" %></p>
+  <% end %>
+</div>

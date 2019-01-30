@@ -1,8 +1,9 @@
 header{
   width: 100%;
   box-sizing: border-box;
-  background-color: black;
+  background-color: #1c1c1c;
   position: relative;
+  color: #fff;
   .hide{
     display: none;
   }
@@ -10,6 +11,10 @@ header{
     margin: 0;
     padding: 0;
     font-size: 17px;
+    background-color: #1c1c1c;
+    a{
+       color: #fff;
+    }
     ul{
       margin: 0;
       padding: 0;
@@ -20,13 +25,13 @@ header{
     li{
         list-style-type: none;
         text-align: center;
-        padding: 10px 15px;
+        padding: 12px 15px;
         img{
           width: 100%;
         }
     }
     li:hover{
-      background-color: rgba(41, 37, 37, 0.5);
+      background-color: rgba(80, 65, 65, 0.5);
     }
     .menu{
       position: absolute;
@@ -152,7 +157,7 @@ header{
     header{
       nav{
         li{
-          padding: 10px 10px;
+          padding: 12px 10px;
         }
         .search-container{
           width: 40%;

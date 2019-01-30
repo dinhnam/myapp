@@ -1,32 +1,28 @@
-<nav class= "filters none">
-  <ul>
-    <li>
-        <div class = "click">
-          <%= content_tag :button, type: :button do %>
-            genres<b></b>
-          <% end %>
-        </div>
-        <ul class="menu">
-          <% @categories.each do |category| %>
-              <li>
-                  <%= check_box_tag "genres[]", category.id, false ,
-                        id: category.id %>
-                  <i><%= category.name %></i>
-              </li>
-          <% end %>
-        </ul>
-    </li>
-    <li>
-      <%= select_tag "sort", options_for_select(Settings.filter.sort_movies, 
-            Settings.filter.sort_movies.first) %>
-    </li>
-    <li>
-      <%= select_tag "progress", options_for_select(Settings.filter.progress,
-            Settings.filter.progress.first) %>
-    </li>
-    <li id="default-filte">
-      <i>default</i>
-    </li>
-    
-  </ul>
-</nav>
+<div id="form-filter">
+<%= form_tag "", method: :get do %>
+    <%= hidden_field_tag 'search', @search||"" %>
+    <%= content_tag :button, type: :button, class: "click" do %>
+      Genres<b></b>
+    <% end %>
+    <ul class="menu none">
+      <% Category.order(name: :asc).each do |category| %>
+          <li>
+            <% if @genres && @genres.include?(category.id.to_s) %>
+              <%= check_box_tag "genres[]", category.id, true ,
+                    id: category.id %>
+            <% else %>
+              <%= check_box_tag "genres[]", category.id, false ,
+                    id: category.id %>
+            <% end %>
+            <i><%= category.name %></i>
+          </li>
+      <% end %>
+    </ul>
+    <%= select_tag :sort, options_for_select(Settings.filter.sort_movies, 
+          @sort||Settings.filter.sort_movies.first) %>
+    <%= select_tag :status, options_for_select(Settings.filter.status,
+          @status||Settings.filter.progress.first) %>
+    <%= submit_tag "Filter" %>
+    <div id="reset-filte"><%= image_tag 'reset.png' %></div>
+<% end %>
+</div>

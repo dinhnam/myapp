@@ -21,45 +21,52 @@ $(document).ready(function(){
     $("#filter-icon").click(function(){
       $(".filters").toggle(20);
     });
-    $("#default-filte").click(function(){
+    $("#reset-filte").click(function(){
       $("input[type=checkbox]").prop('checked', false);
       $("select").prop('selectedIndex', 0);
     });
     //slider
     var slideIndex = 0;
-    var leftThumb = 0;
+    var ThumbXAxis = 0;
+    var downXAxis = 0;
+    var SlideXAxis = 0;
     var slides;
     var thumbs;
-    var listSlide = document.getElementById("list-slide");
-    var listThumb = document.getElementById("list-thumb");
-    var sliderContainer = document.getElementById("slider-container");
-    var x_origin;
-    var left_origin;
-    var widthContainer=0;
-    var witdhThumb=0;
+    const listSlide = document.getElementById("list-slide");
+    const listThumb = document.getElementById("list-thumb");
+    const sliderContainer = document.getElementById("slider-container");
+    const thumbContainer = document.getElementById("thumb-container");
+    var widthslideContainer = 0;
+    var widthThumbContainer = 0;
     var widthSlide=0;
+    var widthThumb=0;
+    var interval = setInterval(nextSlide, 5000);
+    function translateX(x){
+      if(x>10){x=10}
+      if(x<-(slides.length - 2.5)*widthThumb)
+      {
+        x=-(slides.length -2.5)*widthThumb;
+      }
+      $(listThumb).css('left',x);
+    }
     function mouseMove(){
-      if(event.which == 1 || ('ontouchstart' in document.documentElement)){
-        if(event.which == 1){
-          leftThumb = left_origin - (x_origin - event.clientX);
-        }else{
-          leftThumb = left_origin - 1.2*(x_origin - event.touches[0].clientX);
-        }
-        if(leftThumb>50){leftThumb=50}
-        if(leftThumb<widthContainer/2-$(listThumb).width())
-        {
-          leftThumb=widthContainer/2-$(listThumb).width();
-        }
-        $(listThumb).css('left',leftThumb);
+      if(event.which == 1){
+        $('.thumb-item').css('pointer-events','none');
+        translateX(ThumbXAxis - downXAxis + event.clientX);
+      }
+    }
+    function touchMove(){
+       if('ontouchstart' in document.documentElement){
+        translateX(ThumbXAxis - downXAxis + event.touches[0].clientX);
       }
     }
     function mouseDown(){
-      if(event.which == 1){
-        x_origin = event.clientX;
-      }else if('ontouchstart' in document.documentElement){
-        x_origin = event.touches[0].clientX;
-      }
-      left_origin = $(listThumb).position().left;
+      downXAxis = event.clientX;
+      ThumbXAxis = $(listThumb).position().left;
+    }
+    function touchStart(){
+      downXAxis = event.touches[0].clientX;
+      ThumbXAxis = $(listThumb).position().left;
     }
     function mouseEnter(){
       window.onwheel = function() {return false;};
@@ -69,30 +76,31 @@ $(document).ready(function(){
     }
     function mouseWheel(){
       if(event.deltaY>0){
-        leftThumb-=100;
+        ThumbXAxis-=100;
       }else{
-        leftThumb+=100;
+        ThumbXAxis+=100;
       }
-      if(leftThumb>50){leftThumb=50}
-      if(leftThumb<widthContainer/2-$(listThumb).width())
-      {
-        leftThumb=widthContainer/2-$(listThumb).width();
-      }
-      $(listThumb).css('left',leftThumb);
+      translateX(ThumbXAxis);
     }
-    if(listThumb != null){
+    function mouseUp(){
+      $('.thumb-item').css('pointer-events','auto');
+    }
+    if(sliderContainer != null){
       listThumb.addEventListener("mousemove", function(event) {
         mouseMove(event);
       });
       listThumb.addEventListener("mousedown", function(event) {
         mouseDown(event);
       });
+      sliderContainer.addEventListener("mouseup", function(event) {
+        mouseUp(event);
+      });
       //working in mobie
       listThumb.addEventListener("touchmove", function(event) {
-        mouseMove(event);
+        touchMove(event);
       });
       listThumb.addEventListener("touchstart", function(event) {
-        mouseDown(event);
+        touchStart(event);
       });
       //
       listThumb.addEventListener("mouseenter", function(event) {
@@ -104,13 +112,27 @@ $(document).ready(function(){
       listThumb.addEventListener("mousewheel", function(event) {
         mouseWheel(event);
       });
+      sliderContainer.addEventListener("mouseenter", function(event) {
+        clearInterval(interval);
+      });
+      sliderContainer.addEventListener("mouseleave", function(event) {
+        interval = setInterval(nextSlide, 5000);
+      });
+    }
+    function nextSlide(){
+      if(listThumb!=null){
+        showSlides(slideIndex+=1);
+      }
     }
     function init(){
       slides = document.getElementsByClassName("slide-item");
       slidesItem = document.querySelectorAll(".slide-item .item");
       thumbs = document.getElementsByClassName("thumb-item");
-      widthContainer = $(sliderContainer).width();
-      if(slides.length>0){
+      if(listSlide!=null){
+        widthslideContainer = $(sliderContainer).width();
+        widthThumbContainer = $(thumbContainer).width();
+        listSlide.style.width = slides.length*100 + "%";
+        listThumb.style.width = slides.length*26 + "%"
         widthThumb = $(listThumb).width()/slides.length;
         widthSlide = $(listSlide).width()/slides.length;
         showSlides(slideIndex);
@@ -118,7 +140,7 @@ $(document).ready(function(){
     }
     function showSlides(n) {
       var i;
-      if (n >= slides.length-1) {slideIndex = slides.length-1}    
+      if (n >= slides.length) {slideIndex = 0}    
       if (n < 0) {slideIndex = 0}
       for (i = 0; i < slides.length; i++) {
         slides[i].className = slides[i].className.replace(" active", "");
@@ -126,14 +148,15 @@ $(document).ready(function(){
       }
       slides[slideIndex].className += " active";
       thumbs[slideIndex].className += " active";
-      var left = widthContainer/2 - widthSlide/2 - slideIndex*widthSlide
-      $(listSlide).css('left',left);
-      if(slideIndex>0){
-        leftThumb = widthContainer/2 - widthThumb/2 - slideIndex*widthThumb
-      }else{
-        leftThumb = 0;
+      SlideXAxis = -slideIndex*widthSlide;
+      $(listSlide).css('left',SlideXAxis);
+      if(slideIndex<3){
+        ThumbXAxis = 0;
       }
-      $(listThumb).css('left',leftThumb);
+      if(slideIndex >= 3 ){
+        ThumbXAxis = -(slideIndex+0.5)*widthThumb + widthThumbContainer/2;
+      }
+      $(listThumb).css('left',ThumbXAxis);
     }
     init();
     $(window).resize(function(){
@@ -153,10 +176,6 @@ $(document).ready(function(){
       slideIndex = parseInt(this.id);
       showSlides(slideIndex);
     });
-    $('#focus').click(function(){
-      $('.focus').toggle(50);
-      $(this).toggleClass("white");
-    });
     //comment
     $('.reply-click').click(function(){
       var replys_id = "reply-"+this.id;
@@ -170,7 +189,7 @@ $(document).ready(function(){
     });
     //searching
     var url = '/suggest'
-    const $source = document.querySelector('#search input[type=text]');
+    const $source = document.querySelector('#form-search input[type=text]');
     const $result = document.querySelector('#result');
     const searching = function(e) {
       if(e.target.value.length > 2){
@@ -193,5 +212,52 @@ $(document).ready(function(){
     }
     $source.addEventListener('input', searching ) // register for oninput
     $source.addEventListener('propertychange', searching ) // for IE8
-    //
+    //form film upload
+    coverPreview = document.querySelector('#cover-preview');
+    wallpaperPreview = document.querySelector('#wallpaper-preview');
+    function validateFile(file){
+      var check = true;
+      if(file.size > 5*1024*1024){
+        check = false;
+        alert("File size is larger than 5MB!");
+      }
+      return check;
+    }
+    function imagesPreview(input,placePreview){
+       placePreview.innerHTML="";
+       if (input.files) {
+          if(validateFile(input.files[0])){
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var img = $($.parseHTML('<img>')).attr('src', event.target.result);
+                img.appendTo(placePreview);
+            }
+            reader.readAsDataURL(input.files[0]);
+          }else{
+            input.value = '';
+          }
+        }
+    }
+
+    $('#cover-upload').on('change', function() {
+      imagesPreview(this,coverPreview);
+    });
+
+    $('#wallpaper-upload').on('change', function() {
+      imagesPreview(this,wallpaperPreview);
+    });
+
+    $('.add-episode').click(function(){
+      var episodesInput = document.getElementsByClassName("episodes-input");
+      var newEpisode = $(episodesInput[0]).clone();
+      newEpisode.find("input").val("");
+      $("#film-episodes").append(newEpisode);
+    });
+    
+    $("#film-episodes").on("click", ".delete-episode", function(){
+      var episodesInput = document.getElementsByClassName("episodes-input");
+      if(episodesInput.length > 1){
+        this.closest(".episodes-input").remove();
+      }
+    });
 });

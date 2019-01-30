@@ -1,0 +1,6 @@
+<%= form_tag search_path, method: :get,
+      class: "toggle", id: "form-search" do %>
+  <%= text_field_tag :search, @search||"" %>
+  <%= submit_tag "Search" %>
+<% end %>
+<div id="result"></div>

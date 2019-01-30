@@ -1,0 +1,12 @@
+<div class="stars">
+  <% per = 100*(rate.star- rate.star.to_i).round(1) %>
+  <% rate.star.to_i.times do %>
+    <%= image_tag 'star.png' %>
+  <% end %>
+  <% if per > 0 %>
+    <div class="per-star">
+      <%= image_tag 'none_star.png' %>
+      <div style="width: <%= per %>%"></div>
+    </div>
+  <% end %>
+</div>

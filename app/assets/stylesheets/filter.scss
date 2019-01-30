@@ -1,52 +1,42 @@
-.filters{
-  position: absolute;
-  width: 320px;
-  top: 100%;
-  left: 0;
-  z-index: 90;
-  user-select: none;
-  button, select{
+#form-filter{
+  float: right;
+  position: relative;
+  div, button, select, input[type=submit]{
+    display: inline;
+    cursor: pointer;
     background-color: transparent;
-    color: #fff;
-    option{
-      color: black;
+    border: none;
+    padding: 2px;
+    font-size: 14px;
+    
+    img{
+      height: 12px;
+      margin: 0 2px;
+    }
+    b{
+      display: inline-block;
+      border-top: 7px solid rgb(0, 0, 0);
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+    }
+    &:hover{
+      color: rgb(195, 104, 255);
     }
   }
-  
-  ul{
+  .menu{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 90;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: rgba(19, 17, 17, 0.8);
     li{
-      padding: 5px 0;
-      box-sizing: border-box;
-      display: inline-block;
-    }
-    .menu{
-      li{
-        width: 150px;
-        box-sizing: border-box;
-        text-align: left;
-        float: left;
-        font-size: 13px;
-        padding: 5px;
-      }
-    }
-    .click{
-      button{
-        border: 1px solid rgba(255,255,255,0.6);
-        b{
-          display: inline-block;
-          border-left: 3px solid transparent;
-          border-right: 3px solid transparent;
-          border-top: 7px solid #fff;
-          margin-left: 2px;
-        }
-      }
-    }
-    #default-filte{
-      font-size: 12px;
-      cursor: pointer;
-    }
-    #default-filte:hover{
-      color: rgb(240, 240, 159);
+      float: left;
+      padding: 5px;
+      width: 120px;
+      color: #fff;
     }
   }
 }

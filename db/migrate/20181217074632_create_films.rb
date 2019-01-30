@@ -3,12 +3,12 @@ class CreateFilms < ActiveRecord::Migration[5.2]
     create_table :films do |t|
       t.string :name
       t.string :description
-      t.string :trailer
       t.string :pictures
       t.integer :duration
-      t.datetime :release
-      t.string :quality
+      t.integer :release
+      t.integer :quality
       t.integer :total_episodes
+      t.integer :status, default: 0, null: false
       
       t.timestamps
     end

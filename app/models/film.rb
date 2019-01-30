@@ -19,6 +19,12 @@ class Film < ApplicationRecord
   scope :order_view_type, ->(type){joins(:view).merge(View.order("#{type}_views" => :desc))}
   scope :order_date, ->{joins(:episodes).merge(Episode.order(updated_at: :desc)).uniq}
 
+  enum status: [:unfinish, :finish]
+  enum quality: [:mHD, :HD, :BluRay]
+  mount_uploader :pictures, PicturesUploader
+  
+  accepts_nested_attributes_for :episodes
+
   def to_param
     pretty_param
   end
@@ -37,9 +43,9 @@ class Film < ApplicationRecord
     return image["thumb"]
   end
 
-  def wallpager
+  def wallpaper
     image = JSON.parse(self.pictures)
-    return image["wallpager"]
+    return image["wallpaper"]
   end
    
   def set_thumb thumb
@@ -48,7 +54,7 @@ class Film < ApplicationRecord
     self.update_column :cover, JSON.generate(image)
   end
 
-  def set_wallpager wallpager
+  def set_wallpaper wallpager
     image = JSON.parse(self.pictures)
     image["wallpager"] = wallpager
     self.update_column :cover, JSON.generate(image)

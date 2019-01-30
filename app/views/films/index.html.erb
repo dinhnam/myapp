@@ -1,6 +1,16 @@
 <div class="main-content">
-  <% @films.each do |film| %>
-    <%= render 'layouts/item',film: film, type: "thumb" %> 
+  <div class="title-bar">
+    <% if @feature %>
+      <em><%= @feature.type %> : <%= @feature.name %></em>
+    <% else %>
+      <em>Tìm kiếm : <%= @search==""? "all": @search %></em>
+    <% end %>
+    <em>*</em>
+    <i> ( <%= @count %> kết quả ) </i>
+    <%= render 'layouts/filter' %>
+  </div>
+  <% @films.each_with_index do |film, index| %>
+    <%= render 'layouts/item',film: film, type: "thumb", id: index %> 
   <% end %>
   <%= paginate @films %>
 </div>

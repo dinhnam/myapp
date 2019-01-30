@@ -71,3 +71,29 @@
   display: flex;
   flex-direction: row;
 }
+.form-film-upload{
+  img{
+    width: 20%;
+  }
+  .add-episode{
+      cursor: pointer;
+  }
+  #film-episodes{
+    width: 100%;
+    .col-1{
+      width: 5%;
+    }
+    .col-2{
+      width: 20%;
+    }
+    .col-3{
+      width: 70%;
+    }
+    .delete-episode{
+      cursor: pointer;
+    }
+    input{
+      width: 98%;
+    }
+  }
+}

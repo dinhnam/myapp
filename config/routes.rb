@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|vi/ do
     root "static_pages#home"
+    get 'new_releases', to: "static_pages#new"
+    get 'top_view', to: "static_pages#top"
     get "/signup", to: "users#new"
     post "/signup", to: "users#create"
     get "/signin", to: "sessions#login"
@@ -9,7 +11,6 @@ Rails.application.routes.draw do
     get "/activation", to: "sessions#activation"
     get "/search", to: "search#index"
     get "/suggest", to: "search#suggest"
-    get "/filter", to: "search#filter"
     resources :films, param: :pretty_param do
       resources :episodes, param: :number
     end

@@ -1,24 +1,33 @@
 <div id = "slider-container">
-  <div id="focus">
-    <div class= "focus" id= "focus-1">Top ngày</div>
-    <div class= "focus" id= "focus-2">Top tuần</div>
-    <div class= "focus" id= "focus-3">Top tháng</div>
-    <div class= "focus" id= "focus-4">Top năm</div>
-  </div>
   <div class="prev-slide">&#10094;</div>
   <div class="next-slide">&#10095;</div>
   <div id="list-slide" class="transit-slow">
-    <% @top_films.each_with_index do |film, index| %>
+    <% @focus_films.each_with_index do |film, index| %>
       <%= content_tag :div, class: "slide-item transit-slow", id: index do %>
-        <%= render 'layouts/item',film: film, type: "wallpager" %>
+        <%= content_tag :div, class: "item transit-short", title: film.name  do %>
+          <div class="cover">
+            <%= image_tag film.pictures.url||"default-thumb.jpg" %>
+          </div>
+          <div class="title">
+            <strong><%= film.name %></strong><br/>
+            <b><%= link_to "Xem Phim" %></b>
+          </div>
+          
+        <% end %>
       <% end %>
     <% end %>
   </div>
-  <div id="list-thumb" class="transit-medium">
-    <% @top_films.each_with_index do |film, index| %>
-      <%= content_tag :div, class: "thumb-item", id: index do %>
-        <%= render 'layouts/item',film: film, type: "thumb" %>
+  <div id="thumb-container">
+    <div id="list-thumb" class="transit-medium">
+      <% @focus_films.each_with_index do |film, index| %>
+        <%= content_tag :div, class: "thumb-item", id: index do %>
+          <%= content_tag :div, class: "item thumb transit-short", title: film.name  do %>
+            <div class="cover shade">
+              <%= image_tag film.pictures.thumb.url||"default-thumb.jpg" %>
+            </div>
+          <% end %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>

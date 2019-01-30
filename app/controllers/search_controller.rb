@@ -1,11 +1,11 @@
 class SearchController < ApplicationController
   def suggest
-    @results = []
+    res = []
     film = Film.search(name_cont: params[:search]).result
-    @results += film.to_a
+    res += film.to_a
     features = Feature.search(name_cont: params[:search]).result
-    @results += features.to_a
-
+    res += features.to_a
+    @results = Kaminari.paginate_array(res).page(params[:page]).per(12)
     if @results.empty?
       render 'none', layout: false
     else
@@ -14,21 +14,11 @@ class SearchController < ApplicationController
   end
 
   def index
-    @category = Category.find_by(name: params[:genre])
-    if @category
-    @films = @category.films.all.page(params[:page]).per(20)
-    end
+    @search = params[:search]
+    @films = Film.search(name_cont: @search).result
+    @films = filter @films
+    
     render 'films/index'
   end
-
-  def filter
-    genres = Category.search(id_in: params[:genres]).result
-    films = Film.all
-    genres.each do |genre|
-      films = films & genre.films
-    end
-    ids = films.map(&:id)
-    @films = Film.where(id: ids).page(params[:page]).per(15)
-    render 'films/index'
-  end
+  
 end

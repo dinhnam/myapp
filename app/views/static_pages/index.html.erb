@@ -1,0 +1,6 @@
+<div class="main-content">
+  <% @films.each_with_index do |film, index| %>
+    <%= render 'layouts/item',film: film, type: "thumb", id: index %> 
+  <% end %>
+  <%= paginate @films %>
+</div>

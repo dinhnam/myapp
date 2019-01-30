@@ -1,16 +1,4 @@
-<%
-  years = []
-  now_year = Time.new.year
-  years<<["all", 0]
-  (now_year).downto(2005).each_with_index do |year, index|
-    if year == 2005
-      years<<["2005..",index+1]
-    elsif
-      years<<[year, index+1]
-    end
-  end
-%>
 filter:
-  progress: [["all", 0], ["finished", 1], ["unfinished", 2]]
-  sort_movies: [["updated at", 0], ["views", 1], ["rate", 2]]
-  years: <%= years %>
+  status: [["all", "all"], ["finished", "finished"], ["unfinished", "unfinished"]]
+  sort_movies: [["date update", 0], ["views", 1], ["rating", 2]]
+  quality: [["mHD", "mHD"], ["HD", "HD"], ["BluRay", "BluRay"]]

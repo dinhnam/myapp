@@ -21,6 +21,8 @@ gem "ransack"
 gem "sass-rails", "~> 5.0"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
@@ -40,4 +42,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
+group :production do
+  gem 'fog'
+end
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

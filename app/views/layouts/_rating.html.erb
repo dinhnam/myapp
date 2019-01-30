@@ -1,0 +1,16 @@
+<div class="rate-container">
+  <%= render 'layouts/star', rate: @film.rate %>
+  <% 5.downto(1) do |n| %>
+    <div class="bar-container">
+        <em><%= n %><%= image_tag 'star.png' %></em>
+        <div class= 'bar-hundred'>
+          <div class="bar-per bar-<%= n %>"
+            style="width: <%= @film.rate.percent "star_#{n}" %>%">
+          </div>
+        </div>
+        <em>
+          <%= @film.rate["star_#{n}"] %><%= image_tag 'tick.png' %>
+        </em>
+    </div>
+  <% end %>
+</div>

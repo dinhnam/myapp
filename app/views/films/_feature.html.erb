@@ -1,0 +1,4 @@
+<% features.each_with_index do |feature, index| %>
+  <%= link_to feature.name, feature, class: "a-active" %>
+  <%= "," if index + 1< features.count  %>
+<% end %>

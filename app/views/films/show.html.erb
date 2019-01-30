@@ -1,22 +1,2 @@
-<% film = @film %>
-<% @link_film = film_episode_path(@film, @film.episodes.first) %>
-<% provide :watch, "Xem phim" %>
-<div class="main-content">
-  <%= render "layouts/bar_address" %>
-  <div class="description-container">
-  <%= render "films/description" %>
-  <div id="rating" >
-    <%= render 'films/rating' %>
-  </div>
-  <div id="intro">
-  <p><b>Introduction</b></p>
-  <%= film.description %>
-  </div>
-  <div id="trailer">
-    <iframe width="560" height="315" src= <%= film.trailer.to_s %> frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-  </div>
-  <%= render @comments %>
-</div>
-<div class="sidebar">
-</div>
+<%= render "layouts/breadcrumb" %>
+<%= render "films/description" %>

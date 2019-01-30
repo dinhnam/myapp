@@ -1,10 +1,3 @@
-def average_rate rate
-  sum = rate.star_5 + rate.star_4 + rate.star_3 + rate.star_2
-        + rate.star_1
-  sum_value = 5*rate.star_5 + 4*rate.star_4 + 3*rate.star_3 + 2*rate.star_2
-              + rate.star_1
-  return (1.0*sum_value/sum).round(1)
-end
 categories_text = "Adventure: Anime này sẽ là một hành trình phiêu lưu của nhân vật chính
 Fantasy: Những loại phim hoạt hình giả tưởng về những chủ đề thần thoại hoặc phép thuật
 Harem: Phim thường nói về nhân vật nam được nhiều nhân vật nữ xung quanh hâm mộ
@@ -29,6 +22,11 @@ Parody: Tương tự như phim truyền hình anime thể loại này sẽ làm 
 Shonen ai: Phim anime về tình yêu của nam giới và nam giới, thường nhẹ nhàng hơn so với yaoi
 Mecha: Anime có đề tài về máy móc hoặc robot
 Drama: Anime thuộc thể loại kịch"
+ep = ["https://www.youtube.com/embed/1__8I6tjxjM",
+"https://www2068.vcdn.xyz/token=nkz3mUPUxtUHfghXL52BmQ/1547944907/0.0.0.0/16/2/1a/49f4c1c5ede52b5d304020dadb91c1a2-720p.mp4",
+"https://www1270.vcdn.xyz/token=MaFQNdzDe9_IJYtE183BxQ/1547944682/0.0.0.0/23/f/77/4d17eb340f54f32d53dfa0e3c7c0577f-720p.mp4",
+"https://www2147.vcdn.xyz/token=IsWdKrtfQtzbfkLIBxm7fw/1547944826/0.0.0.0/22/d/8a/afb78e1015ef77e96729f68d097a38ad-720p.mp4",
+"https://www1273.vcdn.xyz/token=TVI33ViH125cWpVh8Unn6g/1547945011/0.0.0.0/6/4/67/3bff301b98940e6a088292026b62b674-720p.mp4"]
 categories_text.each_line do |line|
   data = line.split(":")
   Category.create!(name: data[0], description: data[1])
@@ -97,20 +95,20 @@ directors = Director.all
   user.activate
 end
 users = User.all
-@images = Dir.glob("app/assets/images/test/*{.jpg,.png,.gif}")
+@images = Dir.glob("app/assets/images/test/*{.jpg,.jpeg,.png,.gif}")
 30.times do |n|
   name = Faker::Movie.quote
-  release = Faker::Date.between(15.years.ago, Date.today)
-  image = "test/"+File.basename(@images[rand(0...12)]).to_s
+  release = Faker::Date.between(15.years.ago, Date.today).year.to_i
   film = Film.create!(
       name: name,
-      pictures: JSON.generate({cover: "cover.jpg", wallpager: image, thumb: image}),
+      pictures: File.open(@images[rand(0..14)]),
       total_episodes: 12,
-      trailer: 'https://www.youtube.com/embed/sSYoz0JmnZo',
       release:  release,
       description: Faker::Lorem.paragraph(rand(50..100)),
-      pretty_param: name.gsub(/[, .]/,'-') + release.year.to_s,
-      duration: 24
+      pretty_param: name.gsub(/[, .]/,'-') + "-" + SecureRandom.hex(2),
+      duration: 45,
+      status: rand(0..1),
+      quality: rand(0..2)
   )
   film.rate = Rate.new(
     star_5: rand(0..1000), 
@@ -138,12 +136,21 @@ users = User.all
     end
   end
   5.times do |n|
-    episode = film.episodes.create!(
-    name: "tập #{n+1}",
-    number: n+1, 
-    link: "http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4"
-    )
-    rand(0..10).times do
+    if n==0
+      episode = film.episodes.create!(
+      name: "trailer",
+      number: n,
+      link: ep[n]
+      )
+    else
+      episode = film.episodes.create!(
+      name: "tập #{n}",
+      number: n, 
+      link: ep[n]
+      )
+    end
+   
+    rand(0..5).times do
       comment =  episode.comments.create!(
         user_id: users[rand(0...30)].id, 
         content: Faker::Lorem.paragraph(rand(5..30))

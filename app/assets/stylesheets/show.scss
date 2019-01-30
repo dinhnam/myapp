@@ -1,133 +1,121 @@
-.description-container{
-  float: left;
-  width: 100%;
-  background-color: rgba(31,7,3,0.2);
-  border-radius: 10px;
+#description-container{
+  width: 98%;
   box-sizing: border-box;
-  overflow: hidden;
-}
-.descriptions{
-    width: 100%;
-    height: 100%;
-    float: left;
-    box-sizing: border-box;
-    color: #fff;
+  padding: 8px;
+  background-color: rgba(24, 22, 22,0.8);
+  border-radius: 10px;
+  margin: 5px auto;
+  line-height: 1.3em;
+  color: aqua;
+  font-size: 1.1em;
+  display: block;
+  dt, dd{
+    display: inline;
+    b{
+    color: rgb(139, 176, 255);
+    }
+    strong{
+      font-size: 1.5em;
+    }
+  }
+  dd{
+    margin-left: 10px;
+    font-weight: normal;
+  }
+  a{
+    font-style: italic;
+    color: rgb(141, 255, 131);
+  }
+  .cover-container{
     position: relative;
-    overflow: hidden;
-    margin: 2px;
+    width: 23%;
+    min-width: 150px;
+    float: left;
+    margin: 5px 10px 10px 5px;
+    &::before{
+      content: "";
+      display: block;
+      padding-top: 142%;
+    }
+    a{
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+    }
+    img{
+      width: 100%;
+      height: 100%;
+    }
+    .button-watch{
+      width: 100%;
+      height: 15%;
+      color: rgb(243, 240, 236);
+      line-height: 2em;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.3em;
+      box-sizing: border-box;
+      background-color: rgba(19, 18, 18,0.7);
+      &:hover{
+        background-color: rgba(17, 16, 16, 0.9);
+      }
+    }
+  }
 }
-.descriptions a{
-  color: rgb(217, 236, 247);
-  text-decoration: none;
+.conversation{
+  width: 61.8%;
 }
-.descriptions a:hover{
-  color: rgb(190, 252, 120);
-}
-.descriptions::before {
+.video-container{
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  &:before{
     content: "";
     display: block;
     padding-top: 56.25%;
+  }
+  video, iframe{
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    width: 96%;
+    height: 96%;
+  }
+  
 }
-.descriptions img{
-  position: absolute;
-  top: 0;
-  left: 0;
-  vertical-align: middle;
-  height: 100%;
-}
-.description-container .descriptions img{
-  opacity: 0.4;
-}
-.descriptions  table{
-  position: absolute;
-  left: 0;
-  top: 0;
+.play-container{
   width: 100%;
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  min-height: 90vh; 
+  .episodes-bar{
+    width: 100%;
+    background-color: rgb(8, 7, 7);
+    padding: 6px;
+    box-sizing: border-box;
+    color: #fff;
+    div{
+      float: left;
+      padding: 5px;
+      a,b{
+        display: block;
+        padding: 8px 12px;
+        border-bottom: 1px solid transparent;
+        color: #fff;
+      }
+      a:hover{
+        border-bottom: 1px solid rgba(238, 230, 230, 0.8);;
+      }
+    }
+  }
 }
-.descriptions td, .descriptions th{
-  /*border: 1px solid #fff;*/
-  padding: 2px;
-  width: 25%;
-}
-.descriptions #name{
-  font-size: 1.2em;
-  font-weight: bold;
-}
-.descriptions th{
-  color: aqua;
+@media screen and (max-width: 700px) {
+  .conversation{
+    width: 100%;
+  }
 }
 
-#episodes{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    color: #fff;
-}
-#rating{
-  float: left;
-  width: 100%;
-}
-#episodes a{
-  color: #fff;
-  text-decoration: none;
-  padding: 8px;
-}
-#episodes li{
-  display: inline-block;
-  padding: 4px 10px;
-  background-color: rgb(34, 29, 29);
-  border-radius: 5px;
-  margin: 2px;
-}
-#episodes li:hover{
-  background-color: rgb(80, 64, 64);
-}
-#intro{
-  width: 100%;
-  color: aliceblue;
-  border-radius: 10px;
-  float: left;
-  padding: 5px;
-  box-sizing: border-box;
-}
-#trailer{
-    width: 100%;
-    position: relative;
-    margin: auto;
-    float: left;
-    box-sizing: border-box;
-}
-#trailer::before {
-  content: "";
-  display: block;
-  padding-top: 56.25%;
-}
-#trailer iframe{
-    width: 90%;
-    height: 90%;
-    position: absolute;
-    top: 5%;
-    left: 5%;
-}
-.click-play{
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-  padding: 10px;
-  font-size: 18px;
-  font-weight: bold;
-  background-color: rgb(12, 11, 11);
-  border-radius: 6px;
-  z-index: 8;
-}
-@media screen and (max-width: 540px) {
-    .descriptions::before {
-      content: "";
-      display: block;
-      padding-top: 75%;
-    }
-    .descriptions table{
-      font-size: 12px;
-    }
-}

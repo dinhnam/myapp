@@ -1,17 +1,16 @@
-<%= content_tag :div, class: "item #{type} transit-short" do %>
+<%= content_tag :div, class: "item transit-short shade", title: film.name  do %>
   <div class="cover">
-    <%= image_tag film.image[type], title: film.name %>
+    <%= image_tag film.pictures.thumb.url||"default-thumb.jpg" %>
   </div>
-  <em>
-    <div class="stars">
-      <var class="float-r"><%= film.episodes.count %> / <%= film.total_episodes %></var>
-      <%= render 'films/star', rate: film.rate %>
-      <div>
-        <%= image_tag "eye.png" %>
-        <%= film.view.year_views %>
-      </div>
-    </div>
-    <%= film.name %>
+  <div class="ribbon fade hidden"></div>
+  <div class="subtitle">
+    <strong><%= film.name %></strong>
+  </div>
+  <%= render 'layouts/star', rate: film.rate %>
+  <em class="views">
+    <%= image_tag "eye.png" %>
+    <%= film.view.year_views %>
   </em>
-  <%= link_to image_tag("button-play.png"), film_path(film), class: "button-play fade hidden" %>
+  <b class="status"><%= film.episodes.count %> / <%= film.total_episodes %></b>
+  <%= link_to image_tag("button-play.png"), film, class: "button-play fade hidden" %>
 <% end %>

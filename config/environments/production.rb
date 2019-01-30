@@ -105,5 +105,4 @@ Rails.application.configure do
     domain: host,
     enable_starttls_auto: true
   }
-  ##
 end

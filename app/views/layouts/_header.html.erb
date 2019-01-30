@@ -4,6 +4,9 @@
       <li class="float-l">
         <%= link_to "Home", root_path %>
       </li>
+      <li class="float-l">
+        <%= link_to "New", new_film_path %>
+      </li>
       <li class="genres float-l">
         <div class = "click" >Genres</div>
         <ul class="menu none">
@@ -41,7 +44,7 @@
           <%= link_to "My film", current_user %>
         </li>
       <% elsif %>
-        <li class="navbar float-r hide">
+        <li class="navbar float-r ">
           <div class = "click" >
             <%= image_tag "navbar.png" %>
           </div>
@@ -53,12 +56,6 @@
               <%= link_to "Sign Up", signup_path %>
             </li>
           </ul>
-        </li>
-        <li class= "show float-r">
-          <%= link_to "Sign Up", signup_path %>
-        </li>
-        <li class= "show float-r">
-          <%= link_to "Login", signin_path %>
         </li>
       <% end %> 
       
@@ -76,15 +73,8 @@
       
       <li id = "magnify" class= "click float-l">
       </li>
-      <li class="search-container float-l none">
-          <%= form_tag search_path, method: :get, id: "search",
-               class: "toggle" do%>
-            <%= text_field_tag :search %>
-            <div id="filter-icon" class="float-l"></div>
-            <%= render 'layouts/filter' %>
-            <%= submit_tag "Search" %>
-          <% end %>
-          <div id="result"></div>
+      <li class="search-container float-l <%= @search?'' : 'none'%>">
+         <%= render 'layouts/search' %>
       </li>
     </ul>
   </nav>

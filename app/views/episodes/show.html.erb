@@ -1,18 +1,23 @@
-<% provide :title, "Play" %>
-<div class="films-container">
-<%= render "layouts/bar_address" %>
+<%= render "layouts/breadcrumb" %>
 <div class = "play-container">
-  <video width="100%" controls>
-    <source src="<%= @episode.link %>" type="video/mp4">
-  </video>
-  <ul id="episodes">
-    <li>Ep:</li>
-    <% @episodes.each do |episode| %>
-      <li>
-        <%= link_to episode.number, film_episode_path(@film ,episode) %>
-      </li>
+  <div class="video-container">
+    <% if @episode.number == 0 %>
+      <%= render 'episodes/trailer' %>
+    <% else %>
+      <%= render 'episodes/video' %>
     <% end %>
-  </ul>
-</div>
-<%= render @comments %>
+  </div>
+  <div class="episodes-bar">
+      <div><b>Danh sách</b></div>
+      <% @film.episodes.order(number: :asc).each do |episode| %>
+        <div>
+          <%= link_to episode.number, film_episode_path(@film, episode) %>
+        </div>
+      <% end %>
+  </div>
+  <div class="flex-row">
+    <div class="conversation flex-col">
+      <%= render @comments %>
+    </div>
+  </div>
 </div>

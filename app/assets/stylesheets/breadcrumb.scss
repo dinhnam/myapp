@@ -1,19 +1,31 @@
 .breadcrumb{
   width: 100%;
   box-sizing: border-box;
+  padding: 8px;
+  background-color: rgb(34, 3, 3);
+  color: rgb(0, 221, 221);
 }
 .breadcrumb ol{
   list-style: none;
   padding: 0;
   margin: 0;
-}
-ol li{
-  list-style-type: none;
-  display: inline;
-}
-ol li a{
-  font-style: italic;
-}
-ol li a:hover{
-  color: rgb(113, 247, 120);
+  li{
+    list-style-type: none;
+    display: inline;
+  }
+  li a{
+    font-style: italic;
+    color: rgb(0, 202, 202);
+  }
+  li a:hover{
+    color: rgb(113, 247, 120);
+  }
+  .gap{
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid transparent;
+    border-left: 7px solid rgb(0, 202, 202)
+  }
 }

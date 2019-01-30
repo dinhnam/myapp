@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2019_01_06_104945) do
 
   create_table "episodes", force: :cascade do |t|
     t.string "name"
+    t.string "thumb"
     t.integer "number"
     t.string "link"
     t.datetime "created_at", null: false
@@ -48,12 +49,12 @@ ActiveRecord::Schema.define(version: 2019_01_06_104945) do
   create_table "films", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "trailer"
     t.string "pictures"
     t.integer "duration"
-    t.datetime "release"
-    t.string "quality"
+    t.integer "release"
+    t.integer "quality"
     t.integer "total_episodes"
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "pretty_param"

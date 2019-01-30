@@ -1,13 +1,30 @@
 <% provide :title, t("home.title") %>
-<div class="introduction">
+<div class="home-container">
   <%= render "static_pages/slider" %>
-</div>
-<nav>
-  <em>Phim mới cập nhật</em>
-  <%= link_to "xem thêm..", '#', class: "float-r a-active" %>
-</nav>
-<div class="main-content">
-  <% @new_films.each do |film| %>
-    <%= render 'layouts/item',film: film, type: "thumb" %> 
-  <% end %>
+  <div class="main-content">
+    <div class="title-bar">
+      <h3>
+        <%= link_to "Phim mới cập nhật", new_releases_path %>
+      </h3>
+    </div>
+    <% @new_films.each_with_index do |film, index| %>
+      <% if index == 0 %>
+        <div class="item-first"><%= render 'layouts/item',film: film %></div>
+      <% else %>
+        <%= render 'layouts/item',film: film %>
+      <% end %>
+    <% end %>
+    <div class="title-bar">
+      <h3>
+        <%= link_to "Phim xem nhiều", top_view_path %>
+      </h3>
+    </div>
+    <% @top_view_films.each_with_index do |film, index| %>
+      <% if index == 0 %>
+        <div class="item-first"><%= render 'layouts/item',film: film %></div>
+      <% else %>
+        <%= render 'layouts/item',film: film %>
+      <% end %>
+    <% end %>
+  </div>
 </div>

@@ -31,7 +31,6 @@ categories_text.each_line do |line|
   data = line.split(":")
   Category.create!(name: data[0], description: data[1])
 end
-
 50.times do
   Artist.create!(
     name: Faker::Artist.name
@@ -101,14 +100,14 @@ users = User.all
   release = Faker::Date.between(15.years.ago, Date.today).year.to_i
   film = Film.create!(
       name: name,
-      pictures: File.open(@images[rand(0..14)]),
+      pictures: [File.open("app/assets/images/cover.jpg"), File.open(@images[rand(0..14)])],
       total_episodes: 12,
-      release:  release,
       description: Faker::Lorem.paragraph(rand(50..100)),
-      pretty_param: name.gsub(/[, .]/,'-') + "-" + SecureRandom.hex(2),
+      pretty_param: name.gsub(/[,. ?!]/,'-') + SecureRandom.hex(2),
       duration: 45,
       status: rand(0..1),
-      quality: rand(0..2)
+      quality: rand(0..2),
+      release: rand(1980..2019)
   )
   film.rate = Rate.new(
     star_5: rand(0..1000), 
@@ -163,9 +162,11 @@ users = User.all
       end
     end
   end
+
   film.studios << studios[rand(0...20)]
   film.directors << directors[rand(0...20)]
   film.countries << country
+  
   rand(10..20).times do
     artist = artists[rand(0...50)]
     unless film.artists.include? artist

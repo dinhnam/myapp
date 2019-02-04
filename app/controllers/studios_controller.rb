@@ -2,7 +2,8 @@ class StudiosController < ApplicationController
   def show
     @feature = Studio.find_by(name: params[:name])
     if @feature
-      @films = @feature.films.all.page(params[:page]).per(20)
+      @films = @feature.films.all
+      @films = filter @films
       render 'films/index'
     else
       render 'films/not_found'

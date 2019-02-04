@@ -1,6 +1,6 @@
 class Film < ApplicationRecord
-  has_many :lists
-  has_many :comments, as: :commentable
+  has_many :lists, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
   has_many :episodes, dependent: :destroy
   has_many :artists, through: :lists, source: :listable,
     source_type: "Artist"
@@ -12,16 +12,20 @@ class Film < ApplicationRecord
     source_type: "Studio"
   has_many :countries, through: :lists, source: :listable,
     source_type: "Country"
-  has_one :view
-  has_one :rate
+  has_many :releases, through: :lists, source: :listable,
+    source_type: "Release"
+  has_one :view, dependent: :destroy
+  has_one :rate, dependent: :destroy
   
   scope :order_rate, ->{joins(:rate).merge(Rate.order(star: :desc))}
   scope :order_view_type, ->(type){joins(:view).merge(View.order("#{type}_views" => :desc))}
-  scope :order_date, ->{joins(:episodes).merge(Episode.order(updated_at: :desc)).uniq}
+  scope :order_date_update, ->{joins(:episodes).merge(Episode.order(updated_at: :desc)).uniq}
 
   enum status: [:unfinish, :finish]
   enum quality: [:mHD, :HD, :BluRay]
-  mount_uploader :pictures, PicturesUploader
+
+  mount_uploaders :pictures, PicturesUploader
+  serialize :pictures, JSON
   
   accepts_nested_attributes_for :episodes
 

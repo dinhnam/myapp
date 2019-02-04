@@ -132,7 +132,7 @@ $(document).ready(function(){
         widthslideContainer = $(sliderContainer).width();
         widthThumbContainer = $(thumbContainer).width();
         listSlide.style.width = slides.length*100 + "%";
-        listThumb.style.width = slides.length*26 + "%"
+        listThumb.style.width = slides.length*25 + "%"
         widthThumb = $(listThumb).width()/slides.length;
         widthSlide = $(listSlide).width()/slides.length;
         showSlides(slideIndex);
@@ -187,77 +187,111 @@ $(document).ready(function(){
       }
       $(replys).toggle();
     });
-    //searching
+    //suggest form
     var url = '/suggest'
-    const $source = document.querySelector('#form-search input[type=text]');
-    const $result = document.querySelector('#result');
-    const searching = function(e) {
+    var $source = document.querySelectorAll(".input-suggest input[type=text]");
+    const suggest = function(e) {
+      var key = e.target.name;
+      var result = document.querySelector("#result-"+key);
       if(e.target.value.length > 2){
         if (window.XMLHttpRequest) {
-          // code for IE7+, Firefox, Chrome, Opera, Safari
           xmlhttp=new XMLHttpRequest();
-        } else {  // code for IE6, IE5
+        } else {
           xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
         }
         xmlhttp.onreadystatechange=function() {
           if (this.readyState==4 && this.status==200) {
-            $result.innerHTML=this.response;
+            result.innerHTML=this.response;
           }
         }
-        xmlhttp.open("GET",url+"?search="+e.target.value,true);
+        xmlhttp.open("GET",url+"?"+key+"="+e.target.value,true);
         xmlhttp.send();
       }else{
-        $result.innerHTML = "";
+        result.innerHTML = "";
       }
     }
-    $source.addEventListener('input', searching ) // register for oninput
-    $source.addEventListener('propertychange', searching ) // for IE8
+    for(var i=0; i< $source.length; i++){
+     $source[i].addEventListener('input', suggest ) // register for oninput
+     $source[i].addEventListener('propertychange', suggest ) // for IE8
+    }
     //form film upload
-    coverPreview = document.querySelector('#cover-preview');
-    wallpaperPreview = document.querySelector('#wallpaper-preview');
     function validateFile(file){
       var check = true;
-      if(file.size > 5*1024*1024){
+      if(file.length > 1){
+        check = false;
+        alert("You can only upload a maximum of 1 files");
+      }
+      if(file[0].size > 5*1024*1024){
         check = false;
         alert("File size is larger than 5MB!");
       }
       return check;
     }
-    function imagesPreview(input,placePreview){
-       placePreview.innerHTML="";
-       if (input.files) {
-          if(validateFile(input.files[0])){
-            var reader = new FileReader();
-            reader.onload = function(event) {
-                var img = $($.parseHTML('<img>')).attr('src', event.target.result);
-                img.appendTo(placePreview);
-            }
-            reader.readAsDataURL(input.files[0]);
-          }else{
-            input.value = '';
+    function imagesPreview(input, preview){
+      if (input.files) {
+        if(validateFile(input.files)){
+          $(preview).find('img').remove();
+          var reader = new FileReader();
+          reader.onload = function(event) {
+              var img = $($.parseHTML('<img>')).attr('src', event.target.result);
+              img.appendTo(preview);
           }
+          reader.readAsDataURL(input.files[0]);
+        }else{
+          input.value = '';
         }
+      }
     }
 
     $('#cover-upload').on('change', function() {
-      imagesPreview(this,coverPreview);
+      imagesPreview(this, $('#cover-preview .preview'));
     });
 
     $('#wallpaper-upload').on('change', function() {
-      imagesPreview(this,wallpaperPreview);
+      imagesPreview(this, $('#wallpaper-preview .preview'));
     });
-
+    
+    $(".image-upload").on("click", ".preview", function(){
+      $(this).prev().trigger('click');
+    });
+    
+    function setNames(elm, index){
+      var name = "film[episodes_attributes]["+index+"][name]";
+      var number = "film[episodes_attributes]["+index+"][number]"
+      var link = "film[episodes_attributes]["+index+"][link]";
+      $(elm).find(".name").attr("name", name);
+      $(elm).find(".number").attr("name", number);
+      $(elm).find(".link").attr("name", link);
+    }
+    
     $('.add-episode').click(function(){
       var episodesInput = document.getElementsByClassName("episodes-input");
-      var newEpisode = $(episodesInput[0]).clone();
+      var length = episodesInput.length;
+      for(var i=0;i<length;i++){
+        setNames(episodesInput[i], i);
+      }
+      var newEpisode = $(episodesInput[length-1]).clone();
       newEpisode.find("input").val("");
+      setNames(newEpisode, length);
       $("#film-episodes").append(newEpisode);
     });
     
     $("#film-episodes").on("click", ".delete-episode", function(){
-      var episodesInput = document.getElementsByClassName("episodes-input");
-      if(episodesInput.length > 1){
+      var episodes = document.getElementsByClassName("episodes-input");
+      if(episodes.length > 1){
         this.closest(".episodes-input").remove();
+        var episodesInput = document.getElementsByClassName("episodes-input");
+        var length = episodesInput.length;
+        for(var i=0;i<length;i++){
+          setNames(episodesInput[i], i);
+        }
       }
     });
+    
+    $(".input-suggest").on("click", ".item-seach", function(){
+       var name = $(this).find('span').text();
+       var tem = $(this).closest( ".input-suggest" );
+       $(tem).find('input').val(name);
+    }); 
+
 });

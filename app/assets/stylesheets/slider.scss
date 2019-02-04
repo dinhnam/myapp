@@ -14,7 +14,7 @@
   .prev-slide, .next-slide {
     cursor: pointer;
     position: absolute;
-    top: 30%;
+    top: 35%;
     width: auto;
     padding: 30px;
     font-weight: bold;
@@ -54,6 +54,8 @@
           font-weight: 300;
           text-align: left;
           padding: 8px;
+          text-shadow: 2px 2px 3px #000;
+          visibility: hidden;
           b{
             line-height: 2em;
             a{
@@ -95,7 +97,7 @@
       .thumb-item{
         width: 100%;
         height: 100%;
-        margin: 0 0.5%;
+        margin: 0 4px;
         .item{
           pointer-events: none;
           width: 100%;
@@ -107,9 +109,19 @@
       }
     }
   }
+}
+#slider-container:hover{
+  #list-slide{
+    .slide-item{
+      .item{
+        .title{
+          visibility: visible;
+        }
+      }
+    }
+  }
   
 }
-
 @media screen and (max-width: 599px) {
     #slider-container{
       &:before{

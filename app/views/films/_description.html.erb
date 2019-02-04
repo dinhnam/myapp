@@ -1,12 +1,13 @@
 <div id="description-container">
   <dl>
     <div class="cover-container">
-      <%= link_to image_tag(@film.pictures.url||"default-thumb.jpg"), film_episode_path(@film,
-          @film.episodes.first) %>
-      <%= link_to "Xem Phim",  film_episode_path(@film, @film.episodes.first),
-            class: "button-watch"%>
+    <%= link_to image_tag(@film.pictures[0].nil? ? "default-thumb.jpg" : 
+        @film.pictures[0].url), film_episode_path(@film, @film.episodes.first) %>
+    <%= link_to "Xem Phim",  film_episode_path(@film, @film.episodes.first),
+          class: "button-watch"%>
     </div>
-    <dd><strong><%= @film.name %><strong></dd><br>
+    <dd><strong><%= @film.name %><strong></dd>
+    <%= link_to "delete",@film, method: :delete, data: { confirm: "are you sure?" }  %><br>
     <dt>Tập mới: </dt>
       <dd><% @episodes.each_with_index do |episode, index| %>
         <%= link_to episode.name, film_episode_path(@film, episode), class: "a-active" %>
@@ -26,6 +27,8 @@
     <dd><%= link_to @film.release, search_path(year: @film.release) %></dd><br>
     <dt>Hãng phim: </dt>
     <dd><%= render 'films/feature', features: @film.studios %></dd><br>
+    <dt>Quốc gia: </dt>
+    <dd><%= render 'films/feature', features: @film.countries %></dd><br>
     <dt>Đạo diễn: </dt>
     <dd><%= render 'films/feature', features: @film.directors%></dd><br>
     <dt>Diễn viên: </dt>

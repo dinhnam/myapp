@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :artists, param: :name
     resources :studios, param: :name
     resources :countries, param: :name
+    resources :releases, param: :name
     resources :users, param: :name
   end
 end

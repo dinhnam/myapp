@@ -1,51 +1,52 @@
 <style>
   .item-seach{
     display: flex;
+    flex-direction: row;
     background-color: rgba(27, 20, 20, 0.9); 
-    margin: 2px;
-  } 
-  .name{
-    height: 50px;
-    width: 80%;
-    box-sizing: border-box; 
+    margin-top: 2px;
+  }
+  header .item-seach{
+    height: 46px;
+  }
+  .form-film-upload .item-seach{
+    height: 30px;
+  }
+  .item-seach .name{
+    height: 100%;
+    width: 85%;
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: left;
-    }
-  .name i{
+  }
+  .item-seach .name a{
     color: rgb(190, 231, 170);
   }
-  .picture{
-    width: 18%; 
-    height: 50px; 
-    box-sizing: border-box;}
-  .picture img{
+  .item-seach .picture{
+    width: 15%; 
+    height: 100%; 
+  }
+  .item-seach .picture img{
     height: 100%;
+    width: 100%;
    }
   .item-seach:hover{
     background-color: rgba(80, 58, 58, 0.9);
-   }
+  }
 </style>
 <% @results.each do |result| %>
   <div class="item-seach">
       <div class = "picture">
-        <% if result.thumb %>
-          <%= link_to image_tag(result.cover), result %>
+        <% if result[:type].nil? %>
+          <%= link_to image_tag(result.pictures[0].small_thumb.url), result %>
         <% else %>
-          <%= link_to image_tag('not_found.png'), result %>
+          <%= link_to image_tag('none.png'), result %>
         <% end %>
       </div>
       <div class="name">
-        <%= link_to result.name, result %>
+        <span><%= result.name %></span>
         <br/>
-        <i>
-          <% if result[:type].nil? %>
-            Film
-          <% else %>
-            <%= result[:type] %>
-          <% end %>
-        </i>
+        <%= result[:type]||"film" %>
       </div>
   </div>
 <% end %>

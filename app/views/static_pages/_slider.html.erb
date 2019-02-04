@@ -6,11 +6,12 @@
       <%= content_tag :div, class: "slide-item transit-slow", id: index do %>
         <%= content_tag :div, class: "item transit-short", title: film.name  do %>
           <div class="cover">
-            <%= image_tag film.pictures.url||"default-thumb.jpg" %>
+            <%= image_tag film.pictures[1].nil? ? "default-thumb.jpg" : 
+                  film.pictures[1].url %>
           </div>
           <div class="title">
             <strong><%= film.name %></strong><br/>
-            <b><%= link_to "Xem Phim" %></b>
+            <b><%= link_to "Xem Phim", film %></b>
           </div>
           
         <% end %>
@@ -23,7 +24,8 @@
         <%= content_tag :div, class: "thumb-item", id: index do %>
           <%= content_tag :div, class: "item thumb transit-short", title: film.name  do %>
             <div class="cover shade">
-              <%= image_tag film.pictures.thumb.url||"default-thumb.jpg" %>
+              <%= image_tag film.pictures[1].nil? ? 
+                "default-thumb.jpg" : film.pictures[1].small_thumb.url %>
             </div>
           <% end %>
         <% end %>

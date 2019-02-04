@@ -1,14 +1,14 @@
 <div class="main-content">
-  <div class="title-bar">
+   <h4>
     <% if @feature %>
       <em><%= @feature.type %> : <%= @feature.name %></em>
     <% else %>
-      <em>Tìm kiếm : <%= @search==""? "all": @search %></em>
+      <em><u>Tìm kiếm</u> : <i><%= @search==""? "all": @search %></i></em>
     <% end %>
     <em>*</em>
-    <i> ( <%= @count %> kết quả ) </i>
+    <i> ( <%= @count %> film ) </i>
     <%= render 'layouts/filter' %>
-  </div>
+  </h4>
   <% @films.each_with_index do |film, index| %>
     <%= render 'layouts/item',film: film, type: "thumb", id: index %> 
   <% end %>

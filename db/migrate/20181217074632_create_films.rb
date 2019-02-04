@@ -5,10 +5,10 @@ class CreateFilms < ActiveRecord::Migration[5.2]
       t.string :description
       t.string :pictures
       t.integer :duration
-      t.integer :release
       t.integer :quality
       t.integer :total_episodes
       t.integer :status, default: 0, null: false
+      t.integer :release
       
       t.timestamps
     end

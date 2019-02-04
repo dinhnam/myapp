@@ -1,4 +1,16 @@
+<% 
+  years = []
+  Time.now.year.downto 1990 do |year|
+    
+    if year == 1990
+      years << "1990.."
+    else
+      years << year
+    end
+  end
+%>
 filter:
-  status: [["all", "all"], ["finished", "finished"], ["unfinished", "unfinished"]]
-  sort_movies: [["date update", 0], ["views", 1], ["rating", 2]]
+  status: [["All", "all"], ["Finish", "finish"], ["Unfinish", "unfinish"]]
+  sort_movies: [["Update", 0], ["Views", 1], ["Rating", 2]]
   quality: [["mHD", "mHD"], ["HD", "HD"], ["BluRay", "BluRay"]]
+  years: <%= years %>

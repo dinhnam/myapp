@@ -20,9 +20,13 @@
     </ul>
     <%= select_tag :sort, options_for_select(Settings.filter.sort_movies, 
           @sort||Settings.filter.sort_movies.first) %>
+    <% 
+      years = Settings.filter.years.clone
+    %>
+    <%= select_tag :year, options_for_select(years.unshift("All"), @year||"All") %>
     <%= select_tag :status, options_for_select(Settings.filter.status,
-          @status||Settings.filter.progress.first) %>
-    <%= submit_tag "Filter" %>
+          @status||Settings.filter.status.first) %>
+    <%= submit_tag "" %>
     <div id="reset-filte"><%= image_tag 'reset.png' %></div>
 <% end %>
 </div>

@@ -5,7 +5,7 @@ html{
 body{
     margin: 0px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     background-image: url("cardboard-flat.png");
     background-repeat: repeat;
 }
@@ -34,7 +34,6 @@ header{
   box-sizing: border-box;
   display: block;
   width: 100%;
-  padding: 5px;
 }
 .sidebar{
   box-sizing: border-box;
@@ -171,12 +170,10 @@ ul{
   background: rgb(94, 90, 90); 
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: rgb(163, 152, 152); 
 }
-
 @media screen and (min-width: 1024px) {
-    .container{
-      width: 1024px;
-      margin: 0 auto;
-    }
+  .container{
+    width: 1024px;
+  }
 }

@@ -1,7 +1,7 @@
 #form-filter{
   float: right;
   position: relative;
-  div, button, select, input[type=submit]{
+  div, button, select{
     display: inline;
     cursor: pointer;
     background-color: transparent;
@@ -16,12 +16,19 @@
     b{
       display: inline-block;
       border-top: 7px solid rgb(0, 0, 0);
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
+      border-left: 3px solid transparent;
+      border-right: 3px solid transparent;
+      margin-left: 4px;
     }
     &:hover{
       color: rgb(195, 104, 255);
     }
+  }
+  input[type=submit]{
+    background-image: url('filter_icon.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 40px;
   }
   .menu{
     position: absolute;

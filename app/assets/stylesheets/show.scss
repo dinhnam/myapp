@@ -1,10 +1,8 @@
 #description-container{
-  width: 98%;
+  width: 100%;
   box-sizing: border-box;
-  padding: 8px;
+  padding: 10px;
   background-color: rgba(24, 22, 22,0.8);
-  border-radius: 10px;
-  margin: 5px auto;
   line-height: 1.3em;
   color: aqua;
   font-size: 1.1em;
@@ -28,7 +26,7 @@
   }
   .cover-container{
     position: relative;
-    width: 23%;
+    width: 26%;
     min-width: 150px;
     float: left;
     margin: 5px 10px 10px 5px;
@@ -50,16 +48,16 @@
     }
     .button-watch{
       width: 100%;
-      height: 15%;
+      height: 46px;
       color: rgb(243, 240, 236);
       line-height: 2em;
       text-align: center;
       font-weight: bold;
       font-size: 1.3em;
       box-sizing: border-box;
-      background-color: rgba(19, 18, 18,0.7);
+      background-color: rgba(138, 70, 25, 0.7);
       &:hover{
-        background-color: rgba(17, 16, 16, 0.9);
+        background-color: rgba(151, 85, 41, 0.7);
       }
     }
   }

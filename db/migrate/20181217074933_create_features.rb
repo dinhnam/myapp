@@ -4,7 +4,7 @@ class CreateFeatures < ActiveRecord::Migration[5.2]
       t.string :type, null: false
       t.string :name
       t.string :description
-      t.string :thumb
+      t.string :pictures
 
       t.timestamps
     end

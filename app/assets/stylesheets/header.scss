@@ -8,7 +8,6 @@ header{
     display: none;
   }
   nav{
-    margin: 0;
     padding: 0;
     font-size: 17px;
     background-color: #1c1c1c;
@@ -80,66 +79,60 @@ header{
     #magnify{
         position: relative;
         border: 5px solid red;
-        width: 14px;
-        height: 14px;
+        width: 12px;
+        height: 12px;
         border-radius: 50%;
-        margin: 5px 8px 0 0;
+        margin: 8px 8px 8px 2px;
         padding: 0;
-    }
-    #magnify::before{
-      position: absolute;
-      content: "";
-      border-top: 5px solid red;
-      width: 12px;
-      left: 15px;
-      top: 12px;
-      transform: rotate(45deg);
-      transform-origin: left;
+        &::before{
+          position: absolute;
+          content: "";
+          border-top: 5px solid red;
+          width: 12px;
+          left: 12px;
+          top: 8px;
+          transform: rotate(45deg);
+          transform-origin: left;
+        }
+        &::after{
+          width: 0;
+          height: 40px;
+          float: left;
+        }
     }
     .search-container{
       width: 320px;
       box-sizing: border-box;
-      margin: 3px 0;
+      margin: 0;
       padding: 0;
-      position: relative;
       form{
         display: flex;
         width: 100%;
-         #filter-icon{
-          margin: 0;
-          padding: 0;
-          width: 30px;
-          height: 30px;
-          cursor: pointer;
-          user-select: none;
-          background-image:url("filter-icon.png");
-          background-repeat:no-repeat;
-          background-size: contain;
-          background-position: center center;
-          border-bottom: 1px solid rgba(255,255,255,0.5);
-        }
+        border-bottom: 1px solid rgba(255,255,255,0.5);
+        margin-top: 5px;
         input:focus{
           outline: none;
         }
-        input[type=text]{
-          border: none;
-          width: 100%;
-          height: 30px;
-          font-size: 16px;
-          background-color: transparent;
-          color: #fff;
-          border-bottom: 1px solid rgba(255,255,255,0.5);
-          padding: 0;
+        .input-suggest{
+          height: 32px;
+          input[type=text]{
+            border: none;
+            width: 100%;
+            height: 32px;
+            font-size: 16px;
+            background-color: transparent;
+            color: #fff;
+            padding: 0;
+          }
         }
         input[type=submit]{
           border: none;
           cursor: pointer;
           background-color: transparent;
           color: #fff;
-          border-bottom: 1px solid rgba(255,255,255,0.5)
         }
         input[type=submit]:hover{
-          color: rgb(232, 255, 129);
+          color: rgb(125, 238, 163);
         }
       }
     }
@@ -165,7 +158,7 @@ header{
       }
     }
 }
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 720px) {
     header{
       .show{
         display: none;
@@ -178,7 +171,7 @@ header{
       }
     }
 }
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 550px) {
   header{
     .search-container{
         width: 100% !important;

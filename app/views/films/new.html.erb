@@ -13,15 +13,51 @@
     <p>Tình trạng</p>
     <p><%= form.select :status, [["finish", "finish"], ["unfinish", "unfinish"]] %></p>
     <p>cover</p>
-    <p><%= form.file_field :pictures, id: "cover-upload", 
-              accept: 'image/jpeg,image/gif,image/png' %></p>
-    <div id="cover-preview"></div>
-    <p>wallpaper</p>
-    <p><%= form.file_field :wallpaper, id: "wallpaper-upload", 
-              accept: 'image/jpeg,image/gif,image/png' %></p>
-    <div id="wallpaper-preview"></div>
+    <div class= "image-upload" id="cover-preview">
+       <%= form.file_field :pictures, id: "cover-upload", 
+              accept: 'image/jpeg,image/gif,image/png', multiple: true %>
+      <div class="preview"><%= image_tag 'cover-default.jpeg' %></div>
+    </div> 
+    <p>wallpaper</p> 
+    <div class= "image-upload" id="wallpaper-preview">
+      <%= form.file_field :pictures, id: "wallpaper-upload", 
+              accept: 'image/jpeg,image/gif,image/png',  multiple: true %>
+      <div class="preview"><%= image_tag 'cover-default.jpeg' %></div>
+    </div>
     <p>Mô tả</p>
     <p><%= form.text_area :description, cols: 80, rows: 8 %></p>
+    
+    <p>Thể loại </p>
+    
+    <ul class="category">
+      <% Category.order(name: :asc).each do |category| %>
+          <li>
+            <%= form.check_box "categories",{ multiple: true }, category.id,
+                  false %>
+            <i><%= category.name %></i>
+          </li>
+      <% end %>
+    </ul>
+    <p> Hãng phim </p>
+    <div class="input-suggest">
+      <%= text_field_tag :studio %>
+      <div class= "result" id="result-studio"></div>
+    </div>
+    <p> Quốc gia </p>
+    <div class="input-suggest">
+      <%= text_field_tag :country %>
+      <div class= "result" id="result-country"></div>
+    </div>
+    <p> Đạo diễn </p>
+    <div class="input-suggest">
+      <%= text_field_tag :director %>
+      <div class= "result" id="result-director"></div>
+    </div>
+    <p> Diễn viên </p>
+    <div class="input-suggest">
+      <%= text_field_tag :artist %>
+      <div class= "result" id="result-artist"></div>
+    </div>
     <p>Tập phim</p>
     <table id="film-episodes">
       <tr>
@@ -32,13 +68,12 @@
       </tr>
       <%= form.fields_for :episodes do |e| %>
       <tr class="episodes-input">
-        <td class="col-1"> <%= e.number_field :number, in: 0...10000 %> </td>
-        <td class="col-2"> <%= e.text_field :name %> </td>
+        <td class="col-1"> <%= e.number_field :number, in: 0...10000, class: "number", value: 0 %> </td>
+        <td class="col-2"> <%= e.text_field :name, class: "name", value: "trailer" %> </td>
         <td class="col-3"> <%= e.text_field :link, class: "link" %> </td>
         <td class="delete-episode">X</td>
       </tr>
       <% end %>
-        
     </table>
     <b class="add-episode">Add+</b>
     <p><%= form.submit "create film" %></p>

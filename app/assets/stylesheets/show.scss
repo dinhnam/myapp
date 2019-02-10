@@ -7,6 +7,16 @@
   color: aqua;
   font-size: 1.1em;
   display: block;
+  overflow: hidden;
+  position: relative;
+  text-shadow: 1px 1px 2px rgb(0, 0, 0);
+  #wallpaper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: -1;
+  }
   dt, dd{
     display: inline;
     b{

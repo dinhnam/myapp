@@ -28,6 +28,9 @@ class Film < ApplicationRecord
   serialize :pictures, JSON
   
   accepts_nested_attributes_for :episodes
+  accepts_nested_attributes_for :studios
+  accepts_nested_attributes_for :countries
+  accepts_nested_attributes_for :artists
 
   def to_param
     pretty_param

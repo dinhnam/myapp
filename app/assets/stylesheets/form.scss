@@ -80,10 +80,29 @@
 }
 
 .form-film-upload{
+  table{
+    th{
+      width: 15%;
+    }
+    td{
+      input[type=text]{
+        width: 90%;
+      }
+      textarea{
+        width: 100%;
+        height: 150px;
+      }
+    }
+  }
   .image-upload{
-    overflow: hidden;
-    img{
+    .preview{
+      float: left;
       width: 100%;
+      height: 100%;
+      img{
+      width: 100%;
+      height: 100%;
+      }
     }
     input[type=file]{
       width: 0;
@@ -92,58 +111,54 @@
     }
   }
   #cover-preview{
-    .preview{
-     width: 20vh;
-     height: 20vw;
-     img{
-       width: 100%;
-     }
-    }
+    width: 60px;
+    height: 90px;
   }
   #wallpaper-preview{
-    .preview{
-     width: 20vw;
-     height: 20vh;
-     img{
-       width: 100%;
-     }
+    width: 160px;
+    height: 90px;
+  }
+  #add-episode{
+    cursor: pointer;
+    color: #60388f;
+    &:hover{
+      color: #745696;
     }
   }
-  .add-episode{
-      cursor: pointer;
+  .delete-episode{
+    cursor: pointer;
   }
-  #film-episodes{
-    width: 100%;
-    .col-1{
-      width: 5%;
+  .episodes-input{
+    .col-3{
+      width: 70%;
+      input{
+        width: 95%;
+      }
     }
     .col-2{
       width: 20%;
+      input{
+        width: 95%;
+      }
     }
-    .col-3{
-      width: 70%;
-    }
-    .delete-episode{
-      cursor: pointer;
-    }
-    input{
-      width: 98%;
+    .col-1{
+      width: 10%;
+      input{
+        width: 95%;
+      }
     }
   }
   .category{
-    width: 100%;
-    float: left;
+    display: inline;
+    padding: 0;
+    margin: 0;
     li{
-      float: left;
+      display: inline-block;
       padding: 5px;
-      width: 120px;
+      
     }
   }
   .input-suggest{
-    height: 21px;
-    width: 200px;
-    input[type=text]{
-      height: 16px;
-    }
+    display: inline-block;
   }
 }

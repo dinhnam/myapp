@@ -2,7 +2,7 @@
   .item-seach{
     display: flex;
     flex-direction: row;
-    background-color: rgba(27, 20, 20, 0.9); 
+    background-color: rgba(92, 92, 156, 0.8); 
     margin-top: 2px;
   }
   header .item-seach{
@@ -21,6 +21,8 @@
   }
   .item-seach .name a{
     color: rgb(190, 231, 170);
+    font-size: 12px;
+    float: right;
   }
   .item-seach .picture{
     width: 15%; 
@@ -46,7 +48,7 @@
       <div class="name">
         <span><%= result.name %></span>
         <br/>
-        <%= result[:type]||"film" %>
+        <%= result[:type]||"film" %> <%= link_to "more..", result %>
       </div>
   </div>
 <% end %>

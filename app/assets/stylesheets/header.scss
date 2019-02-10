@@ -1,7 +1,7 @@
 header{
   width: 100%;
   box-sizing: border-box;
-  background-color: #1c1c1c;
+  background-color: #9696C8;
   position: relative;
   color: #fff;
   .hide{
@@ -25,18 +25,16 @@ header{
         list-style-type: none;
         text-align: center;
         padding: 12px 15px;
-        img{
-          width: 100%;
-        }
+        
     }
     li:hover{
-      background-color: rgba(80, 65, 65, 0.5);
+      background-color: rgba(14, 6, 36, 0.5);
     }
     .menu{
       position: absolute;
       top: 100%;
       z-index: 100;
-      background-color: rgba(20, 2, 2, 0.8);
+      background-color:  rgba(92, 92, 156, 0.8);
       border-top: 1px solid rgba(105, 74, 74, 0.8);
       li{
         width: 120px;
@@ -70,9 +68,18 @@ header{
     }
     .navbar{
       padding: 0;
+      width: 44px;
+      height: 44px;
+      img{
+        width: 100%;
+        height: 100%;
+      }
       .menu{
         right: 0;
         max-width: 120px;
+      }
+      &:hover{
+        background-color: transparent;
       }
     }
    
@@ -138,11 +145,6 @@ header{
     }
     .search-container:hover{
       background-color: transparent;
-    }
-    .navbar{
-      padding: 0;
-      width: 38px;
-      height: 38px;
     }
   }
 }

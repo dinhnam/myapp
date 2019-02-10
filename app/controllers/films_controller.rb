@@ -15,6 +15,8 @@ class FilmsController < ApplicationController
   def new
     @film = Film.new
     @film.episodes.build
+    @film.studios.build
+    @subtitle = "UPLOAD FILM"
   end
 
   def create
@@ -58,6 +60,11 @@ class FilmsController < ApplicationController
     end
   end
 
+  def edit
+    @film = Film.find_by_pretty_param params[:pretty_param]
+    @subtitle = "EDIT FILM"
+    render 'new'
+  end
   def destroy
     @film = Film.find_by_pretty_param params[:pretty_param]
     if @film.destroy

@@ -45,4 +45,8 @@ module FilmsHelper
     films = Kaminari.paginate_array(films).page(params[:page]).per(12)
     return films
   end
+
+  def check_category film, category
+    return film.categories.include?(category) ? true : false
+  end
 end

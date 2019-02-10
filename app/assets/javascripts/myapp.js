@@ -192,7 +192,7 @@ $(document).ready(function(){
     var $source = document.querySelectorAll(".input-suggest input[type=text]");
     const suggest = function(e) {
       var key = e.target.name;
-      var result = document.querySelector("#result-"+key);
+      var result = e.target.nextElementSibling;
       if(e.target.value.length > 2){
         if (window.XMLHttpRequest) {
           xmlhttp=new XMLHttpRequest();
@@ -255,43 +255,49 @@ $(document).ready(function(){
       $(this).prev().trigger('click');
     });
     
-    function setNames(elm, index){
-      var name = "film[episodes_attributes]["+index+"][name]";
-      var number = "film[episodes_attributes]["+index+"][number]"
-      var link = "film[episodes_attributes]["+index+"][link]";
-      $(elm).find(".name").attr("name", name);
-      $(elm).find(".number").attr("name", number);
-      $(elm).find(".link").attr("name", link);
+    function initField(field, index){
+      // var name = $(elm).attr("name");
+      // var name = "film[episodes_attributes]["+index+"][name]";
+      // var number = "film[episodes_attributes]["+index+"][number]";
+      // var link = "film[episodes_attributes]["+index+"][link]";
+      // $(elm).find(".name").attr("name", name);
+      // $(elm).find(".number").attr("name", number);
+      var inputs = $(field).find("input");
+      $.each( inputs, function( index, input ) {
+        var name = $(input).attr("name");
+        var id = input.id;
+        
+        console.log(index);
+        console.log(name);
+        $(input).attr("name",name);
+        name = name.replace(/[0-9]/g,index+"");
+      });
     }
-    
-    $('.add-episode').click(function(){
-      var episodesInput = document.getElementsByClassName("episodes-input");
-      var length = episodesInput.length;
-      for(var i=0;i<length;i++){
-        setNames(episodesInput[i], i);
-      }
-      var newEpisode = $(episodesInput[length-1]).clone();
-      newEpisode.find("input").val("");
-      setNames(newEpisode, length);
-      $("#film-episodes").append(newEpisode);
+    var index = 0;
+    $('.add-field').click(function(){
+      var newField = $(this).prev().clone(); 
+      newField.find("input").val("");
+      $(newField ).insertBefore(this);
+      var name = "film[episodes_attributes][0][number]"
+      console.log(name);
+      index ++;
+      name = name.replace(/[0-9]/,index+"");
+      console.log(name);
     });
     
-    $("#film-episodes").on("click", ".delete-episode", function(){
-      var episodes = document.getElementsByClassName("episodes-input");
-      if(episodes.length > 1){
-        this.closest(".episodes-input").remove();
-        var episodesInput = document.getElementsByClassName("episodes-input");
-        var length = episodesInput.length;
-        for(var i=0;i<length;i++){
-          setNames(episodesInput[i], i);
-        }
-      }
+    $("form").on("click", ".delete-field", function(){
+     
+        $(this).parent().remove();
+        
     });
     
     $(".input-suggest").on("click", ".item-seach", function(){
        var name = $(this).find('span').text();
        var tem = $(this).closest( ".input-suggest" );
        $(tem).find('input').val(name);
-    }); 
+    });
 
+    $('.input-suggest b').click(function(){
+      
+    });
 });

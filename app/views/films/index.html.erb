@@ -5,8 +5,7 @@
     <% else %>
       <em><u>Tìm kiếm</u> : <i><%= @search==""? "all": @search %></i></em>
     <% end %>
-    <em>*</em>
-    <i> ( <%= @count %> film ) </i>
+    <i> ( <%= @count %> films ) </i>
     <%= render 'layouts/filter' %>
   </h4>
   <% @films.each_with_index do |film, index| %>

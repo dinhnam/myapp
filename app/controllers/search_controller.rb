@@ -3,29 +3,31 @@ class SearchController < ApplicationController
     @results = []
 
     if params[:search]
-      film = Film.ransack(name_cont: params[:search]).result
+      keys = params[:search].split(' ')
+      film = Film.ransack(name_cont_any: keys).result
       @results += film.to_a
-      feature = Feature.ransack(name_cont: params[:search]).result
+      feature = Feature.ransack(name_cont_any: keys).result
       @results += feature.to_a
-    end
-    
-    if params[:studio]
-      res = Studio.ransack(name_cont: params[:studio]).result
-      @results += res.to_a
+      
     end
 
+    if params[:studio]
+      res = Studio.ransack(name_cont_any: params[:studio].split(' ')).result
+      @results += res.to_a
+    end
+    
     if params[:country]
-      res = Country.ransack(name_cont: params[:country]).result
+      res = Country.ransack(name_cont_any: params[:country].split(' ')).result
       @results += res.to_a
     end
 
     if params[:director]
-      res = Director.ransack(name_cont: params[:director]).result
+      res = Director.ransack(name_cont_any: params[:director].split(' ')).result
       @results += res.to_a
     end
 
     if params[:artist]
-      res = Artist.ransack(name_cont: params[:artist]).result
+      res = Artist.ransack(name_cont_any: params[:artist].split(' ')).result
       @results += res.to_a
     end
    
@@ -39,7 +41,7 @@ class SearchController < ApplicationController
 
   def index
     @search = params[:search]
-    @films = Film.ransack(name_cont: @search).result
+    @films = Film.ransack(name_cont_any: @search).result
     @films = filter @films
     render 'films/index'
   end

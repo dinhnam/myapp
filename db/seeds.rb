@@ -22,11 +22,8 @@ Parody: Tương tự như phim truyền hình anime thể loại này sẽ làm 
 Shonen ai: Phim anime về tình yêu của nam giới và nam giới, thường nhẹ nhàng hơn so với yaoi
 Mecha: Anime có đề tài về máy móc hoặc robot
 Drama: Anime thuộc thể loại kịch"
-ep = ["https://www.youtube.com/embed/1__8I6tjxjM",
-"https://www2068.vcdn.xyz/token=nkz3mUPUxtUHfghXL52BmQ/1547944907/0.0.0.0/16/2/1a/49f4c1c5ede52b5d304020dadb91c1a2-720p.mp4",
-"https://www1270.vcdn.xyz/token=MaFQNdzDe9_IJYtE183BxQ/1547944682/0.0.0.0/23/f/77/4d17eb340f54f32d53dfa0e3c7c0577f-720p.mp4",
-"https://www2147.vcdn.xyz/token=IsWdKrtfQtzbfkLIBxm7fw/1547944826/0.0.0.0/22/d/8a/afb78e1015ef77e96729f68d097a38ad-720p.mp4",
-"https://www1273.vcdn.xyz/token=TVI33ViH125cWpVh8Unn6g/1547945011/0.0.0.0/6/4/67/3bff301b98940e6a088292026b62b674-720p.mp4"]
+ep = ["https://www.youtube.com/embed/mdU8dyjgXU0","https://www.youtube.com/embed/gyI3xR1VYoQ",
+"https://www.youtube.com/embed/nnrK3Bfmuzs","https://www.youtube.com/watch?v=NLN6kAmfL4s"]
 categories_text.each_line do |line|
   data = line.split(":")
   Category.create!(name: data[0], description: data[1])
@@ -134,21 +131,12 @@ users = User.all
       )
     end
   end
-  5.times do |n|
-    if n==0
-      episode = film.episodes.create!(
-      name: "trailer",
-      number: n,
-      link: ep[n]
-      )
-    else
-      episode = film.episodes.create!(
-      name: "tập #{n}",
-      number: n, 
-      link: ep[n]
-      )
-    end
-   
+  4.times do |n|
+    episode = film.episodes.create!(
+    name: "tập #{n}",
+    number: n, 
+    link: ep[n]
+    )
     rand(0..5).times do
       comment =  episode.comments.create!(
         user_id: users[rand(0...30)].id, 

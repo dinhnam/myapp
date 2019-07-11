@@ -8,7 +8,7 @@ body{
     flex-direction: column;
     /*background-image: url("cardboard-flat.png");
     background-repeat: repeat;*/
-    background-color: #E0E0EF;
+    background-color: #000;
 }
 .container{
     position: relative;
@@ -175,6 +175,6 @@ ul{
 }
 @media screen and (min-width: 1024px) {
   .container{
-    width: 1024px;
+    width: 1080px;
   }
 }

@@ -191,7 +191,7 @@ $(document).ready(function(){
     var url = '/suggest'
     var $source = document.querySelectorAll(".input-suggest input[type=text]");
     const suggest = function(e) {
-      var key = e.target.name;
+      var key = e.target.className;
       var result = e.target.nextElementSibling;
       if(e.target.value.length > 2){
         if (window.XMLHttpRequest) {
@@ -255,40 +255,36 @@ $(document).ready(function(){
       $(this).prev().trigger('click');
     });
     
-    function initField(field, index){
-      // var name = $(elm).attr("name");
-      // var name = "film[episodes_attributes]["+index+"][name]";
-      // var number = "film[episodes_attributes]["+index+"][number]";
-      // var link = "film[episodes_attributes]["+index+"][link]";
-      // $(elm).find(".name").attr("name", name);
-      // $(elm).find(".number").attr("name", number);
-      var inputs = $(field).find("input");
-      $.each( inputs, function( index, input ) {
-        var name = $(input).attr("name");
-        var id = input.id;
+    function insetNameInput(el){
+      for(var i=0; i< el.length; i++){
+        var inputs = $(el[i]).find("input");
+        for(var k = 0;k< inputs.length;k++){
+           var name = $(inputs[k]).attr("name");
+           var id = $(inputs[k]).attr("id");
+           $(inputs[k]).attr("name", name.replace(/\d+/,i));
+           inputs[k].id = id.replace(/\d+/,i);
+        }
         
-        console.log(index);
-        console.log(name);
-        $(input).attr("name",name);
-        name = name.replace(/[0-9]/g,index+"");
-      });
+      }
     }
-    var index = 0;
+
     $('.add-field').click(function(){
-      var newField = $(this).prev().clone(); 
-      newField.find("input").val("");
-      $(newField ).insertBefore(this);
-      var name = "film[episodes_attributes][0][number]"
-      console.log(name);
-      index ++;
-      name = name.replace(/[0-9]/,index+"");
-      console.log(name);
+      var newField = $(this).prev().clone();
+      $(newField).insertAfter(this);
+      $(newField).append("<span class=\"delete-field\">X</span>");
+      var fields = document.getElementsByClassName(newField.attr("class"));
+      insetNameInput(fields);
     });
     
     $("form").on("click", ".delete-field", function(){
-     
-        $(this).parent().remove();
-        
+        var deleteField = $(this).parent();
+        var className = deleteField.attr("class");
+        var el = document.getElementsByClassName(className);
+        if(el.length>1){
+          $(this).parent().remove();
+          var fields = document.getElementsByClassName(className);
+          insetNameInput(fields);
+        }
     });
     
     $(".input-suggest").on("click", ".item-seach", function(){

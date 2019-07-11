@@ -28,7 +28,7 @@ header{
         
     }
     li:hover{
-      background-color: rgba(14, 6, 36, 0.5);
+      background-color: rgba(70, 70, 136, 0.8);
     }
     .menu{
       position: absolute;
@@ -105,6 +105,9 @@ header{
           width: 0;
           height: 40px;
           float: left;
+        }
+        &:hover{
+          background-color: transparent;
         }
     }
     .search-container{

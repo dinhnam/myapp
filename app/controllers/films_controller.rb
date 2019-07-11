@@ -16,6 +16,7 @@ class FilmsController < ApplicationController
     @film = Film.new
     @film.episodes.build
     @film.studios.build
+    @film.artists.build
     @subtitle = "UPLOAD FILM"
   end
 
@@ -78,7 +79,8 @@ class FilmsController < ApplicationController
     def film_params
       params.require(:film).permit(:name, :duration, :release, :total_episodes, 
         :quality, :status, :description, pictures: [],
-          episodes_attributes: [:name, :number, :link])
+          episodes_attributes: [:name, :number, :link],
+          studios_attributes: [:name])
     end
 
 end

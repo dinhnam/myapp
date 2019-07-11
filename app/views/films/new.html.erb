@@ -1,4 +1,4 @@
-<div class="form-film-upload">
+<div class="film-upload">
  <h2> <%= @subtitle %> </h2>
   <%= form_with model: @film, local: true do |form| %>
     <table>
@@ -35,7 +35,7 @@
             <ul class="category">
               <% Category.order(name: :asc).each do |category| %>
                   <li>
-                    <%= check_box_tag "categories[]", category.id,
+                    <%= check_box_tag "film[categories][]", category.id,
                           check_category(@film,category) %>
                     <i><%= category.name %></i>
                   </li>
@@ -46,11 +46,12 @@
             <th>Hãng phim: </th>
             <td colspan="2">
                <%= form.fields_for :studios do |s| %>
-                  <div class="studios input-suggest">
-                    <%= s.text_field :name %><div class= "result"></div>
-                    <span class="delete-field">X</span>
+                 <div>
+                    <div class="studios input-suggest">
+                      <%= s.text_field :name, class: "studio" %><div class= "result"></div>
+                    </div>
+                    <span class="add-field">add</span>
                   </div>
-                  <span class="add-field">add</span>
                 <% end %>
             </td>
           </tr>
@@ -102,25 +103,29 @@
               <div class="preview"><%= image_tag 'wallpaper-icon.jpg' %></div>
             </div>
           </td>
-          </tr>
-          <tr>
+          
+    </table>
+    <table>
+          <tr> 
             <td>Tập số</td>
             <td>Tên</td>
             <td>link</td>
           </tr>
           <%= form.fields_for :episodes do |e| %>
-            <tr class="episodes">
-              <td class="col-1"> <%= e.number_field :number, in: 0...10000, 
-                    value: 0 %> </td>
-              <td class="col-2"> <%= e.text_field :name,
-                                                      value: "trailer" %> </td>
-              <td class="col-3"> <%= e.text_field :link %> </td>
-              <td class="delete-field">X</td>
+            <tr>
+              <td> 
+                <%= e.number_field :number, in: 0...10000, value: 0 %>
+              </td>
+              <td>
+                <%= e.text_field :name, value: "trailer" %>
+              </td>
+              <td>
+                <%= e.text_field :link %>
+              </td>
             </tr>
-            
           <% end %>
           <tr class="add-field">
-            <th colspan="3">Add episode<th>
+            <th>Add episode<th>
           </tr>
     </table>
     <p><%= form.submit "create film" %></p>
